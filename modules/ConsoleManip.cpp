@@ -12,11 +12,7 @@
 	#define WIN32_LEAN_AND_MEAN
 	#include <Windows.h>
 
-	/*
-	* @brief Sets the console color based on the provided Color enum (Windows).
-	* 
-	* @param col The color to set the console to.
-	*/
+	/* Sets the console color based on the provided Color enum (Windows). */
 	void PashaBibko::Util::SetConsoleColor(Color col)
 	{
 		/* Static holder of the console handle to avoid excess fetching */
@@ -58,11 +54,7 @@
 		}
 	}
 
-	/*
-	* @brief Sets the console color based on the provided Color enum (Unix/Linux).
-	*
-	* @param col The color to set the console to.
-	*/
+	/* Sets the console color based on the provided Color enum (Unix/Linux). */
 	void PashaBibko::Util::SetConsoleColor(Color col)
 	{
 		/* Fetches the ANSI code for the specified color */

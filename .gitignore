@@ -34,3 +34,6 @@
 # VS22 cache and output directory #
 out/
 .vs/
+
+# Doxygen output directory (will be automated by Github Workflows) #
+docs/
