@@ -6,7 +6,10 @@ set(CMAKE_CXX_STANDARD_REQUIED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
 # Creates the static library #
-add_library(PashaBibko-UTIL STATIC Util.cpp)
+add_library(PashaBibko-UTIL STATIC
+	# List of source files for the Util library #
+	modules/ConsoleManip.cpp
+)
 
 # Sets the include paths for the Util library #
 # Shared with any projects that include this library #
