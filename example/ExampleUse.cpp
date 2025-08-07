@@ -4,12 +4,17 @@
 
 using namespace PashaBibko;
 
-static Util::ReturnVal<int, bool> SafeDivide(int x, int y)
+static Util::ReturnVal<int, void> SafeDivide(int x, int y)
 {
 	if (y == 0)
-		return Util::FunctionFail<bool>(true);
+		return Util::FunctionFail<void>();
 
 	return x / y;
+}
+
+static Util::ReturnVal<void, void> Nothingness(int x)
+{
+	std::cout << x << std::endl;
 }
 
 int main()
@@ -21,6 +26,11 @@ int main()
 
 	/* Example of using the Util::ReturnVal class for functions that can fail */
 	Util::ReturnVal res = SafeDivide(3, 0);
+	std::cout << typeid(res.Error()).name() << std::endl;
 	
+	/**/
+	Util::ReturnVal empty = Nothingness(5);
+	std::cout << empty.
+
 	return 0;
 }
