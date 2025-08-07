@@ -15,7 +15,7 @@
 	#include <Windows.h>
 
 	/* Sets the console color based on the provided Color enum (Windows). */
-	void PashaBibko::Util::SetConsoleColor(Color col)
+	void PashaBibko::Util::SetConsoleColor(Colour col)
 	{
 		/* Static holder of the console handle to avoid excess fetching */
 		static HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -60,27 +60,27 @@
 	{
 		switch (color)
 		{
-		case Color::BLACK:        return "\x1b[30m";
-		case Color::BLUE:         return "\x1b[34m";
-		case Color::GREEN:        return "\x1b[32m";
-		case Color::AQUA:         return "\x1b[36m";
-		case Color::RED:          return "\x1b[31m";
-		case Color::PURPLE:       return "\x1b[35m";
-		case Color::YELLOW:       return "\x1b[33m";
-		case Color::LIGHT_GRAY:   return "\x1b[0m";
-		case Color::LIGHT_BLUE:   return "\x1b[94m";
-		case Color::LIGHT_GREEN:  return "\x1b[92m";
-		case Color::LIGHT_AQUA:   return "\x1b[96m";
-		case Color::LIGHT_RED:    return "\x1b[91m";
-		case Color::LIGHT_PURPLE: return "\x1b[95m";
-		case Color::LIGHT_YELLOW: return "\x1b[93m";
-		case Color::WHITE:        return "\x1b[97m";
-		default:                  return "\x1b[0m";
+		case Colour::BLACK:        return "\x1b[30m";
+		case Colour::BLUE:         return "\x1b[34m";
+		case Colour::GREEN:        return "\x1b[32m";
+		case Colour::AQUA:         return "\x1b[36m";
+		case Colour::RED:          return "\x1b[31m";
+		case Colour::PURPLE:       return "\x1b[35m";
+		case Colour::YELLOW:       return "\x1b[33m";
+		case Colour::LIGHT_GRAY:   return "\x1b[0m";
+		case Colour::LIGHT_BLUE:   return "\x1b[94m";
+		case Colour::LIGHT_GREEN:  return "\x1b[92m";
+		case Colour::LIGHT_AQUA:   return "\x1b[96m";
+		case Colour::LIGHT_RED:    return "\x1b[91m";
+		case Colour::LIGHT_PURPLE: return "\x1b[95m";
+		case Colour::LIGHT_YELLOW: return "\x1b[93m";
+		case Colour::WHITE:        return "\x1b[97m";
+		default:                   return "\x1b[0m";
 		}
 	}
 
 	/* Sets the console color based on the provided Color enum (Unix/Linux). */
-	void PashaBibko::Util::SetConsoleColor(Color col)
+	void PashaBibko::Util::SetConsoleColor(Colour col)
 	{
 		/* Fetches the ANSI code for the specified color */
 		const char* ansiCode = GetAnsiCode(col);
