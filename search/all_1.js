@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['black_0',['BLACK',['../namespacePashaBibko_1_1Util.html#aab3ec7aa9ff5d8a806b29fb9b3fc17d0a08d0012388564e95c3b4a7407cf04965',1,'PashaBibko::Util']]],
-  ['blue_1',['BLUE',['../namespacePashaBibko_1_1Util.html#aab3ec7aa9ff5d8a806b29fb9b3fc17d0a1b3e1ee9bff86431dea6b181365ba65f',1,'PashaBibko::Util']]]
+  ['black_0',['Black',['../namespacePashaBibko_1_1Util.html#a9e9bef6b256d7e672e01a79a4019ecbcae90dfb84e30edf611e326eeb04d680de',1,'PashaBibko::Util']]],
+  ['blue_1',['Blue',['../namespacePashaBibko_1_1Util.html#a9e9bef6b256d7e672e01a79a4019ecbca9594eec95be70e7b1710f730fdda33d9',1,'PashaBibko::Util']]]
 ];

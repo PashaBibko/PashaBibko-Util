@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['aqua_0',['AQUA',['../namespacePashaBibko_1_1Util.html#aab3ec7aa9ff5d8a806b29fb9b3fc17d0a136690883ecab2ec4d5ec54d0d11b873',1,'PashaBibko::Util']]]
+  ['aqua_0',['Aqua',['../namespacePashaBibko_1_1Util.html#a9e9bef6b256d7e672e01a79a4019ecbca255f1b952b2c4d5566ade29c3460b3ba',1,'PashaBibko::Util']]]
 ];

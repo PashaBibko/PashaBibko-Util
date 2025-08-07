@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['test_0',['TEST',['../namespacePashaBibko_1_1Util.html#aab3ec7aa9ff5d8a806b29fb9b3fc17d0a033bd94b1168d7e4f0d644c3c95e35bf',1,'PashaBibko::Util']]]
+  ['to_20your_20project_0',['Adding to your project',['../index.html#autotoc_md1',1,'']]],
+  ['triggerbreakpoint_1',['TriggerBreakpoint',['../namespacePashaBibko_1_1Util.html#a58030e4ffdf1e350d00f4f1280c384d1',1,'PashaBibko::Util']]]
 ];

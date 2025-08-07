@@ -1,10 +1,10 @@
 var searchData=
 [
-  ['light_5faqua_0',['LIGHT_AQUA',['../namespacePashaBibko_1_1Util.html#aab3ec7aa9ff5d8a806b29fb9b3fc17d0a2a863f1e9cdb4ee20f572f68707e49f4',1,'PashaBibko::Util']]],
-  ['light_5fblue_1',['LIGHT_BLUE',['../namespacePashaBibko_1_1Util.html#aab3ec7aa9ff5d8a806b29fb9b3fc17d0a75841220482e3739a9158033b7508cf0',1,'PashaBibko::Util']]],
-  ['light_5fgray_2',['LIGHT_GRAY',['../namespacePashaBibko_1_1Util.html#aab3ec7aa9ff5d8a806b29fb9b3fc17d0ac09e4a151f766014faf9f6cf2683213a',1,'PashaBibko::Util']]],
-  ['light_5fgreen_3',['LIGHT_GREEN',['../namespacePashaBibko_1_1Util.html#aab3ec7aa9ff5d8a806b29fb9b3fc17d0a555a47662547aa7870851b2ef9ade925',1,'PashaBibko::Util']]],
-  ['light_5fpurple_4',['LIGHT_PURPLE',['../namespacePashaBibko_1_1Util.html#aab3ec7aa9ff5d8a806b29fb9b3fc17d0a9272b102078f333ccd93afb1053a2ce7',1,'PashaBibko::Util']]],
-  ['light_5fred_5',['LIGHT_RED',['../namespacePashaBibko_1_1Util.html#aab3ec7aa9ff5d8a806b29fb9b3fc17d0a72722ff9e2a9326d5813c4045d3b4a23',1,'PashaBibko::Util']]],
-  ['light_5fyellow_6',['LIGHT_YELLOW',['../namespacePashaBibko_1_1Util.html#aab3ec7aa9ff5d8a806b29fb9b3fc17d0a3f484dbf8c7f8c7f8444ea63a4811f6a',1,'PashaBibko::Util']]]
+  ['lightaqua_0',['LightAqua',['../namespacePashaBibko_1_1Util.html#a9e9bef6b256d7e672e01a79a4019ecbcac76c91e481c7811145c0697843051ac4',1,'PashaBibko::Util']]],
+  ['lightblue_1',['LightBlue',['../namespacePashaBibko_1_1Util.html#a9e9bef6b256d7e672e01a79a4019ecbca4d7ff7393a484a7b9ed2e381f5cdeaf7',1,'PashaBibko::Util']]],
+  ['lightgray_2',['LightGray',['../namespacePashaBibko_1_1Util.html#a9e9bef6b256d7e672e01a79a4019ecbcafb55202637692de4a494e9ade4cff2dd',1,'PashaBibko::Util']]],
+  ['lightgreen_3',['LightGreen',['../namespacePashaBibko_1_1Util.html#a9e9bef6b256d7e672e01a79a4019ecbca7a6a38bec67cbc2a39ce22f34e4ed8e2',1,'PashaBibko::Util']]],
+  ['lightpurple_4',['LightPurple',['../namespacePashaBibko_1_1Util.html#a9e9bef6b256d7e672e01a79a4019ecbcafef6599756397fc44e38e609d72cc35c',1,'PashaBibko::Util']]],
+  ['lightred_5',['LightRed',['../namespacePashaBibko_1_1Util.html#a9e9bef6b256d7e672e01a79a4019ecbcaf9a96fb667261a141d10021a66d6ad0f',1,'PashaBibko::Util']]],
+  ['lightyellow_6',['LightYellow',['../namespacePashaBibko_1_1Util.html#a9e9bef6b256d7e672e01a79a4019ecbcafaf948b65bda38f44b17d156177d1728',1,'PashaBibko::Util']]]
 ];

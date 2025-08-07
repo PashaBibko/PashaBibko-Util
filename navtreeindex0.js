@@ -1,20 +1,9 @@
 var NAVTREEINDEX0 =
 {
-"annotated.html":[1,0],
-"classes.html":[1,1],
-"functions.html":[1,2,0],
-"functions_func.html":[1,2,1],
-"functions_vars.html":[1,2,2],
 "index.html":[],
-"namespacemembers.html":[0,0],
-"namespacemembers_enum.html":[0,2],
-"namespacemembers_func.html":[0,1],
-"pages.html":[],
-"structPashaBibko_1_1Util_1_1Rectangle.html":[1,0,0,0,0],
-"structPashaBibko_1_1Util_1_1Rectangle.html#a0a2f84ed7838f07779ae24c5a9086d33":[1,0,0,0,0,5],
-"structPashaBibko_1_1Util_1_1Rectangle.html#a2474a5474cbff19523a51eb1de01cda4":[1,0,0,0,0,3],
-"structPashaBibko_1_1Util_1_1Rectangle.html#a6150e0515f7202e2fb518f7206ed97dc":[1,0,0,0,0,4],
-"structPashaBibko_1_1Util_1_1Rectangle.html#a640ef416dd1bbacf0b55bd46e7b46d5b":[1,0,0,0,0,1],
-"structPashaBibko_1_1Util_1_1Rectangle.html#ab6d316d6dca532319b146cac679121a8":[1,0,0,0,0,0],
-"structPashaBibko_1_1Util_1_1Rectangle.html#ad12fc34ce789bce6c8a05d8a17138534":[1,0,0,0,0,2]
+"index.html":[0],
+"namespacemembers.html":[1,0],
+"namespacemembers_enum.html":[1,2],
+"namespacemembers_func.html":[1,1],
+"pages.html":[]
 };

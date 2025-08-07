@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['green_0',['GREEN',['../namespacePashaBibko_1_1Util.html#aab3ec7aa9ff5d8a806b29fb9b3fc17d0a9de0e5dd94e861317e74964bed179fa0',1,'PashaBibko::Util']]]
+  ['green_0',['Green',['../namespacePashaBibko_1_1Util.html#a9e9bef6b256d7e672e01a79a4019ecbcad382816a3cbeed082c9e216e7392eed1',1,'PashaBibko::Util']]]
 ];

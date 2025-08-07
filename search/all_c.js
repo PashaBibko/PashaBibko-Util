@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['x_0',['x',['../structPashaBibko_1_1Util_1_1Rectangle.html#a6150e0515f7202e2fb518f7206ed97dc',1,'PashaBibko::Util::Rectangle']]]
+  ['white_0',['White',['../namespacePashaBibko_1_1Util.html#a9e9bef6b256d7e672e01a79a4019ecbca25a81701fbfa4a1efdf660a950c1d006',1,'PashaBibko::Util']]]
 ];

@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['rectangle_0',['Rectangle',['../structPashaBibko_1_1Util_1_1Rectangle.html',1,'PashaBibko::Util']]],
-  ['red_1',['RED',['../namespacePashaBibko_1_1Util.html#aab3ec7aa9ff5d8a806b29fb9b3fc17d0aa2d9547b5d3dd9f05984475f7c926da0',1,'PashaBibko::Util']]]
+  ['red_0',['Red',['../namespacePashaBibko_1_1Util.html#a9e9bef6b256d7e672e01a79a4019ecbcaee38e4d5dd68c4e440825018d549cb47',1,'PashaBibko::Util']]]
 ];
