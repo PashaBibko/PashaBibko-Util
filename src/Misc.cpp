@@ -1,11 +1,11 @@
 #include <Util.h>
 
 /*
-* Different operating systems have different includes needed for coloring in the console.
-* Therefore, we need to include the appropriate headers based on the operating system.
-* To avoid unecessary items in the global namespace the includes are local to this file.
-* Each operating system also has it's own function defintion of SetConsoleColor to not interfere with each other.
-*/
+ * Different operating systems have different includes needed for coloring in the console.
+ * Therefore, we need to include the appropriate headers based on the operating system.
+ * To avoid unecessary items in the global namespace the includes are local to this file.
+ * Each operating system also has it's own function defintion of SetConsoleColor to not interfere with each other.
+ */
 
 #if defined(_WIN32) || defined(_WIN64)
 	#define NOMINMAX

@@ -11,9 +11,9 @@
 namespace PashaBibko::Util
 {
     /**
-    * @brief Representation of each color and its corresponding Win32 console color code.
-    *        Other operating systems use a switch statement to translate the codes from Win32 to their values.
-    */
+     * @brief Representation of each color and its corresponding Win32 console color code.
+     *        Other operating systems use a switch statement to translate the codes from Win32 to their values.
+     */
 	enum class Color : unsigned short
     {
         DEFAULT = 0x07,
@@ -45,3 +45,6 @@ namespace PashaBibko::Util
      */
 	void SetConsoleColor(Color col);
 }
+
+/* Includes the classes of the Util library */
+#include <classes/ReturnVal.h>
