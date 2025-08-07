@@ -1,8 +1,10 @@
 var searchData=
 [
-  ['pashabibko_0',['PashaBibko',['../namespacePashaBibko.html',1,'']]],
-  ['pashabibko_20util_1',['PashaBibko-Util',['../index.html',1,'']]],
-  ['pashabibko_3a_3autil_2',['Util',['../namespacePashaBibko_1_1Util.html',1,'PashaBibko']]],
-  ['project_3',['Adding to your project',['../index.html#autotoc_md1',1,'']]],
-  ['purple_4',['Purple',['../namespacePashaBibko_1_1Util.html#a9e9bef6b256d7e672e01a79a4019ecbcab9ba865fec061c9706d2fd7ce49c0cc7',1,'PashaBibko::Util']]]
+  ['lightaqua_0',['LightAqua',['../namespacePashaBibko_1_1Util.html#a9e9bef6b256d7e672e01a79a4019ecbcac76c91e481c7811145c0697843051ac4',1,'PashaBibko::Util']]],
+  ['lightblue_1',['LightBlue',['../namespacePashaBibko_1_1Util.html#a9e9bef6b256d7e672e01a79a4019ecbca4d7ff7393a484a7b9ed2e381f5cdeaf7',1,'PashaBibko::Util']]],
+  ['lightgray_2',['LightGray',['../namespacePashaBibko_1_1Util.html#a9e9bef6b256d7e672e01a79a4019ecbcafb55202637692de4a494e9ade4cff2dd',1,'PashaBibko::Util']]],
+  ['lightgreen_3',['LightGreen',['../namespacePashaBibko_1_1Util.html#a9e9bef6b256d7e672e01a79a4019ecbca7a6a38bec67cbc2a39ce22f34e4ed8e2',1,'PashaBibko::Util']]],
+  ['lightpurple_4',['LightPurple',['../namespacePashaBibko_1_1Util.html#a9e9bef6b256d7e672e01a79a4019ecbcafef6599756397fc44e38e609d72cc35c',1,'PashaBibko::Util']]],
+  ['lightred_5',['LightRed',['../namespacePashaBibko_1_1Util.html#a9e9bef6b256d7e672e01a79a4019ecbcaf9a96fb667261a141d10021a66d6ad0f',1,'PashaBibko::Util']]],
+  ['lightyellow_6',['LightYellow',['../namespacePashaBibko_1_1Util.html#a9e9bef6b256d7e672e01a79a4019ecbcafaf948b65bda38f44b17d156177d1728',1,'PashaBibko::Util']]]
 ];

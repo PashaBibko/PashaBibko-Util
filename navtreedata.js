@@ -30,13 +30,14 @@ var NAVTREE =
       [ "All", "namespacemembers.html", null ],
       [ "Functions", "namespacemembers_func.html", null ],
       [ "Enumerations", "namespacemembers_enum.html", null ]
-    ] ]
+    ] ],
+    [ "Class Index", "classes.html", null ]
   ] ]
 ];
 
 var NAVTREEINDEX =
 [
-"index.html"
+"classes.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

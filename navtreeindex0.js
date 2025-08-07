@@ -1,5 +1,6 @@
 var NAVTREEINDEX0 =
 {
+"classes.html":[2],
 "index.html":[],
 "index.html":[0],
 "namespacemembers.html":[1,0],
