@@ -31,6 +31,13 @@ namespace PashaBibko::Util
 		const char* message;
 	};
 
+	/* Enum for if the class should check or not */
+	enum class Result
+	{
+		Check,
+		Force
+	};
+
 	/**
 	 * @brief Class to create when a function fails
 	 */
@@ -71,16 +78,36 @@ namespace PashaBibko::Util
 				: m_Error(std::move(_error.error)), m_FunctionFailed(true)
 			{}
 
-			/* Returns a const reference to the result */
-			inline CRef<Res_Ty> Result() const
-			{
-				return CRef<Res_Ty>(m_Result);
-			}
-
 			/* Returns a const reference to the error */
+			template<Result force = Result::Check>
 			inline CRef<Err_Ty> Error() const
 			{
-				return CRef<Err_Ty>(m_Error);
+				/* Force bypasses checking if the function failed or not */
+				if constexpr (force == Result::Check)
+				{
+					/* Ends the process if the error was tried to access on a sucessful return */
+					if (!m_FunctionFailed)
+						EndProcess();
+				}
+
+				/* Returns a const reference to the error */
+				return CRef<Res_Ty>(m_Error);
+			}
+
+			/* Returns a const reference to the result */
+			template<Result force = Result::Check>
+			inline CRef<Res_Ty> Result() const
+			{
+				/* Force bypasses checking if the function failed or not */
+				if constexpr (force == Result::Check)
+				{
+					/* Ends the process if the result was tried to access on a failed result */
+					if (m_FunctionFailed)
+						EndProcess();
+				}
+
+				/* Returns a const reference to the result */
+				return CRef<Res_Ty>(m_Result);
 			}
 
 			/* Returns wether the function failed */

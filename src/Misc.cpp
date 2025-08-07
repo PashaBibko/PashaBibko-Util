@@ -1,5 +1,7 @@
 #include <Util.h>
 
+#include <cstdlib>
+
 /*
  * Different operating systems have different includes needed for coloring in the console.
  * Therefore, we need to include the appropriate headers based on the operating system.
@@ -24,6 +26,29 @@
 
 		/* Sets the console color using the Color enum value */
 		SetConsoleTextAttribute(hConsole, static_cast<WORD>(col));
+	}
+
+	/* Triggers a breakpoint if a debugger is attached to the current process */
+	void PashaBibko::Util::TriggerBreakpoint()
+	{
+		/* Breakpoints can only be triggered in Debug builds so it does not check on non-debug builds */
+		#ifdef _DEBUG
+
+		/* Only triggers a breakpoint if a debugger is attached to stop accidental errors */
+		if (IsDebuggerPresent())
+			DebugBreak();
+
+		#endif
+	}
+
+	/* Ends the current program */
+	void PashaBibko::Util::EndProcess(bool breakpoint)
+	{
+		/* Triggers a breakpoint if wanted */
+		if (breakpoint)
+			TriggerBreakpoint();
+
+		std::abort();
 	}
 
 #elif defined(__linux__) || defined(_unix__)

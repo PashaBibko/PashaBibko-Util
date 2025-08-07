@@ -45,6 +45,16 @@ namespace PashaBibko::Util
      * @param col The color that the console will be set to.
      */
 	void SetConsoleColor(Color col);
+
+    /*
+     *
+     */
+    void TriggerBreakpoint();
+
+    /*
+     * 
+     */
+    void EndProcess(bool breakpont = true);
 }
 
 /* Includes the classes of the Util library */

@@ -21,7 +21,7 @@ int main()
 
 	/* Example of using the Util::ReturnVal class for functions that can fail */
 	Util::ReturnVal res = SafeDivide(3, 0);
-	std::cout << res.Result() << std::endl;
+	std::cout << res.Result<Util::Result::Check>() << std::endl;
 
 	return 0;
 }
