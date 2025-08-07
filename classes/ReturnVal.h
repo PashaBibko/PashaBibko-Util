@@ -3,9 +3,11 @@
 #include <type_traits>
 
 #include <classes/CRef.h>
+#include <concepts>
 
 /**
  * @file ReturnVal.h
+ * 
  * @brief Contains the declaration for Util::ReturnVal<T, Error>
  *		  as well as relevant functions and classes such as Util::FunctionFail<Error>
  */
@@ -13,9 +15,26 @@
 namespace PashaBibko::Util
 {
 	/**
+	 * @brief Default error class for Uti::ReturnVal
+	 */
+	struct DefaultError
+	{
+		/* Default constructor */
+		DefaultError()
+			: message("NO REASON PROVIDED") {}
+
+		/* Pass an error message for the error handling to use */
+		DefaultError(const char* _message)
+			: message(_message) {}
+
+		/* The error message */
+		const char* message;
+	};
+
+	/**
 	 * @brief Class to create when a function fails
 	 */
-	template<typename Err_Ty>
+	template<typename Err_Ty = DefaultError>
 	struct FunctionFail
 	{
 		/* Copies an error to within the class */
@@ -32,36 +51,24 @@ namespace PashaBibko::Util
 
 		/* Public to allow for easy access */
 		Err_Ty error;
-
-		/* Public function to get a reference, overriden in specialised template */
-		Err_Ty& Error() { return error; }
-	};
-
-	/**
-	 * @brief Specialisation of the Util::FunctionFail for the void type 
-	 */
-	template<>
-	struct FunctionFail<void>
-	{
-		/* Returns a bool as it is the underlying type of Util::ReturnVal Res_Ty or Err_Ty */
-		bool Error() { return 0x0; }
 	};
 
 	/**
 	 * @brief Class to either return a result or an error type from a function 
 	 */
-	template<typename Res_Ty, typename Err_Ty>
+	template<typename Res_Ty, typename Err_Ty = DefaultError>
+		requires (!std::same_as<Res_Ty, void>) && (!std::same_as<Err_Ty, void>)
 	class ReturnVal
 	{
 		public:
 			/* Copies the sucess result */
-			ReturnVal(CRef<Res_Ty> _result)
+			ReturnVal(Res_Ty _result)
 				: m_Result(_result), m_FunctionFailed(false)
 			{}
 
 			/* Moves the contents of a Util::FunctionFail<Err_Ty> to a Util::ReturnVal */
 			ReturnVal(FunctionFail<Err_Ty>&& _error)
-				: m_Error(std::move(_error.Error())), m_FunctionFailed(true)
+				: m_Error(std::move(_error.error)), m_FunctionFailed(true)
 			{}
 
 			/* Returns a const reference to the result */
@@ -83,15 +90,11 @@ namespace PashaBibko::Util
 			inline bool Success() const { return !m_FunctionFailed; }
 
 		private:
-			/* The type of void cannot be created in the union so type aliases are used to replace it with bool */
-			using InternalRes_Ty = typename std::conditional<std::is_same<Res_Ty, void>::value, bool, Res_Ty>::type;
-			using InternalErr_Ty = typename std::conditional<std::is_same<Err_Ty, void>::value, bool, Err_Ty>::type;
-
 			/* Union to hold either the result or the error */
 			union
 			{
-				InternalRes_Ty m_Result;
-				InternalErr_Ty m_Error;
+				Res_Ty m_Result;
+				Err_Ty m_Error;
 			};
 
 			/* Holds wether the function failed or not */
