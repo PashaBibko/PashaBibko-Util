@@ -28,5 +28,5 @@ namespace PashaBibko::Util
      * 
      * @param breakpoint If true will trigger a breakpoint before exiting (defaults to true)
      */
-    void EndProcess(bool breakpont = true);
+    void EndProcess(bool breakpoint = true);
 }

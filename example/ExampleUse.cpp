@@ -1,4 +1,5 @@
 #include <iostream>
+#include <array>
 
 #include <Util.h>
 
@@ -16,13 +17,22 @@ int main()
 {
 	/* This is a simple example of using coloured text with the Util library */
 	Util::PrintAs<Util::Colour::LightAqua>("Hello, World!\n");
-	Util::Print("This is on the same line");
-	Util::PrintLn(" as this");
-	Util::Log("This is put in the console and log");
+
+	/* Example of auto de-referencing pointers */
+	int temp = 3;
+	int* ptr = &temp;
+	Util::PrintLn(ptr);
+
+	/* Example of using an iterator with the log */
+	std::array<int, 5> array = { 1, 2, 3, 4, 5 };
+	Util::LogContainer("Example-Array", array);
 
 	/* Example of using the Util::ReturnVal class for functions that can fail */
 	Util::ReturnVal res = SafeDivide(6, 2);
-	std::cout << res.Result<Util::Result::Check>() << std::endl;
+	if (res.Failed())
+	{
+		return 1;
+	}
 
 	return 0;
 }
