@@ -51,7 +51,7 @@
 		std::abort();
 	}
 
-#elif defined(__linux__) || defined(_unix__)
+#elif defined(__linux__)
 	#include <unistd.h>
 	#include <string.h>
 

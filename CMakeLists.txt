@@ -9,6 +9,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 add_library(PashaBibko-UTIL STATIC
 	# List of source files for the Util library #
 	"src/Misc.cpp"
+	"src/Log.cpp"
 )
 
 # Sets the include paths for the Util library #

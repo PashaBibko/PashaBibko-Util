@@ -992,8 +992,11 @@ WARN_LOGFILE           =
 # Note: If this tag is empty the current directory is searched.
 
 INPUT                  = Util.h \
+                         classes/Colour.h \
                          classes/ReturnVal.h \
                          classes/CRef.h \
+                         sections/Log.h \
+                         sections/Misc.h \
                          README.md
 
 # This tag can be used to specify the character encoding of the source files

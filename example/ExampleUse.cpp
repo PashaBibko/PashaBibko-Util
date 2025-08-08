@@ -15,12 +15,13 @@ static Util::ReturnVal<int> SafeDivide(int x, int y)
 int main()
 {
 	/* This is a simple example of using coloured text with the Util library */
-	Util::SetConsoleColor(Util::Colour::LightAqua);
-	std::cout << "Hello, World!" << std::endl;
-	Util::SetConsoleColor(Util::Colour::Default);
+	Util::PrintAs<Util::Colour::LightAqua>("Hello, World!\n");
+	Util::Print("This is on the same line");
+	Util::PrintLn(" as this");
+	Util::Log("This is put in the console and log");
 
 	/* Example of using the Util::ReturnVal class for functions that can fail */
-	Util::ReturnVal res = SafeDivide(3, 0);
+	Util::ReturnVal res = SafeDivide(6, 2);
 	std::cout << res.Result<Util::Result::Check>() << std::endl;
 
 	return 0;
