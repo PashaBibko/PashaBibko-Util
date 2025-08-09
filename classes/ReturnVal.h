@@ -129,7 +129,7 @@ namespace PashaBibko::Util
 			 * 
 			 * @details Recommended to use the copy-constructor for larger types.
 			 */
-			ReturnVal(Res_Ty _result)
+			explicit ReturnVal(Res_Ty _result)
 				: m_Result(_result), m_FunctionFailed(false)
 			{}
 
@@ -138,8 +138,9 @@ namespace PashaBibko::Util
 			 * 
 			 * @details Recommended to use for larger types.
 			 */
-			ReturnVal(Res_Ty _result)
+			ReturnVal(Res_Ty&& _result)
 				: m_Result(std::move(_result)), m_FunctionFailed(false)
+			{}
 
 			/**
 			 * @brief Moves the contents of a Util::FunctionFail<Err_Ty> to a Util::ReturnVal.
