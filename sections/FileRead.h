@@ -12,6 +12,7 @@
  *        function to find location of an index within a string.
  */
 
+namespace PashaBibko::Util
 {
     /** Error returned when PashaBibko::Util::ReadFile() fails */
     struct FileReadError final
