@@ -36,10 +36,23 @@ namespace PashaBibko::Util
 
         /* Assumes all types passed are valid as it is an internal function */
         template<typename Ty>
-        std::string ProcessArg(Ty arg)
+        std::string ProcessArg(Ty&& arg)
         {
+            /* Checks if the argument type is a pointer */
+            if constexpr(std::is_pointer_v<std::remove_cvref_t<Ty>>)
+            {
+                /* If the pointer is valid forwards the derefenced arg */
+                if (arg != nullptr)
+                    return ProcessArg(*arg);
+
+                /* Else prints a message about a nullptr of type Ty */
+                std::ostringstream os{};
+                os << "Nullptr of type: [" << typeid(Ty).name() << ']';
+                return std::move(os).str();
+            }
+
             /* Custom log function has highest precedence */
-            if constexpr (TypeHasLogFunction<Ty>)
+            else if constexpr (TypeHasLogFunction<Ty>)
             {
                 return arg.LogStr();
             }
@@ -56,10 +69,8 @@ namespace PashaBibko::Util
             /* Else returns an error */
             else
             {
-                static_assert(false, "Invalid type passed to Util::Internal::ProcessArg(), Please use dedicated functions and not Internal functions");
+                static_assert(false, "Invalid type passed to Util::Internal::ProcessArg(), It is recommended not to use internal functions");
             }
-
-            /* Checks if the type can be iterated over */
         }
 
         /* Assumes all types passed are valid as it is an internal function */
@@ -68,42 +79,29 @@ namespace PashaBibko::Util
         {
             return (ProcessArg(std::forward<Args>(args)) + ... + "");
         }
+
+        template<typename Ty> concept LogableBase = Internal::StandardLogable<Ty> || Internal::TypeHasLogFunction<Ty>;
+        template<typename Ty> concept Logable = LogableBase<Ty> || (LogableBase<std::remove_cv_t<std::remove_pointer_t<std::remove_cvref_t<Ty>>>>);
     }
 
     #endif // DOXYGEN_HIDE
 
-    template<typename Ty> concept Logable = Internal::StandardLogable<Ty> || Internal::TypeHasLogFunction<Ty>;
-
-    template<Colour col, typename... Args>
-        requires Logable<Args...>
-    inline void PrintAs(Args&&... args)
-    {
-        Util::SetConsoleColor(col);
-
-        std::string message = Internal::ProcessArgs(std::forward<Args>(args)...);
-        Internal::WriteToConsole(message.c_str());
-
-        Util::SetConsoleColor(Util::Colour::Default);
-    }
-
-    template<typename... Args>
-        requires Logable<Args...>
+    template<Colour colour = Colour::Default, typename... Args>
+        requires (Internal::Logable<std::remove_cvref_t<Args>> && ...)
     inline void Print(Args&&... args)
     {
+        if constexpr (colour != Colour::Default)
+            Util::SetConsoleColor(colour);
+
         std::string message = Internal::ProcessArgs(std::forward<Args>(args)...);
         Internal::WriteToConsole(message.c_str());
+
+        if constexpr (colour != Colour::Default)
+            Util::SetConsoleColor(Colour::Default);
     }
 
     template<typename... Args>
-        requires Logable<Args...>
-    inline void PrintLn(Args&&... args)
-    {
-        std::string message = Internal::ProcessArgs(std::forward<Args>(args)..., '\n');
-        Internal::WriteToConsole(message.c_str());
-    }
-
-    template<typename... Args>
-        requires Logable<Args...>
+        requires (Internal::Logable<std::remove_cvref_t<Args>> && ...)
     inline void Log(Args&&... args)
     {
         std::string message = Internal::ProcessArgs("[PB_Util::Log]: ", std::forward<Args>(args)..., '\n');
@@ -111,10 +109,21 @@ namespace PashaBibko::Util
         Internal::WriteToLog(message.c_str());
     }
 
-    template<typename Ty, std::ranges::range Container_Ty, typename Cargo_Ty = std::ranges::range_value_t<Container_Ty>>
-        requires Logable<Cargo_Ty>
-    inline void LogContainer(Ty&& name, const Container_Ty& container)
+    /* These functions documentation are covered by Util::Print and Util::Log so they can be excluded */
+    #ifndef DOXYGEN_HIDE
+
+    template< Colour colour = Colour::Default, typename... Args>
+        requires (Internal::Logable<std::remove_cvref_t<Args>> && ...)
+    inline void PrintLn(Args&&... args)
     {
+        Print(std::forward<Args>(args)..., '\n');
+    }
+
+    template<typename Ty, std::ranges::range Container_Ty, typename Cargo_Ty = std::ranges::range_value_t<Container_Ty>>
+        requires Internal::Logable<Cargo_Ty>
+    inline void Log(Ty&& name, const Container_Ty& container)
+    {
+        /* Creates a JSON like formatting of the range */
         std::ostringstream os{};
         os << "[PB_Util::Log]: \"" << Internal::ProcessArg(name) << "\"\n{\n";
 
@@ -133,4 +142,6 @@ namespace PashaBibko::Util
         Internal::WriteToConsole(message.c_str());
         Internal::WriteToLog(message.c_str());
     }
+
+    #endif // DOXYGEN_HIDE
 }

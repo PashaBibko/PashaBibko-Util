@@ -13,22 +13,40 @@ static Util::ReturnVal<int> SafeDivide(int x, int y)
 	return x / y;
 }
 
+struct LogableExample
+{
+	std::string LogStr() const
+	{
+		return "Custom Log method called";
+	}
+};
+
 int main()
 {
 	/* This is a simple example of using coloured text with the Util library */
-	Util::PrintAs<Util::Colour::LightAqua>("Hello, World!\n");
+	Util::Print<Util::Colour::LightAqua>("Hello, World!\n");
+
+	/* Example of using custom log functions */
+	LogableExample object;
+	Util::PrintLn(object);
 
 	/* Example of auto de-referencing pointers */
 	int temp = 3;
 	int* ptr = &temp;
 	Util::PrintLn(ptr);
 
+	int** ptrRecursion = &ptr;
+	Util::PrintLn("PointerRecursion: ", ptrRecursion);
+
+	int* null = nullptr;
+	Util::PrintLn(null);
+
 	/* Example of using an iterator with the log */
 	std::array<int, 5> array = { 1, 2, 3, 4, 5 };
-	Util::LogContainer("Example-Array", array);
+	Util::Log("Example-Array", array);
 
 	/* Example of using the Util::ReturnVal class for functions that can fail */
-	Util::ReturnVal res = SafeDivide(6, 2);
+	Util::ReturnVal res = SafeDivide(6, 0);
 	if (res.Failed())
 	{
 		return 1;
