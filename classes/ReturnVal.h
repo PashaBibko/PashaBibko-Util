@@ -2,8 +2,6 @@
 
 #include <type_traits>
 
-#include <classes/CRef.h>
-
 #include <sections/Misc.h>
 
 #include <concepts>
@@ -159,7 +157,7 @@ namespace PashaBibko::Util
 			 * 			Result::Force when you are sure the function has failed.
 			 */
 			template<Result force = Result::Check>
-			inline CRef<Err_Ty> Error() const
+			inline Err_Ty& Error() const
 			{
 				/* Force bypasses checking if the function failed or not */
 				if constexpr (force == Result::Check)
@@ -170,7 +168,7 @@ namespace PashaBibko::Util
 				}
 
 				/* Returns a const reference to the error */
-				return CRef<Res_Ty>(m_Error);
+				return m_Error;
 			}
 
 			/**
@@ -187,7 +185,7 @@ namespace PashaBibko::Util
 			 * 			Result::Force when you are sure of the result.
 			 */
 			template<Result force = Result::Check>
-			inline CRef<Res_Ty> Result() const
+			inline Res_Ty& Result() const
 			{
 				/* Force bypasses checking if the function failed or not */
 				if constexpr (force == Result::Check)
@@ -198,7 +196,7 @@ namespace PashaBibko::Util
 				}
 
 				/* Returns a const reference to the result */
-				return CRef<Res_Ty>(m_Result);
+				return m_Result;
 			}
 
 			/**

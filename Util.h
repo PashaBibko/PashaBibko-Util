@@ -11,7 +11,6 @@
  /* Includes the classes of the Util library */
 #include <classes/ReturnVal.h>
 #include <classes/Colour.h>
-#include <classes/CRef.h>
 
 /* Includes the additional sections of the Util library (if enabled) */
 #include <sections/Misc.h>
