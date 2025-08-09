@@ -43,19 +43,10 @@
 		#endif
 	}
 
-	/* Ends the current program */
-	void PashaBibko::Util::EndProcess(bool breakpoint)
-	{
-		/* Triggers a breakpoint if wanted */
-		if (breakpoint)
-			TriggerBreakpoint();
-
-		std::abort();
-	}
-
 #elif defined(__linux__)
 	#include <unistd.h>
 	#include <string.h>
+	#include <signal.h>
 
 	/* Local function to translate Win32 color codes to ansi escape codes */
 	static constexpr const char* GetAnsiCode(PashaBibko::Util::Colour color)
@@ -93,6 +84,23 @@
 		write(STDOUT_FILENO, ansiCode, strlen(ansiCode));
 	}
 
+	/* Triggers a breakpoint. TODO: Detect if a debugger is active */
+	void PashaBibko::Util::TriggerBreakpoint()
+	{
+		/* Commented out to stop crashes */
+		//raise(SIGTRAP);
+	}
+
 #else
 	#error "Unsupported operating system."
 #endif
+
+void PashaBibko::Util::EndProcess(bool breakpoint)
+{
+	/* Triggers a breakpoint if wanted */
+	if (breakpoint)
+		TriggerBreakpoint();
+
+	std::abort();
+}
+
