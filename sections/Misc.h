@@ -2,7 +2,11 @@
 
 #include <classes/Colour.h>
 
-/* Floating functions within the lib (not connected to a class) or a general section */
+ * @file Misc.h
+ *
+ * @brief Floating functions within the lib (not connected to a class) or a general section
+ */
+
 namespace PashaBibko::Util
 {
     /**

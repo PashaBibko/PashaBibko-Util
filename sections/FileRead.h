@@ -1,5 +1,9 @@
 #pragma once
 
+#include <classes/ReturnVal.h>
+
+#include <filesystem>
+
 /**
  * @file FileRead.h
  * 
@@ -8,12 +12,6 @@
  *        function to find location of an index within a string.
  */
 
-
-#include <filesystem>
-
-#include <classes/ReturnVal.h>
-
-namespace PashaBibko::Util
 {
     /** Error returned when PashaBibko::Util::ReadFile() fails */
     struct FileReadError final

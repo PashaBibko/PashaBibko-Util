@@ -1,7 +1,7 @@
 #pragma once
 
-#include <classes/Colour.h>
 
+#include <classes/Colour.h>
 #include <sections/Misc.h>
 
 #include <type_traits>
