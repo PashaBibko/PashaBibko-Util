@@ -134,6 +134,14 @@ namespace PashaBibko::Util
 			{}
 
 			/**
+			 * @brief Moves the success value.
+			 * 
+			 * @details Recommended to use for larger types.
+			 */
+			ReturnVal(Res_Ty _result)
+				: m_Result(std::move(_result)), m_FunctionFailed(false)
+
+			/**
 			 * @brief Moves the contents of a Util::FunctionFail<Err_Ty> to a Util::ReturnVal.
 			 * 
 			 * @details Done automatically by the C++ compiler when returning a Util::FunctionFail
