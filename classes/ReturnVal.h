@@ -172,7 +172,7 @@ namespace PashaBibko::Util
 			 * 			Result::Force when you are sure the function has failed.
 			 */
 			template<Result force = Result::Check>
-			inline Err_Ty& Error() const
+			inline Err_Ty& Error()
 			{
 				/* Force bypasses checking if the function failed or not */
 				if constexpr (force == Result::Check)
@@ -200,7 +200,7 @@ namespace PashaBibko::Util
 			 * 			Result::Force when you are sure of the result.
 			 */
 			template<Result force = Result::Check>
-			inline Res_Ty& Result() const
+			inline Res_Ty& Result()
 			{
 				/* Force bypasses checking if the function failed or not */
 				if constexpr (force == Result::Check)
