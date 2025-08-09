@@ -23,8 +23,8 @@ namespace PashaBibko::Util
     /**
      * @brief Triggers a breakpoint if there is a Debugger to attach to
      * 
-     * @details Calls `DebugBreak()` on Windows or `std::raise(SIGTRAP)` on UNIX based systems.
-     *          On windows will check if there is a debugger attached but will not on UNIX.
+     * @details Calls `DebugBreak()` on Windows or `std::raise(SIGTRAP)` on Linux based systems.
+     *          On windows will check if there is a debugger attached but will not on Linux.
      */
     void TriggerBreakpoint();
 

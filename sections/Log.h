@@ -93,6 +93,45 @@ namespace PashaBibko::Util
 
     #endif // DOXYGEN_HIDE
 
+    /**
+     * @brief Prints the message to the console.
+     * 
+     * @details Types can be printed in 2 different ways. The first is if the type has a
+     *          std::ostream& bit-shift operator overload defined. This is the operator
+     *          that std::cout uses for outputting so will be used by all intergral types.
+     * 
+     *          The second way is by having a LogStr() method that returns a string. Below
+     *          are some examples of logging with these methods.
+     * 
+     *          @code
+     *          struct LogableExample
+     *          {
+     *              std::string LogStr() const // Function is required to be const //
+     *              {
+     *                  return "Custom Log method called";
+     *              }
+     *          }
+     * 
+     *          int main()
+     *          {
+     *              // Using the std::ostream& << operator //
+     *              Util::Print("Hello, World! ", 3);
+     * 
+     *              // Using the LogStr() function //
+     *              LogableExample object;
+     *              Util::Print(object);
+     * 
+     *              return 0;
+     *          }
+     *          @endcode
+     * 
+     *          Instead of adding a new line('\n') character at the end of the message
+     *          you can use Util::PrintLn which will automatically apend it for you.
+     * 
+     * @tparam colour (Optional) the color that it will print to the console in.
+     * 
+     * @arg args The arguments that will be printed to the console.
+     */
     template<Colour colour = Colour::Default, typename... Args>
         requires (Internal::Logable<std::remove_cvref_t<Args>> && ...)
     inline void Print(Args&&... args)
@@ -107,11 +146,48 @@ namespace PashaBibko::Util
             Util::SetConsoleColor(Colour::Default);
     }
 
+    /**
+     * @brief Logs the message to the log file and console.
+     * 
+     * @details See PashaBibko::Util::Print() for how different types can be logged.
+     *          Log() also has a function overload for printing ranges. Any type that
+     *          can be iterated over using begin() and end() such as std::array or
+     *          std::vector. It also requires that type that is returned whilst
+     *          iterating is also loggable. For example:
+     * 
+     *          @code
+     *          struct A
+     *          {
+     *              // Empty //
+     *          }
+     * 
+     *          struct B
+     *          {
+     *              std::string LogStr() const
+     *              {
+     *                  return "Custom Log function called";
+     *              }
+     *          }
+     * 
+     *          int main()
+     *          {
+     *              // Invalid because A cannot be logged //
+     *              std::array<A, 5> array_A{};
+     *              Util::Log(array_A);
+     * 
+     *              // Valid because B can be logged //
+     *              std::array<B, 5> array_B{};
+     *              Util::Log(array_B);
+     *          }
+     *          @endcode
+     * 
+     * @arg args The message that it will log to a file.
+     */
     template<typename... Args>
         requires (Internal::Logable<std::remove_cvref_t<Args>> && ...)
     inline void Log(Args&&... args)
     {
-        std::string message = Internal::ProcessArgs("[PB_Util::Log]: ", std::forward<Args>(args)..., '\n');
+        std::string message = Internal::ProcessArgs("[PB_Util::Log()]: ", std::forward<Args>(args)..., '\n');
         Internal::WriteToConsole(message.c_str());
         Internal::WriteToLog(message.c_str());
     }

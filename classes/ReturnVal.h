@@ -69,7 +69,7 @@ namespace PashaBibko::Util
 	 * @tparam Err_Ty The type of the error (cannot be void).
 	 */
 	template<typename Err_Ty = DefaultError>
-	struct FunctionFail
+	struct FunctionFail final
 	{
 		/**
 		 * @brief Constructor that copies an error and stores it.
@@ -121,7 +121,7 @@ namespace PashaBibko::Util
 	 */
 	template<typename Res_Ty, typename Err_Ty = DefaultError>
 		requires (!std::same_as<Res_Ty, void>) && (!std::same_as<Err_Ty, void>)
-	class ReturnVal
+	class ReturnVal final
 	{
 		public:
 			/**
@@ -142,6 +142,21 @@ namespace PashaBibko::Util
 			ReturnVal(FunctionFail<Err_Ty>&& _error)
 				: m_Error(std::move(_error.error)), m_FunctionFailed(true)
 			{}
+
+			/* Constructor is not manually called by someone using the library so it is excluded from docs */
+			#ifndef DOXYGEN_HIDE
+
+			~ReturnVal()
+			{
+				/* Makes sure the types deconstructor is called to avoid memory leaks */
+				if (m_FunctionFailed)
+					m_Error.~Err_Ty();
+
+				else
+					m_Result.~Res_Ty();
+			}
+
+			#endif
 
 			/**
 			 * @brief Returns a const reference to the error.
