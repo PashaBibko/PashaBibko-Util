@@ -994,7 +994,7 @@ WARN_LOGFILE           =
 INPUT                  = Util.h \
                          classes/Colour.h \
                          classes/ReturnVal.h \
-                         classes/CRef.h \
+                         sections/FileRead.h \
                          sections/Log.h \
                          sections/Misc.h \
                          README.md
@@ -1037,10 +1037,7 @@ INPUT_FILE_ENCODING    =
 # provided as Doxygen C comment), *.py, *.pyw, *.f90, *.f95, *.f03, *.f08,
 # *.f18, *.f, *.for, *.vhd, *.vhdl, *.ucf, *.qsf and *.ice.
 
-FILE_PATTERNS          = *.c \
-                         *.cpp \
-                         *.md \
-                         *.h 
+FILE_PATTERNS          = 
 
 # The RECURSIVE tag can be used to specify whether or not subdirectories should
 # be searched for input files as well.

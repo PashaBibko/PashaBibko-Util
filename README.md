@@ -39,8 +39,9 @@ Finally you should be able to use Util library within your project by adding
 ### Getting started
 
 To use any of the functions/classes within your project you can find them under the
-"PashaBibko::Util" namespace. Unless you have a namespace already called Util it is
-recommended to use: `using namespace PashaBibko`.
+"PashaBibko::Util" namespace. As the namespace is quite long shorthands are provided:
+- PBU for PashaBibko::Util
+- PB for PashaBibko
 
 Example uses of some of the classes and functions can be found within the examples/ subdir
 or can be seen [here](https://github.com/PashaBibko/PashaBibko-Util/blob/main/example/ExampleUse.cpp)

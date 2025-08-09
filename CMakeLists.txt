@@ -8,6 +8,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 # Creates the static library #
 add_library(PashaBibko-UTIL STATIC
 	# List of source files for the Util library #
+	"src/FileRead.cpp"
 	"src/Misc.cpp"
 	"src/Log.cpp"
 )

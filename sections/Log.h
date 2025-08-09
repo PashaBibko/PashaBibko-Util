@@ -10,6 +10,13 @@
 #include <ostream>
 #include <ranges>
 
+/**
+ * @file Log.h
+ * 
+ * @brief Includes the functions for logging types to the console and log file.
+ */
+
+
 namespace PashaBibko::Util
 {
     /* Excludes the internal namespace from the docs */
