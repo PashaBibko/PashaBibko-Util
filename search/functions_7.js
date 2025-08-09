@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['triggerbreakpoint_0',['TriggerBreakpoint',['../namespacePashaBibko_1_1Util.html#a58030e4ffdf1e350d00f4f1280c384d1',1,'PashaBibko::Util']]]
+  ['setconsolecolor_0',['SetConsoleColor',['../namespacePashaBibko_1_1Util.html#abf61e209e9dc0c1b185a2799e9a34219',1,'PashaBibko::Util']]],
+  ['success_1',['Success',['../classPashaBibko_1_1Util_1_1ReturnVal.html#a19550953c186670c0df2ba41134bc09d',1,'PashaBibko::Util::ReturnVal']]]
 ];

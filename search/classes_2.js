@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['functionfail_0',['FunctionFail',['../structPashaBibko_1_1Util_1_1FunctionFail.html',1,'PashaBibko::Util']]]
+  ['returnval_0',['ReturnVal',['../classPashaBibko_1_1Util_1_1ReturnVal.html',1,'PashaBibko::Util']]]
 ];

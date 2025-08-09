@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['green_0',['Green',['../namespacePashaBibko_1_1Util.html#a9e9bef6b256d7e672e01a79a4019ecbcad382816a3cbeed082c9e216e7392eed1',1,'PashaBibko::Util']]]
+  ['filenotfound_0',['FileNotFound',['../structPashaBibko_1_1Util_1_1FileReadError.html#af38960e2d1da2c992b2232eb3f285c4ea3afeda292861a07cfd08eea542bc18da',1,'PashaBibko::Util::FileReadError']]]
 ];

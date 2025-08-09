@@ -99,164 +99,179 @@ $(document).ready(function(){initNavTree('ReturnVal_8h_source.html',''); initRes
 <div class="contents">
 <div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;type_traits&gt;</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;classes/CRef.h&gt;</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;concepts&gt;</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacePashaBibko_1_1Util.html">PashaBibko::Util</a></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>{</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">    #ifndef DOXYGEN_HIDE</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <span class="comment">/* Wether functions should check to see if the call is safe or not */</span></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <span class="keyword">enum class</span> Result</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    {</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        Check,</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        Force</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    };</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <span class="comment">/*</span></div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="comment">     * Undocumented as it should be mentioned in all functions it is in</span></div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="comment">     * and does not need its own section as it is essentially a boolean.</span></div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="comment">     */</span></div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="preprocessor">    #endif </span><span class="comment">// DOXYGEN_HIDE</span></div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
-<div class="foldopen" id="foldopen00039" data-start="{" data-end="};">
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="structPashaBibko_1_1Util_1_1DefaultError.html">   39</a></span>    <span class="keyword">struct </span><a class="code hl_struct" href="structPashaBibko_1_1Util_1_1DefaultError.html">DefaultError</a></div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    {</div>
-<div class="foldopen" id="foldopen00044" data-start="{" data-end="}">
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="structPashaBibko_1_1Util_1_1DefaultError.html#ad4ac107baf0dc24f19a63007e1c39e78">   44</a></span>        <a class="code hl_function" href="structPashaBibko_1_1Util_1_1DefaultError.html#ad4ac107baf0dc24f19a63007e1c39e78">DefaultError</a>()</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>            : <a class="code hl_variable" href="structPashaBibko_1_1Util_1_1DefaultError.html#a254bf0858da09c96a48daf64404eb4f8">message</a>(<span class="stringliteral">&quot;NO REASON PROVIDED&quot;</span>) {}</div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;sections/Misc.h&gt;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;type_traits&gt;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;concepts&gt;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacePashaBibko_1_1Util.html">PashaBibko::Util</a></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>{</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">    #ifndef DOXYGEN_HIDE</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <span class="comment">/* Wether functions should check to see if the call is safe or not */</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="keyword">enum class</span> Result</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    {</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        Check,</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        Force</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    };</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="comment">/*</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="comment">     * Undocumented as it should be mentioned in all functions it is in</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="comment">     * and does not need its own section as it is essentially a boolean.</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="preprocessor">    #endif </span><span class="comment">// DOXYGEN_HIDE</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
+<div class="foldopen" id="foldopen00040" data-start="{" data-end="};">
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="structPashaBibko_1_1Util_1_1DefaultError.html">   40</a></span>    <span class="keyword">struct </span><a class="code hl_struct" href="structPashaBibko_1_1Util_1_1DefaultError.html">DefaultError</a></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    {</div>
+<div class="foldopen" id="foldopen00045" data-start="{" data-end="}">
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="structPashaBibko_1_1Util_1_1DefaultError.html#ad4ac107baf0dc24f19a63007e1c39e78">   45</a></span>        <a class="code hl_function" href="structPashaBibko_1_1Util_1_1DefaultError.html#ad4ac107baf0dc24f19a63007e1c39e78">DefaultError</a>()</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>            : <a class="code hl_variable" href="structPashaBibko_1_1Util_1_1DefaultError.html#a254bf0858da09c96a48daf64404eb4f8">message</a>(<span class="stringliteral">&quot;NO REASON PROVIDED&quot;</span>) {}</div>
 </div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
-<div class="foldopen" id="foldopen00053" data-start="{" data-end="}">
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="structPashaBibko_1_1Util_1_1DefaultError.html#aa7bd395a15e52a43848d9470c29d5201">   53</a></span>        <a class="code hl_function" href="structPashaBibko_1_1Util_1_1DefaultError.html#aa7bd395a15e52a43848d9470c29d5201">DefaultError</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* _message)</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>            : <a class="code hl_variable" href="structPashaBibko_1_1Util_1_1DefaultError.html#a254bf0858da09c96a48daf64404eb4f8">message</a>(_message) {}</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
+<div class="foldopen" id="foldopen00054" data-start="{" data-end="}">
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="structPashaBibko_1_1Util_1_1DefaultError.html#aa7bd395a15e52a43848d9470c29d5201">   54</a></span>        <a class="code hl_function" href="structPashaBibko_1_1Util_1_1DefaultError.html#aa7bd395a15e52a43848d9470c29d5201">DefaultError</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* _message)</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>            : <a class="code hl_variable" href="structPashaBibko_1_1Util_1_1DefaultError.html#a254bf0858da09c96a48daf64404eb4f8">message</a>(_message) {}</div>
 </div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="structPashaBibko_1_1Util_1_1DefaultError.html#a254bf0858da09c96a48daf64404eb4f8">   59</a></span>        <span class="keyword">const</span> <span class="keywordtype">char</span>* <a class="code hl_variable" href="structPashaBibko_1_1Util_1_1DefaultError.html#a254bf0858da09c96a48daf64404eb4f8">message</a>;</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    };</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="structPashaBibko_1_1Util_1_1DefaultError.html#a254bf0858da09c96a48daf64404eb4f8">   60</a></span>        <span class="keyword">const</span> <span class="keywordtype">char</span>* <a class="code hl_variable" href="structPashaBibko_1_1Util_1_1DefaultError.html#a254bf0858da09c96a48daf64404eb4f8">message</a>;</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    };</div>
 </div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> Err_Ty = DefaultError&gt;</div>
-<div class="foldopen" id="foldopen00071" data-start="{" data-end="};">
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno"><a class="line" href="structPashaBibko_1_1Util_1_1FunctionFail.html">   71</a></span>    <span class="keyword">struct </span><a class="code hl_struct" href="structPashaBibko_1_1Util_1_1FunctionFail.html">FunctionFail</a></div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    {</div>
-<div class="foldopen" id="foldopen00076" data-start="{" data-end="}">
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno"><a class="line" href="structPashaBibko_1_1Util_1_1FunctionFail.html#a9e1a6dd7ab338cb871b38b7151117bb8">   76</a></span>        <span class="keyword">explicit</span> <a class="code hl_function" href="structPashaBibko_1_1Util_1_1FunctionFail.html#a9e1a6dd7ab338cb871b38b7151117bb8">FunctionFail</a>(Err_Ty _error)</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>            : <a class="code hl_variable" href="structPashaBibko_1_1Util_1_1FunctionFail.html#a19954c9b8a16a6e0f48e74a0fb6f3a81">error</a>(_error)</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        {}</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> Err_Ty = DefaultError&gt;</div>
+<div class="foldopen" id="foldopen00072" data-start="{" data-end="};">
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno"><a class="line" href="structPashaBibko_1_1Util_1_1FunctionFail.html">   72</a></span>    <span class="keyword">struct </span><a class="code hl_struct" href="structPashaBibko_1_1Util_1_1FunctionFail.html">FunctionFail</a> final</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    {</div>
+<div class="foldopen" id="foldopen00077" data-start="{" data-end="}">
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno"><a class="line" href="structPashaBibko_1_1Util_1_1FunctionFail.html#a9e1a6dd7ab338cb871b38b7151117bb8">   77</a></span>        <span class="keyword">explicit</span> <a class="code hl_function" href="structPashaBibko_1_1Util_1_1FunctionFail.html#a9e1a6dd7ab338cb871b38b7151117bb8">FunctionFail</a>(Err_Ty _error)</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>            : <a class="code hl_variable" href="structPashaBibko_1_1Util_1_1FunctionFail.html#a19954c9b8a16a6e0f48e74a0fb6f3a81">error</a>(_error)</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        {}</div>
 </div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>        <span class="keyword">template</span>&lt;<span class="keyword">typename</span>... Args&gt;</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>            <span class="keyword">requires</span> std::is_constructible_v&lt;Err_Ty, Args...&gt;</div>
-<div class="foldopen" id="foldopen00092" data-start="{" data-end="}">
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno"><a class="line" href="structPashaBibko_1_1Util_1_1FunctionFail.html#aa0e59968c3f53f2d1fd3bbbf4805322c">   92</a></span>        <span class="keyword">explicit</span> <a class="code hl_function" href="structPashaBibko_1_1Util_1_1FunctionFail.html#aa0e59968c3f53f2d1fd3bbbf4805322c">FunctionFail</a>(Args&amp;&amp;... args)</div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>            : <a class="code hl_variable" href="structPashaBibko_1_1Util_1_1FunctionFail.html#a19954c9b8a16a6e0f48e74a0fb6f3a81">error</a>(std::forward&lt;Args&gt;(args)...)</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        {}</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        <span class="keyword">template</span>&lt;<span class="keyword">typename</span>... Args&gt;</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>            <span class="keyword">requires</span> std::is_constructible_v&lt;Err_Ty, Args...&gt;</div>
+<div class="foldopen" id="foldopen00093" data-start="{" data-end="}">
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno"><a class="line" href="structPashaBibko_1_1Util_1_1FunctionFail.html#aa0e59968c3f53f2d1fd3bbbf4805322c">   93</a></span>        <span class="keyword">explicit</span> <a class="code hl_function" href="structPashaBibko_1_1Util_1_1FunctionFail.html#aa0e59968c3f53f2d1fd3bbbf4805322c">FunctionFail</a>(Args&amp;&amp;... args)</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>            : <a class="code hl_variable" href="structPashaBibko_1_1Util_1_1FunctionFail.html#a19954c9b8a16a6e0f48e74a0fb6f3a81">error</a>(std::forward&lt;Args&gt;(args)...)</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>        {}</div>
 </div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span> </div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno"><a class="line" href="structPashaBibko_1_1Util_1_1FunctionFail.html#a19954c9b8a16a6e0f48e74a0fb6f3a81">   99</a></span>        Err_Ty <a class="code hl_variable" href="structPashaBibko_1_1Util_1_1FunctionFail.html#a19954c9b8a16a6e0f48e74a0fb6f3a81">error</a>;</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    };</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span> </div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno"><a class="line" href="structPashaBibko_1_1Util_1_1FunctionFail.html#a19954c9b8a16a6e0f48e74a0fb6f3a81">  100</a></span>        Err_Ty <a class="code hl_variable" href="structPashaBibko_1_1Util_1_1FunctionFail.html#a19954c9b8a16a6e0f48e74a0fb6f3a81">error</a>;</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    };</div>
 </div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span> </div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> Res_Ty, <span class="keyword">typename</span> Err_Ty = DefaultError&gt;</div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>        <span class="keyword">requires</span> (!std::same_as&lt;Res_Ty, void&gt;) &amp;&amp; (!std::same_as&lt;Err_Ty, void&gt;)</div>
-<div class="foldopen" id="foldopen00123" data-start="{" data-end="};">
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno"><a class="line" href="classPashaBibko_1_1Util_1_1ReturnVal.html">  123</a></span>    <span class="keyword">class </span><a class="code hl_class" href="classPashaBibko_1_1Util_1_1ReturnVal.html">ReturnVal</a></div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>    {</div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>        <span class="keyword">public</span>:</div>
-<div class="foldopen" id="foldopen00131" data-start="{" data-end="}">
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno"><a class="line" href="classPashaBibko_1_1Util_1_1ReturnVal.html#a315b93b1a521059307a8664bfdc3ae49">  131</a></span>            <a class="code hl_function" href="classPashaBibko_1_1Util_1_1ReturnVal.html#a315b93b1a521059307a8664bfdc3ae49">ReturnVal</a>(Res_Ty _result)</div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>                : m_Result(_result), m_FunctionFailed(false)</div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>            {}</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> Res_Ty, <span class="keyword">typename</span> Err_Ty = DefaultError&gt;</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>        <span class="keyword">requires</span> (!std::same_as&lt;Res_Ty, void&gt;) &amp;&amp; (!std::same_as&lt;Err_Ty, void&gt;)</div>
+<div class="foldopen" id="foldopen00124" data-start="{" data-end="};">
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno"><a class="line" href="classPashaBibko_1_1Util_1_1ReturnVal.html">  124</a></span>    <span class="keyword">class </span><a class="code hl_class" href="classPashaBibko_1_1Util_1_1ReturnVal.html">ReturnVal</a> final</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>    {</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>        <span class="keyword">public</span>:</div>
+<div class="foldopen" id="foldopen00132" data-start="{" data-end="}">
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno"><a class="line" href="classPashaBibko_1_1Util_1_1ReturnVal.html#a315b93b1a521059307a8664bfdc3ae49">  132</a></span>            <a class="code hl_function" href="classPashaBibko_1_1Util_1_1ReturnVal.html#a315b93b1a521059307a8664bfdc3ae49">ReturnVal</a>(Res_Ty _result)</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>                : m_Result(_result), m_FunctionFailed(false)</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>            {}</div>
 </div>
-<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span> </div>
-<div class="foldopen" id="foldopen00141" data-start="{" data-end="}">
-<div class="line"><a id="l00141" name="l00141"></a><span class="lineno"><a class="line" href="classPashaBibko_1_1Util_1_1ReturnVal.html#a59c87b40a2d05ca4ab737d6cbf9a94d5">  141</a></span>            <a class="code hl_function" href="classPashaBibko_1_1Util_1_1ReturnVal.html#a59c87b40a2d05ca4ab737d6cbf9a94d5">ReturnVal</a>(<a class="code hl_struct" href="structPashaBibko_1_1Util_1_1FunctionFail.html">FunctionFail&lt;Err_Ty&gt;</a>&amp;&amp; _error)</div>
-<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>                : m_Error(std::move(_error.error)), m_FunctionFailed(true)</div>
-<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>            {}</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span> </div>
+<div class="foldopen" id="foldopen00142" data-start="{" data-end="}">
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno"><a class="line" href="classPashaBibko_1_1Util_1_1ReturnVal.html#a59c87b40a2d05ca4ab737d6cbf9a94d5">  142</a></span>            <a class="code hl_function" href="classPashaBibko_1_1Util_1_1ReturnVal.html#a59c87b40a2d05ca4ab737d6cbf9a94d5">ReturnVal</a>(<a class="code hl_struct" href="structPashaBibko_1_1Util_1_1FunctionFail.html">FunctionFail&lt;Err_Ty&gt;</a>&amp;&amp; _error)</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>                : m_Error(std::move(_error.error)), m_FunctionFailed(true)</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>            {}</div>
 </div>
-<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span> </div>
-<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>            <span class="keyword">template</span>&lt;Result force = Result::Check&gt;</div>
-<div class="foldopen" id="foldopen00159" data-start="{" data-end="}">
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno"><a class="line" href="classPashaBibko_1_1Util_1_1ReturnVal.html#ae7174b1346a42157c4183c4edc1470d5">  159</a></span>            <span class="keyword">inline</span> <a class="code hl_class" href="classPashaBibko_1_1Util_1_1CRef.html">CRef&lt;Err_Ty&gt;</a> <a class="code hl_function" href="classPashaBibko_1_1Util_1_1ReturnVal.html#ae7174b1346a42157c4183c4edc1470d5">Error</a>()<span class="keyword"> const</span></div>
-<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span><span class="keyword">            </span>{</div>
-<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>                <span class="comment">/* Force bypasses checking if the function failed or not */</span></div>
-<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>                <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (force == Result::Check)</div>
-<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>                {</div>
-<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>                    <span class="comment">/* Ends the process if the error was tried to access on a sucessful return */</span></div>
-<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>                    <span class="keywordflow">if</span> (!m_FunctionFailed)</div>
-<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>                        <a class="code hl_function" href="namespacePashaBibko_1_1Util.html#a8d87f07f7509b9e8efc49819a8f67276">EndProcess</a>();</div>
-<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>                }</div>
-<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span> </div>
-<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>                <span class="comment">/* Returns a const reference to the error */</span></div>
-<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>                <span class="keywordflow">return</span> <a class="code hl_class" href="classPashaBibko_1_1Util_1_1CRef.html">CRef&lt;Res_Ty&gt;</a>(<a class="code hl_class" href="classPashaBibko_1_1Util_1_1CRef.html">m_Error</a>);</div>
-<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>            }</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span> </div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>            <span class="comment">/* Constructor is not manually called by someone using the library so it is excluded from docs */</span></div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span><span class="preprocessor">            #ifndef DOXYGEN_HIDE</span></div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span> </div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>            <a class="code hl_class" href="classPashaBibko_1_1Util_1_1ReturnVal.html">~ReturnVal</a>()</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>            {</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>                <span class="comment">/* Makes sure the types deconstructor is called to avoid memory leaks */</span></div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>                <span class="keywordflow">if</span> (m_FunctionFailed)</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>                    m_Error.~Err_Ty();</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span> </div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>                <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>                    m_Result.~Res_Ty();</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>            }</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span> </div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span><span class="preprocessor">            #endif</span></div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span> </div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>            <span class="keyword">template</span>&lt;Result force = Result::Check&gt;</div>
+<div class="foldopen" id="foldopen00175" data-start="{" data-end="}">
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno"><a class="line" href="classPashaBibko_1_1Util_1_1ReturnVal.html#af4501212627863fce26344e62c91b373">  175</a></span>            <span class="keyword">inline</span> Err_Ty&amp; <a class="code hl_function" href="classPashaBibko_1_1Util_1_1ReturnVal.html#af4501212627863fce26344e62c91b373">Error</a>()<span class="keyword"> const</span></div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span><span class="keyword">            </span>{</div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>                <span class="comment">/* Force bypasses checking if the function failed or not */</span></div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>                <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (force == Result::Check)</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>                {</div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>                    <span class="comment">/* Ends the process if the error was tried to access on a sucessful return */</span></div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>                    <span class="keywordflow">if</span> (!m_FunctionFailed)</div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>                        <a class="code hl_function" href="namespacePashaBibko_1_1Util.html#ae73a9bc70413647e759b684774928a86">EndProcess</a>();</div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>                }</div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span> </div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>                <span class="comment">/* Returns a const reference to the error */</span></div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>                <span class="keywordflow">return</span> m_Error;</div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>            }</div>
 </div>
-<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span> </div>
-<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>            <span class="keyword">template</span>&lt;Result force = Result::Check&gt;</div>
-<div class="foldopen" id="foldopen00187" data-start="{" data-end="}">
-<div class="line"><a id="l00187" name="l00187"></a><span class="lineno"><a class="line" href="classPashaBibko_1_1Util_1_1ReturnVal.html#aaab14e26b64e8250f1b6f13de2a968c1">  187</a></span>            <span class="keyword">inline</span> <a class="code hl_class" href="classPashaBibko_1_1Util_1_1CRef.html">CRef&lt;Res_Ty&gt;</a> <a class="code hl_function" href="classPashaBibko_1_1Util_1_1ReturnVal.html#aaab14e26b64e8250f1b6f13de2a968c1">Result</a>()<span class="keyword"> const</span></div>
-<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span><span class="keyword">            </span>{</div>
-<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>                <span class="comment">/* Force bypasses checking if the function failed or not */</span></div>
-<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>                <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (<a class="code hl_class" href="classPashaBibko_1_1Util_1_1CRef.html">force</a> == Result::Check)</div>
-<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>                {</div>
-<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>                    <span class="comment">/* Ends the process if the result was tried to access on a failed result */</span></div>
-<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>                    <span class="keywordflow">if</span> (m_FunctionFailed)</div>
-<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>                        <a class="code hl_function" href="namespacePashaBibko_1_1Util.html#a8d87f07f7509b9e8efc49819a8f67276">EndProcess</a>();</div>
-<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>                }</div>
-<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span> </div>
-<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>                <span class="comment">/* Returns a const reference to the result */</span></div>
-<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>                <span class="keywordflow">return</span> <a class="code hl_class" href="classPashaBibko_1_1Util_1_1CRef.html">CRef&lt;Res_Ty&gt;</a>(<a class="code hl_class" href="classPashaBibko_1_1Util_1_1CRef.html">m_Result</a>);</div>
-<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>            }</div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span> </div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>            <span class="keyword">template</span>&lt;Result force = Result::Check&gt;</div>
+<div class="foldopen" id="foldopen00203" data-start="{" data-end="}">
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno"><a class="line" href="classPashaBibko_1_1Util_1_1ReturnVal.html#a8a600d50aacb0ced48de67ab937cd59d">  203</a></span>            <span class="keyword">inline</span> Res_Ty&amp; <a class="code hl_function" href="classPashaBibko_1_1Util_1_1ReturnVal.html#a8a600d50aacb0ced48de67ab937cd59d">Result</a>()<span class="keyword"> const</span></div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span><span class="keyword">            </span>{</div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>                <span class="comment">/* Force bypasses checking if the function failed or not */</span></div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>                <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (force == Result::Check)</div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>                {</div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>                    <span class="comment">/* Ends the process if the result was tried to access on a failed result */</span></div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>                    <span class="keywordflow">if</span> (m_FunctionFailed)</div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>                        <a class="code hl_function" href="namespacePashaBibko_1_1Util.html#ae73a9bc70413647e759b684774928a86">EndProcess</a>();</div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>                }</div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span> </div>
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>                <span class="comment">/* Returns a const reference to the result */</span></div>
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>                <span class="keywordflow">return</span> m_Result;</div>
+<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>            }</div>
 </div>
-<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span> </div>
-<div class="line"><a id="l00204" name="l00204"></a><span class="lineno"><a class="line" href="classPashaBibko_1_1Util_1_1ReturnVal.html#a365c0e4f912940e9cf7d844d06986445">  204</a></span>            <span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code hl_function" href="classPashaBibko_1_1Util_1_1ReturnVal.html#a365c0e4f912940e9cf7d844d06986445">Failed</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> m_FunctionFailed; }</div>
-<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span> </div>
-<div class="line"><a id="l00209" name="l00209"></a><span class="lineno"><a class="line" href="classPashaBibko_1_1Util_1_1ReturnVal.html#a19550953c186670c0df2ba41134bc09d">  209</a></span>            <span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code hl_function" href="classPashaBibko_1_1Util_1_1ReturnVal.html#a19550953c186670c0df2ba41134bc09d">Success</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> !m_FunctionFailed; }</div>
-<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span> </div>
-<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>        <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span><span class="preprocessor">            #ifndef DOXYGEN_HIDE</span></div>
-<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span> </div>
-<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>            <span class="comment">/* Union to hold either the result or the error */</span></div>
-<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>            <span class="keyword">union</span></div>
-<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>            {</div>
-<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>                <a class="code hl_class" href="classPashaBibko_1_1Util_1_1CRef.html">Res_Ty</a> <a class="code hl_class" href="classPashaBibko_1_1Util_1_1CRef.html">m_Result</a>;</div>
-<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>                <a class="code hl_class" href="classPashaBibko_1_1Util_1_1CRef.html">Err_Ty</a> <a class="code hl_class" href="classPashaBibko_1_1Util_1_1CRef.html">m_Error</a>;</div>
-<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>            };</div>
-<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span> </div>
-<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>            <span class="comment">/*</span></div>
-<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span><span class="comment">             * It appears in Doxygen even though it is within a private block</span></div>
-<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span><span class="comment">             * which is why it is located in a pre-processor block</span></div>
-<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span><span class="comment">             */</span></div>
-<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span> </div>
-<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span><span class="preprocessor">            #endif </span><span class="comment">// DOXYGEN_HIDE</span></div>
-<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span> </div>
-<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>            <span class="comment">/* Holds wether the function failed or not */</span></div>
-<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>            <span class="keyword">const</span> <span class="keywordtype">bool</span> m_FunctionFailed;</div>
-<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>    };</div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span> </div>
+<div class="line"><a id="l00220" name="l00220"></a><span class="lineno"><a class="line" href="classPashaBibko_1_1Util_1_1ReturnVal.html#a365c0e4f912940e9cf7d844d06986445">  220</a></span>            <span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code hl_function" href="classPashaBibko_1_1Util_1_1ReturnVal.html#a365c0e4f912940e9cf7d844d06986445">Failed</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> m_FunctionFailed; }</div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span> </div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno"><a class="line" href="classPashaBibko_1_1Util_1_1ReturnVal.html#a19550953c186670c0df2ba41134bc09d">  225</a></span>            <span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code hl_function" href="classPashaBibko_1_1Util_1_1ReturnVal.html#a19550953c186670c0df2ba41134bc09d">Success</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> !m_FunctionFailed; }</div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span> </div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>        <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span><span class="preprocessor">            #ifndef DOXYGEN_HIDE</span></div>
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span> </div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>            <span class="comment">/* Union to hold either the result or the error */</span></div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>            <span class="keyword">union</span></div>
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>            {</div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>                Res_Ty m_Result;</div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>                Err_Ty m_Error;</div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>            };</div>
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span> </div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>            <span class="comment">/*</span></div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span><span class="comment">             * It appears in Doxygen even though it is within a private block</span></div>
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span><span class="comment">             * which is why it is located in a pre-processor block</span></div>
+<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span><span class="comment">             */</span></div>
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span> </div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span><span class="preprocessor">            #endif </span><span class="comment">// DOXYGEN_HIDE</span></div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span> </div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>            <span class="comment">/* Holds wether the function failed or not */</span></div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>            <span class="keyword">const</span> <span class="keywordtype">bool</span> m_FunctionFailed;</div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>    };</div>
 </div>
-<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>}</div>
-<div class="ttc" id="aclassPashaBibko_1_1Util_1_1CRef_html"><div class="ttname"><a href="classPashaBibko_1_1Util_1_1CRef.html">PashaBibko::Util::CRef</a></div><div class="ttdoc">Wrapper for const Ty&amp;</div><div class="ttdef"><b>Definition</b> CRef.h:60</div></div>
-<div class="ttc" id="aclassPashaBibko_1_1Util_1_1ReturnVal_html"><div class="ttname"><a href="classPashaBibko_1_1Util_1_1ReturnVal.html">PashaBibko::Util::ReturnVal</a></div><div class="ttdoc">Class to return a result from a function that can fail.</div><div class="ttdef"><b>Definition</b> ReturnVal.h:124</div></div>
-<div class="ttc" id="aclassPashaBibko_1_1Util_1_1ReturnVal_html_a19550953c186670c0df2ba41134bc09d"><div class="ttname"><a href="classPashaBibko_1_1Util_1_1ReturnVal.html#a19550953c186670c0df2ba41134bc09d">PashaBibko::Util::ReturnVal::Success</a></div><div class="ttdeci">bool Success() const</div><div class="ttdoc">Returns whether the function suceeded or not.</div><div class="ttdef"><b>Definition</b> ReturnVal.h:209</div></div>
-<div class="ttc" id="aclassPashaBibko_1_1Util_1_1ReturnVal_html_a315b93b1a521059307a8664bfdc3ae49"><div class="ttname"><a href="classPashaBibko_1_1Util_1_1ReturnVal.html#a315b93b1a521059307a8664bfdc3ae49">PashaBibko::Util::ReturnVal::ReturnVal</a></div><div class="ttdeci">ReturnVal(Res_Ty _result)</div><div class="ttdoc">Copies the success result.</div><div class="ttdef"><b>Definition</b> ReturnVal.h:131</div></div>
-<div class="ttc" id="aclassPashaBibko_1_1Util_1_1ReturnVal_html_a365c0e4f912940e9cf7d844d06986445"><div class="ttname"><a href="classPashaBibko_1_1Util_1_1ReturnVal.html#a365c0e4f912940e9cf7d844d06986445">PashaBibko::Util::ReturnVal::Failed</a></div><div class="ttdeci">bool Failed() const</div><div class="ttdoc">Returns whether the function failed or not.</div><div class="ttdef"><b>Definition</b> ReturnVal.h:204</div></div>
-<div class="ttc" id="aclassPashaBibko_1_1Util_1_1ReturnVal_html_a59c87b40a2d05ca4ab737d6cbf9a94d5"><div class="ttname"><a href="classPashaBibko_1_1Util_1_1ReturnVal.html#a59c87b40a2d05ca4ab737d6cbf9a94d5">PashaBibko::Util::ReturnVal::ReturnVal</a></div><div class="ttdeci">ReturnVal(FunctionFail&lt; Err_Ty &gt; &amp;&amp;_error)</div><div class="ttdoc">Moves the contents of a Util::FunctionFail&lt;Err_Ty&gt; to a Util::ReturnVal.</div><div class="ttdef"><b>Definition</b> ReturnVal.h:141</div></div>
-<div class="ttc" id="aclassPashaBibko_1_1Util_1_1ReturnVal_html_aaab14e26b64e8250f1b6f13de2a968c1"><div class="ttname"><a href="classPashaBibko_1_1Util_1_1ReturnVal.html#aaab14e26b64e8250f1b6f13de2a968c1">PashaBibko::Util::ReturnVal::Result</a></div><div class="ttdeci">CRef&lt; Res_Ty &gt; Result() const</div><div class="ttdoc">Returns a const reference to the result.</div><div class="ttdef"><b>Definition</b> ReturnVal.h:187</div></div>
-<div class="ttc" id="aclassPashaBibko_1_1Util_1_1ReturnVal_html_ae7174b1346a42157c4183c4edc1470d5"><div class="ttname"><a href="classPashaBibko_1_1Util_1_1ReturnVal.html#ae7174b1346a42157c4183c4edc1470d5">PashaBibko::Util::ReturnVal::Error</a></div><div class="ttdeci">CRef&lt; Err_Ty &gt; Error() const</div><div class="ttdoc">Returns a const reference to the error.</div><div class="ttdef"><b>Definition</b> ReturnVal.h:159</div></div>
-<div class="ttc" id="anamespacePashaBibko_1_1Util_html"><div class="ttname"><a href="namespacePashaBibko_1_1Util.html">PashaBibko::Util</a></div><div class="ttdef"><b>Definition</b> Util.h:13</div></div>
-<div class="ttc" id="anamespacePashaBibko_1_1Util_html_a8d87f07f7509b9e8efc49819a8f67276"><div class="ttname"><a href="namespacePashaBibko_1_1Util.html#a8d87f07f7509b9e8efc49819a8f67276">PashaBibko::Util::EndProcess</a></div><div class="ttdeci">void EndProcess(bool breakpont=true)</div><div class="ttdoc">Ends the current process.</div></div>
-<div class="ttc" id="astructPashaBibko_1_1Util_1_1DefaultError_html"><div class="ttname"><a href="structPashaBibko_1_1Util_1_1DefaultError.html">PashaBibko::Util::DefaultError</a></div><div class="ttdoc">Default error class for Uti::ReturnVal.</div><div class="ttdef"><b>Definition</b> ReturnVal.h:40</div></div>
-<div class="ttc" id="astructPashaBibko_1_1Util_1_1DefaultError_html_a254bf0858da09c96a48daf64404eb4f8"><div class="ttname"><a href="structPashaBibko_1_1Util_1_1DefaultError.html#a254bf0858da09c96a48daf64404eb4f8">PashaBibko::Util::DefaultError::message</a></div><div class="ttdeci">const char * message</div><div class="ttdoc">A pointer to a c-string error message, not owned by the class/object.</div><div class="ttdef"><b>Definition</b> ReturnVal.h:59</div></div>
-<div class="ttc" id="astructPashaBibko_1_1Util_1_1DefaultError_html_aa7bd395a15e52a43848d9470c29d5201"><div class="ttname"><a href="structPashaBibko_1_1Util_1_1DefaultError.html#aa7bd395a15e52a43848d9470c29d5201">PashaBibko::Util::DefaultError::DefaultError</a></div><div class="ttdeci">DefaultError(const char *_message)</div><div class="ttdoc">Provide an error message for the error to carry.</div><div class="ttdef"><b>Definition</b> ReturnVal.h:53</div></div>
-<div class="ttc" id="astructPashaBibko_1_1Util_1_1DefaultError_html_ad4ac107baf0dc24f19a63007e1c39e78"><div class="ttname"><a href="structPashaBibko_1_1Util_1_1DefaultError.html#ad4ac107baf0dc24f19a63007e1c39e78">PashaBibko::Util::DefaultError::DefaultError</a></div><div class="ttdeci">DefaultError()</div><div class="ttdoc">Default constructor, sets the message to &quot;NO REASON PROVIDED&quot;.</div><div class="ttdef"><b>Definition</b> ReturnVal.h:44</div></div>
-<div class="ttc" id="astructPashaBibko_1_1Util_1_1FunctionFail_html"><div class="ttname"><a href="structPashaBibko_1_1Util_1_1FunctionFail.html">PashaBibko::Util::FunctionFail</a></div><div class="ttdoc">Class to create when a function fails.</div><div class="ttdef"><b>Definition</b> ReturnVal.h:72</div></div>
-<div class="ttc" id="astructPashaBibko_1_1Util_1_1FunctionFail_html_a19954c9b8a16a6e0f48e74a0fb6f3a81"><div class="ttname"><a href="structPashaBibko_1_1Util_1_1FunctionFail.html#a19954c9b8a16a6e0f48e74a0fb6f3a81">PashaBibko::Util::FunctionFail::error</a></div><div class="ttdeci">Err_Ty error</div><div class="ttdoc">The error that the function is returning.</div><div class="ttdef"><b>Definition</b> ReturnVal.h:99</div></div>
-<div class="ttc" id="astructPashaBibko_1_1Util_1_1FunctionFail_html_a9e1a6dd7ab338cb871b38b7151117bb8"><div class="ttname"><a href="structPashaBibko_1_1Util_1_1FunctionFail.html#a9e1a6dd7ab338cb871b38b7151117bb8">PashaBibko::Util::FunctionFail::FunctionFail</a></div><div class="ttdeci">FunctionFail(Err_Ty _error)</div><div class="ttdoc">Constructor that copies an error and stores it.</div><div class="ttdef"><b>Definition</b> ReturnVal.h:76</div></div>
-<div class="ttc" id="astructPashaBibko_1_1Util_1_1FunctionFail_html_aa0e59968c3f53f2d1fd3bbbf4805322c"><div class="ttname"><a href="structPashaBibko_1_1Util_1_1FunctionFail.html#aa0e59968c3f53f2d1fd3bbbf4805322c">PashaBibko::Util::FunctionFail::FunctionFail</a></div><div class="ttdeci">FunctionFail(Args &amp;&amp;... args)</div><div class="ttdoc">Constructor that creates the error within the class.</div><div class="ttdef"><b>Definition</b> ReturnVal.h:92</div></div>
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>}</div>
+<div class="ttc" id="aclassPashaBibko_1_1Util_1_1ReturnVal_html"><div class="ttname"><a href="classPashaBibko_1_1Util_1_1ReturnVal.html">PashaBibko::Util::ReturnVal</a></div><div class="ttdoc">Class to return a result from a function that can fail.</div><div class="ttdef"><b>Definition</b> ReturnVal.h:125</div></div>
+<div class="ttc" id="aclassPashaBibko_1_1Util_1_1ReturnVal_html_a19550953c186670c0df2ba41134bc09d"><div class="ttname"><a href="classPashaBibko_1_1Util_1_1ReturnVal.html#a19550953c186670c0df2ba41134bc09d">PashaBibko::Util::ReturnVal::Success</a></div><div class="ttdeci">bool Success() const</div><div class="ttdoc">Returns whether the function suceeded or not.</div><div class="ttdef"><b>Definition</b> ReturnVal.h:225</div></div>
+<div class="ttc" id="aclassPashaBibko_1_1Util_1_1ReturnVal_html_a315b93b1a521059307a8664bfdc3ae49"><div class="ttname"><a href="classPashaBibko_1_1Util_1_1ReturnVal.html#a315b93b1a521059307a8664bfdc3ae49">PashaBibko::Util::ReturnVal::ReturnVal</a></div><div class="ttdeci">ReturnVal(Res_Ty _result)</div><div class="ttdoc">Copies the success result.</div><div class="ttdef"><b>Definition</b> ReturnVal.h:132</div></div>
+<div class="ttc" id="aclassPashaBibko_1_1Util_1_1ReturnVal_html_a365c0e4f912940e9cf7d844d06986445"><div class="ttname"><a href="classPashaBibko_1_1Util_1_1ReturnVal.html#a365c0e4f912940e9cf7d844d06986445">PashaBibko::Util::ReturnVal::Failed</a></div><div class="ttdeci">bool Failed() const</div><div class="ttdoc">Returns whether the function failed or not.</div><div class="ttdef"><b>Definition</b> ReturnVal.h:220</div></div>
+<div class="ttc" id="aclassPashaBibko_1_1Util_1_1ReturnVal_html_a59c87b40a2d05ca4ab737d6cbf9a94d5"><div class="ttname"><a href="classPashaBibko_1_1Util_1_1ReturnVal.html#a59c87b40a2d05ca4ab737d6cbf9a94d5">PashaBibko::Util::ReturnVal::ReturnVal</a></div><div class="ttdeci">ReturnVal(FunctionFail&lt; Err_Ty &gt; &amp;&amp;_error)</div><div class="ttdoc">Moves the contents of a Util::FunctionFail&lt;Err_Ty&gt; to a Util::ReturnVal.</div><div class="ttdef"><b>Definition</b> ReturnVal.h:142</div></div>
+<div class="ttc" id="aclassPashaBibko_1_1Util_1_1ReturnVal_html_a8a600d50aacb0ced48de67ab937cd59d"><div class="ttname"><a href="classPashaBibko_1_1Util_1_1ReturnVal.html#a8a600d50aacb0ced48de67ab937cd59d">PashaBibko::Util::ReturnVal::Result</a></div><div class="ttdeci">Res_Ty &amp; Result() const</div><div class="ttdoc">Returns a const reference to the result.</div><div class="ttdef"><b>Definition</b> ReturnVal.h:203</div></div>
+<div class="ttc" id="aclassPashaBibko_1_1Util_1_1ReturnVal_html_af4501212627863fce26344e62c91b373"><div class="ttname"><a href="classPashaBibko_1_1Util_1_1ReturnVal.html#af4501212627863fce26344e62c91b373">PashaBibko::Util::ReturnVal::Error</a></div><div class="ttdeci">Err_Ty &amp; Error() const</div><div class="ttdoc">Returns a const reference to the error.</div><div class="ttdef"><b>Definition</b> ReturnVal.h:175</div></div>
+<div class="ttc" id="anamespacePashaBibko_1_1Util_html"><div class="ttname"><a href="namespacePashaBibko_1_1Util.html">PashaBibko::Util</a></div><div class="ttdef"><b>Definition</b> Colour.h:10</div></div>
+<div class="ttc" id="anamespacePashaBibko_1_1Util_html_ae73a9bc70413647e759b684774928a86"><div class="ttname"><a href="namespacePashaBibko_1_1Util.html#ae73a9bc70413647e759b684774928a86">PashaBibko::Util::EndProcess</a></div><div class="ttdeci">void EndProcess(bool breakpoint=true)</div><div class="ttdoc">Ends the current process.</div></div>
+<div class="ttc" id="astructPashaBibko_1_1Util_1_1DefaultError_html"><div class="ttname"><a href="structPashaBibko_1_1Util_1_1DefaultError.html">PashaBibko::Util::DefaultError</a></div><div class="ttdoc">Default error class for Uti::ReturnVal.</div><div class="ttdef"><b>Definition</b> ReturnVal.h:41</div></div>
+<div class="ttc" id="astructPashaBibko_1_1Util_1_1DefaultError_html_a254bf0858da09c96a48daf64404eb4f8"><div class="ttname"><a href="structPashaBibko_1_1Util_1_1DefaultError.html#a254bf0858da09c96a48daf64404eb4f8">PashaBibko::Util::DefaultError::message</a></div><div class="ttdeci">const char * message</div><div class="ttdoc">A pointer to a c-string error message, not owned by the class/object.</div><div class="ttdef"><b>Definition</b> ReturnVal.h:60</div></div>
+<div class="ttc" id="astructPashaBibko_1_1Util_1_1DefaultError_html_aa7bd395a15e52a43848d9470c29d5201"><div class="ttname"><a href="structPashaBibko_1_1Util_1_1DefaultError.html#aa7bd395a15e52a43848d9470c29d5201">PashaBibko::Util::DefaultError::DefaultError</a></div><div class="ttdeci">DefaultError(const char *_message)</div><div class="ttdoc">Provide an error message for the error to carry.</div><div class="ttdef"><b>Definition</b> ReturnVal.h:54</div></div>
+<div class="ttc" id="astructPashaBibko_1_1Util_1_1DefaultError_html_ad4ac107baf0dc24f19a63007e1c39e78"><div class="ttname"><a href="structPashaBibko_1_1Util_1_1DefaultError.html#ad4ac107baf0dc24f19a63007e1c39e78">PashaBibko::Util::DefaultError::DefaultError</a></div><div class="ttdeci">DefaultError()</div><div class="ttdoc">Default constructor, sets the message to &quot;NO REASON PROVIDED&quot;.</div><div class="ttdef"><b>Definition</b> ReturnVal.h:45</div></div>
+<div class="ttc" id="astructPashaBibko_1_1Util_1_1FunctionFail_html"><div class="ttname"><a href="structPashaBibko_1_1Util_1_1FunctionFail.html">PashaBibko::Util::FunctionFail</a></div><div class="ttdoc">Class to create when a function fails.</div><div class="ttdef"><b>Definition</b> ReturnVal.h:73</div></div>
+<div class="ttc" id="astructPashaBibko_1_1Util_1_1FunctionFail_html_a19954c9b8a16a6e0f48e74a0fb6f3a81"><div class="ttname"><a href="structPashaBibko_1_1Util_1_1FunctionFail.html#a19954c9b8a16a6e0f48e74a0fb6f3a81">PashaBibko::Util::FunctionFail::error</a></div><div class="ttdeci">Err_Ty error</div><div class="ttdoc">The error that the function is returning.</div><div class="ttdef"><b>Definition</b> ReturnVal.h:100</div></div>
+<div class="ttc" id="astructPashaBibko_1_1Util_1_1FunctionFail_html_a9e1a6dd7ab338cb871b38b7151117bb8"><div class="ttname"><a href="structPashaBibko_1_1Util_1_1FunctionFail.html#a9e1a6dd7ab338cb871b38b7151117bb8">PashaBibko::Util::FunctionFail::FunctionFail</a></div><div class="ttdeci">FunctionFail(Err_Ty _error)</div><div class="ttdoc">Constructor that copies an error and stores it.</div><div class="ttdef"><b>Definition</b> ReturnVal.h:77</div></div>
+<div class="ttc" id="astructPashaBibko_1_1Util_1_1FunctionFail_html_aa0e59968c3f53f2d1fd3bbbf4805322c"><div class="ttname"><a href="structPashaBibko_1_1Util_1_1FunctionFail.html#aa0e59968c3f53f2d1fd3bbbf4805322c">PashaBibko::Util::FunctionFail::FunctionFail</a></div><div class="ttdeci">FunctionFail(Args &amp;&amp;... args)</div><div class="ttdoc">Constructor that creates the error within the class.</div><div class="ttdef"><b>Definition</b> ReturnVal.h:93</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['cref_0',['cref',['../classPashaBibko_1_1Util_1_1CRef.html#a582d1dfe0a0ece1441a5a93653feab15',1,'PashaBibko::Util::CRef::CRef()'],['../classPashaBibko_1_1Util_1_1CRef_3_01void_01_4.html#a782c442ba96cc8ce1e13b80a936d7315',1,'PashaBibko::Util::CRef&lt; void &gt;::CRef()']]]
+  ['defaulterror_0',['defaulterror',['../structPashaBibko_1_1Util_1_1DefaultError.html#ad4ac107baf0dc24f19a63007e1c39e78',1,'PashaBibko::Util::DefaultError::DefaultError()'],['../structPashaBibko_1_1Util_1_1DefaultError.html#aa7bd395a15e52a43848d9470c29d5201',1,'PashaBibko::Util::DefaultError::DefaultError(const char *_message)']]]
 ];
