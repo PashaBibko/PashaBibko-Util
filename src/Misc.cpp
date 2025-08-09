@@ -2,6 +2,8 @@
 
 #include <cstdlib>
 
+#include <classes/Colour.h>
+
 /*
  * Different operating systems have different includes needed for coloring in the console.
  * Therefore, we need to include the appropriate headers based on the operating system.
@@ -56,26 +58,28 @@
 	#include <string.h>
 
 	/* Local function to translate Win32 color codes to ansi escape codes */
-	static constexpr const char* GetAnsiCode(Color color)
+	static constexpr const char* GetAnsiCode(PashaBibko::Util::Colour color)
 	{
+		using namespace PashaBibko::Util;
+
 		switch (color)
 		{
-		case Colour::BLACK:        return "\x1b[30m";
-		case Colour::BLUE:         return "\x1b[34m";
-		case Colour::GREEN:        return "\x1b[32m";
-		case Colour::AQUA:         return "\x1b[36m";
-		case Colour::RED:          return "\x1b[31m";
-		case Colour::PURPLE:       return "\x1b[35m";
-		case Colour::YELLOW:       return "\x1b[33m";
-		case Colour::LIGHT_GRAY:   return "\x1b[0m";
-		case Colour::LIGHT_BLUE:   return "\x1b[94m";
-		case Colour::LIGHT_GREEN:  return "\x1b[92m";
-		case Colour::LIGHT_AQUA:   return "\x1b[96m";
-		case Colour::LIGHT_RED:    return "\x1b[91m";
-		case Colour::LIGHT_PURPLE: return "\x1b[95m";
-		case Colour::LIGHT_YELLOW: return "\x1b[93m";
-		case Colour::WHITE:        return "\x1b[97m";
-		default:                   return "\x1b[0m";
+			case Colour::Black:        return "\x1b[30m";
+			case Colour::Blue:         return "\x1b[34m";
+			case Colour::Green:        return "\x1b[32m";
+			case Colour::Aqua:         return "\x1b[36m";
+			case Colour::Red:          return "\x1b[31m";
+			case Colour::Purple:       return "\x1b[35m";
+			case Colour::Yellow:       return "\x1b[33m";
+			case Colour::LightGray:    return "\x1b[0m";
+			case Colour::LightBlue:    return "\x1b[94m";
+			case Colour::LightGreen:   return "\x1b[92m";
+			case Colour::LightAqua:    return "\x1b[96m";
+			case Colour::LightRed:     return "\x1b[91m";
+			case Colour::LightPurple:  return "\x1b[95m";
+			case Colour::LightYellow:  return "\x1b[93m";
+			case Colour::White:        return "\x1b[97m";
+			default:                   return "\x1b[0m";
 		}
 	}
 

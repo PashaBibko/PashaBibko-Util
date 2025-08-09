@@ -5,6 +5,10 @@
 #include <fstream>
 #include <string>
 
+#ifndef MAX_PATH
+#define MAX_PATH 260
+#endif // MAX_PATH
+
 namespace PashaBibko::Util::Internal
 {
     /* Operating system specific implementation of GetProcessName */

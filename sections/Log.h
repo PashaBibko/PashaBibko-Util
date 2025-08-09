@@ -41,6 +41,9 @@ namespace PashaBibko::Util
             { obj.LogStr() } -> std::same_as<std::string>;
         };
 
+	/* Helper type to display type name in static_assert() */
+	template<typename Ty> struct DependentFalse : std::false_type {};
+
         /* Assumes all types passed are valid as it is an internal function */
         template<typename Ty>
         std::string ProcessArg(Ty&& arg)
@@ -76,7 +79,7 @@ namespace PashaBibko::Util
             /* Else returns an error */
             else
             {
-                static_assert(false, "Invalid type passed to Util::Internal::ProcessArg(), It is recommended not to use internal functions");
+                static_assert(DependentFalse<Ty>::value, "Invalid type passed to Util::Internal::ProcessArg(), It is recommended not to use internal functions");
             }
         }
 

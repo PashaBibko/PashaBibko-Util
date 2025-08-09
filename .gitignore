@@ -32,6 +32,7 @@
 *.app
 
 # VS22 cache and output directory #
+build/
 out/
 .vs/
 
