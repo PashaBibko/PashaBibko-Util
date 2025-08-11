@@ -19,7 +19,7 @@ target_include_directories(PashaBibko-UTIL PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
 # Only builds the .exe when this is the root project #
 # This stops it building when this is included as a subproject but still allows testing of the library #
-if (CMAKE_SOURCE_DIR STREQUAL PROJECT_SOURCE_DIR)
+if (CMAKE_ROOT STREQUAL PROJECT_SOURCE_DIR)
 	add_executable(PashaBibko-UTIL-Example example/ExampleUse.cpp)
 	target_link_libraries(PashaBibko-UTIL-Example PashaBibko-UTIL)
 endif()
