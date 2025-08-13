@@ -1,7 +1,11 @@
 name: Build and deploy doxygen documentation
 
 on:
-    workflow_dispatch: # Allow manual trigger via GitHub UI
+    # Automatically runs when a new version is released #
+    release:
+        types: [created]
+
+    workflow_dispatch: # Allows manual dispatch incase of errors within documentation
 
 jobs:
     build-docs:

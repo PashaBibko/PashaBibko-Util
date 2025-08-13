@@ -35,6 +35,7 @@
 build/
 out/
 .vs/
+bin/
 
-# Doxygen output directory (will be automated by Github Workflows) #
+# Doxygen output directory #
 docs/
