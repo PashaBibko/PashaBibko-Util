@@ -58,15 +58,7 @@ jobs:
 
                     const releaseID = response.data.id;
 
-                    const releaseText = `
-                    This release provides a precompiled .lib and all headers for quick,
-                    direct integration—perfect if you don’t want to use Git submodules.
-                    Simply download the zip, link the library, and include the headers.
-                    If you would like full documentation, examples, and advanced usage,
-                    you can visit [here](https://pashabibko.github.io/PashaBibko-Util/).
-                    While we recommend using the library as a git submodule for active
-                    development, this release is ideal for immediate use in your projects. 
-                    `;
+                    const releaseText = `This release provides a precompiled .lib and all headers for quick, direct integration—perfect if you don’t want to use Git submodules. Simply download the zip, link the library, and include the headers. If you would like full documentation, examples, and advanced usage, you can visit [here](https://pashabibko.github.io/PashaBibko-Util/). While we recommend using the library as a git submodule for active development, this release is ideal for immediate use in your projects.`;
 
                     await github.rest.repos.updateRelease({
                         owner: context.repo.owner,
