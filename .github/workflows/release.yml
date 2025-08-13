@@ -27,9 +27,8 @@ jobs:
                 copy bin\PashaBibko-UTIL.lib package\PB-UTIL.lib
                 copy Util.h package\Util.h
                 robocopy classes package\classes *.h
-                if ($LASTEXITCODE -le 1) { exit 0 }
                 robocopy sections package\sections *.h
-                if ($LASTEXITCODE -le 1) { exit 0 }
+                if ($LASTEXITCODE -gt 1) { exit 1 }
             shell: pwsh
 
         -   name: Create ZIP file
