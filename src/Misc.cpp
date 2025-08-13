@@ -12,7 +12,9 @@
  */
 
 #if defined(_WIN32) || defined(_WIN64)
+	#ifndef NOMINMAX // Defined by GCC
 	#define NOMINMAX
+	#endif // NOMINMAX
 	#define WIN32_LEAN_AND_MEAN
 	#include <Windows.h>
 
