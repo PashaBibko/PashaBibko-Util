@@ -21,6 +21,7 @@
 /* Includes the classes of the Util library */
 #include <classes/ReturnVal.h>
 #include <classes/Colour.h>
+#include <classes/Vec.h>
 
 /* Includes the additional sections of the Util library */
 #include <sections/FileRead.h>

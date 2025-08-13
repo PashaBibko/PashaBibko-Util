@@ -1,6 +1,5 @@
 #pragma once
 
-
 #include <sections/Misc.h>
 
 #include <type_traits>

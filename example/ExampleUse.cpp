@@ -45,6 +45,15 @@ int main()
 	std::array<int, 5> array = { 1, 2, 3, 4, 5 };
 	Util::Log("Example-Array", array);
 
+	/* Vector example usage */
+	Util::Vec<4, int> vecA(2, 3, 4, 5);
+	vecA += vecA;
+
+	Util::Vec<4, int> vecB(5);
+	Util::Vec<4, int> vecC = vecA + vecB;
+
+	Util::Log("Vector: ", vecC);
+
 	/* Example of using the Util::ReturnVal class for functions that can fail */
 	Util::ReturnVal res = SafeDivide(6, 0);
 	if (res.Failed())
