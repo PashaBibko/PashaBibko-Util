@@ -2,7 +2,7 @@
 
 :: Sets up the optional CMake build settings ::
 
-set "CMake_Config=%1"
+set "CMake_Config=%~1"
 if "%CMake_Config%"=="" set "CMake_Config=-DCMAKE_BUILD_TYPE=Release"
 
 :: Makes sure the working directory is repo-root and not scripts/ ::
