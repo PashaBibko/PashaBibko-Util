@@ -114,23 +114,23 @@ Collaboration diagram for FunctionFail&lt; Err_Ty &gt;:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a9e1a6dd7ab338cb871b38b7151117bb8" id="r_a9e1a6dd7ab338cb871b38b7151117bb8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structPashaBibko_1_1Util_1_1FunctionFail.html#a9e1a6dd7ab338cb871b38b7151117bb8">FunctionFail</a> (Err_Ty _error)</td></tr>
+<tr class="memitem:a9e1a6dd7ab338cb871b38b7151117bb8" id="r_a9e1a6dd7ab338cb871b38b7151117bb8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structPashaBibko_1_1Util_1_1FunctionFail.html#a9e1a6dd7ab338cb871b38b7151117bb8">FunctionFail</a> (<a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">Err_Ty</a> <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">_error</a>)</td></tr>
 <tr class="memdesc:a9e1a6dd7ab338cb871b38b7151117bb8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor that copies an error and stores it.  <br /></td></tr>
 <tr class="separator:a9e1a6dd7ab338cb871b38b7151117bb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa0e59968c3f53f2d1fd3bbbf4805322c" id="r_aa0e59968c3f53f2d1fd3bbbf4805322c"><td class="memTemplParams" colspan="2">template&lt;typename... Args&gt; <br />
-requires std::is_constructible_v&lt;Err_Ty, Args...&gt;</td></tr>
-<tr class="memitem:aa0e59968c3f53f2d1fd3bbbf4805322c"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structPashaBibko_1_1Util_1_1FunctionFail.html#aa0e59968c3f53f2d1fd3bbbf4805322c">FunctionFail</a> (Args &amp;&amp;... args)</td></tr>
+requires std::is_constructible_v&lt;<a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">Err_Ty</a>, Args...&gt;</td></tr>
+<tr class="memitem:aa0e59968c3f53f2d1fd3bbbf4805322c"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structPashaBibko_1_1Util_1_1FunctionFail.html#aa0e59968c3f53f2d1fd3bbbf4805322c">FunctionFail</a> (<a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">Args</a> &amp;&amp;... <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">args</a>)</td></tr>
 <tr class="memdesc:aa0e59968c3f53f2d1fd3bbbf4805322c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor that creates the error within the class.  <br /></td></tr>
 <tr class="separator:aa0e59968c3f53f2d1fd3bbbf4805322c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a19954c9b8a16a6e0f48e74a0fb6f3a81" id="r_a19954c9b8a16a6e0f48e74a0fb6f3a81"><td class="memItemLeft" align="right" valign="top">Err_Ty&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structPashaBibko_1_1Util_1_1FunctionFail.html#a19954c9b8a16a6e0f48e74a0fb6f3a81">error</a></td></tr>
+<tr class="memitem:a19954c9b8a16a6e0f48e74a0fb6f3a81" id="r_a19954c9b8a16a6e0f48e74a0fb6f3a81"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">Err_Ty</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structPashaBibko_1_1Util_1_1FunctionFail.html#a19954c9b8a16a6e0f48e74a0fb6f3a81">error</a></td></tr>
 <tr class="memdesc:a19954c9b8a16a6e0f48e74a0fb6f3a81"><td class="mdescLeft">&#160;</td><td class="mdescRight">The error that the function is returning.  <br /></td></tr>
 <tr class="separator:a19954c9b8a16a6e0f48e74a0fb6f3a81"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><div class="compoundTemplParams">template&lt;typename Err_Ty = DefaultError&gt;<br />
+<div class="textblock"><div class="compoundTemplParams">template&lt;<a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">typename</a> <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">Err_Ty</a> = DefaultError&gt;<br />
 struct PashaBibko::Util::FunctionFail&lt; Err_Ty &gt;</div><p>Class to create when a function fails. </p>
 <p>This class has no functionality and is just used to help distinguish between Function fails and success when using <a class="el" href="classPashaBibko_1_1Util_1_1ReturnVal.html" title="Class to return a result from a function that can fail.">Util::ReturnVal</a>.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
@@ -146,7 +146,7 @@ struct PashaBibko::Util::FunctionFail&lt; Err_Ty &gt;</div><p>Class to create wh
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Err_Ty  = DefaultError&gt; </div>
+template&lt;<a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">typename</a> <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">Err_Ty</a>  = DefaultError&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -154,7 +154,7 @@ template&lt;typename Err_Ty  = DefaultError&gt; </div>
         <tr>
           <td class="memname"><a class="el" href="structPashaBibko_1_1Util_1_1FunctionFail.html">FunctionFail</a> </td>
           <td>(</td>
-          <td class="paramtype">Err_Ty&#160;</td>
+          <td class="paramtype"><a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">Err_Ty</a>&#160;</td>
           <td class="paramname"><em>_error</em></td><td>)</td>
           <td></td>
         </tr>
@@ -176,10 +176,10 @@ template&lt;typename Err_Ty  = DefaultError&gt; </div>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Err_Ty  = DefaultError&gt; </div>
+template&lt;<a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">typename</a> <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">Err_Ty</a>  = DefaultError&gt; </div>
 <div class="memtemplate">
 template&lt;typename... Args&gt; <br />
-requires std::is_constructible_v&lt;Err_Ty, Args...&gt;</div>
+requires std::is_constructible_v&lt;<a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">Err_Ty</a>, Args...&gt;</div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -187,7 +187,7 @@ requires std::is_constructible_v&lt;Err_Ty, Args...&gt;</div>
         <tr>
           <td class="memname"><a class="el" href="structPashaBibko_1_1Util_1_1FunctionFail.html">FunctionFail</a> </td>
           <td>(</td>
-          <td class="paramtype">Args &amp;&amp;...&#160;</td>
+          <td class="paramtype"><a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">Args</a> &amp;&amp;...&#160;</td>
           <td class="paramname"><em>args</em></td><td>)</td>
           <td></td>
         </tr>
@@ -217,10 +217,10 @@ requires std::is_constructible_v&lt;Err_Ty, Args...&gt;</div>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Err_Ty  = DefaultError&gt; </div>
+template&lt;<a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">typename</a> <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">Err_Ty</a>  = DefaultError&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">Err_Ty error</td>
+          <td class="memname"><a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">Err_Ty</a> error</td>
         </tr>
       </table>
 </div><div class="memdoc">

@@ -1,11 +1,14 @@
 var searchData=
 [
-  ['pashabibko_0',['PashaBibko',['../namespacePashaBibko.html',1,'']]],
-  ['pashabibko_20util_1',['PashaBibko-Util',['../index.html',1,'']]],
-  ['pashabibko_3a_3autil_2',['Util',['../namespacePashaBibko_1_1Util.html',1,'PashaBibko']]],
-  ['path_3',['path',['../structPashaBibko_1_1Util_1_1FileReadError.html#a7d5392cf209c418a53ad65ef15ce2df8',1,'PashaBibko::Util::FileReadError']]],
-  ['permissiondenied_4',['PermissionDenied',['../structPashaBibko_1_1Util_1_1FileReadError.html#af38960e2d1da2c992b2232eb3f285c4ea4e582c9a5153f0c1eea69a9381f4d9ef',1,'PashaBibko::Util::FileReadError']]],
-  ['print_5',['Print',['../namespacePashaBibko_1_1Util.html#a7362d399551712e720dd3ca7ec2b0d30',1,'PashaBibko::Util']]],
-  ['project_6',['Adding to your project',['../index.html#autotoc_md1',1,'']]],
-  ['purple_7',['Purple',['../namespacePashaBibko_1_1Util.html#a9e9bef6b256d7e672e01a79a4019ecbcab9ba865fec061c9706d2fd7ce49c0cc7',1,'PashaBibko::Util']]]
+  ['operator_21_3d_0',['operator!=',['../namespacePashaBibko_1_1Util.html#a1346a1acdad1a6c152dfcdd6d371f1b1',1,'PashaBibko::Util']]],
+  ['operator_2a_1',['operator*',['../namespacePashaBibko_1_1Util.html#adcfef04133ae14c20a76488181226a22',1,'PashaBibko::Util']]],
+  ['operator_2a_3d_2',['operator*=',['../structPashaBibko_1_1Util_1_1Vec.html#a50668875736df8f04cce5656da96d4ad',1,'PashaBibko::Util::Vec']]],
+  ['operator_2b_3',['operator+',['../namespacePashaBibko_1_1Util.html#a9701c69f5b0436a65ca6b75951fa655c',1,'PashaBibko::Util']]],
+  ['operator_2b_3d_4',['operator+=',['../structPashaBibko_1_1Util_1_1Vec.html#a77adb2f2e88d50bf4426df7dfa932735',1,'PashaBibko::Util::Vec']]],
+  ['operator_2d_5',['operator-',['../namespacePashaBibko_1_1Util.html#a13d235b4a964214a382b3b6d742ed53b',1,'PashaBibko::Util']]],
+  ['operator_2d_3d_6',['operator-=',['../structPashaBibko_1_1Util_1_1Vec.html#a39c399b44ef826b50d2364d6e96bddfd',1,'PashaBibko::Util::Vec']]],
+  ['operator_2f_7',['operator/',['../namespacePashaBibko_1_1Util.html#a9a1e6bac4399a57938984b6444bb3cc9',1,'PashaBibko::Util']]],
+  ['operator_2f_3d_8',['operator/=',['../structPashaBibko_1_1Util_1_1Vec.html#a202b12d76ff37ba36843029796835ad3',1,'PashaBibko::Util::Vec']]],
+  ['operator_3d_3d_9',['operator==',['../namespacePashaBibko_1_1Util.html#a0a4c8d43be95968273d793af3337f355',1,'PashaBibko::Util']]],
+  ['operator_5b_5d_10',['operator[]',['../structPashaBibko_1_1Util_1_1Vec.html#a0b1bb4eeedea285817ec306371109012',1,'PashaBibko::Util::Vec']]]
 ];

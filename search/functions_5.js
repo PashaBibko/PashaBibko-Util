@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['print_0',['Print',['../namespacePashaBibko_1_1Util.html#a7362d399551712e720dd3ca7ec2b0d30',1,'PashaBibko::Util']]]
+  ['log_0',['Log',['../namespacePashaBibko_1_1Util.html#aa322bb4cd9e732ae9e8d5e4565cab5d7',1,'PashaBibko::Util']]]
 ];

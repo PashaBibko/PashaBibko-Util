@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['log_0',['Log',['../namespacePashaBibko_1_1Util.html#aa322bb4cd9e732ae9e8d5e4565cab5d7',1,'PashaBibko::Util']]]
+  ['getlocationatstringindex_0',['GetLocationAtStringIndex',['../namespacePashaBibko_1_1Util.html#a7b10ee3720cce7cf87adcdbd7c2c8fe9',1,'PashaBibko::Util']]]
 ];

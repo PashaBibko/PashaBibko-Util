@@ -1,9 +1,12 @@
 var searchData=
 [
-  ['readfile_0',['ReadFile',['../namespacePashaBibko_1_1Util.html#a6f2ef157031255372cea1f26ae1c52f1',1,'PashaBibko::Util']]],
-  ['reason_1',['reason',['../structPashaBibko_1_1Util_1_1FileReadError.html#a22767dc580a6999717358e8eeffc9224',1,'PashaBibko::Util::FileReadError::reason'],['../structPashaBibko_1_1Util_1_1FileReadError.html#af38960e2d1da2c992b2232eb3f285c4e',1,'PashaBibko::Util::FileReadError::Reason']]],
-  ['reasonstr_2',['ReasonStr',['../structPashaBibko_1_1Util_1_1FileReadError.html#af139a2ad96f14fbfe4be117d2e1f9077',1,'PashaBibko::Util::FileReadError']]],
-  ['red_3',['Red',['../namespacePashaBibko_1_1Util.html#a9e9bef6b256d7e672e01a79a4019ecbcaee38e4d5dd68c4e440825018d549cb47',1,'PashaBibko::Util']]],
-  ['result_4',['Result',['../classPashaBibko_1_1Util_1_1ReturnVal.html#a7add267a0bdc27fcee6a7e93c8bb89e2',1,'PashaBibko::Util::ReturnVal']]],
-  ['returnval_5',['returnval',['../classPashaBibko_1_1Util_1_1ReturnVal.html',1,'ReturnVal&lt; Res_Ty, Err_Ty &gt;'],['../classPashaBibko_1_1Util_1_1ReturnVal.html#a315b93b1a521059307a8664bfdc3ae49',1,'PashaBibko::Util::ReturnVal::ReturnVal(Res_Ty _result)'],['../classPashaBibko_1_1Util_1_1ReturnVal.html#a33f375c885e8ae96c309b07b926ffb5d',1,'PashaBibko::Util::ReturnVal::ReturnVal(Res_Ty &amp;&amp;_result)'],['../classPashaBibko_1_1Util_1_1ReturnVal.html#a59c87b40a2d05ca4ab737d6cbf9a94d5',1,'PashaBibko::Util::ReturnVal::ReturnVal(FunctionFail&lt; Err_Ty &gt; &amp;&amp;_error)']]]
+  ['pashabibko_0',['PashaBibko',['../namespacePashaBibko.html',1,'']]],
+  ['pashabibko_20util_1',['PashaBibko-Util',['../index.html',1,'']]],
+  ['pashabibko_3a_3autil_2',['Util',['../namespacePashaBibko_1_1Util.html',1,'PashaBibko']]],
+  ['path_3',['path',['../structPashaBibko_1_1Util_1_1FileReadError.html#a7d5392cf209c418a53ad65ef15ce2df8',1,'PashaBibko::Util::FileReadError']]],
+  ['permissiondenied_4',['PermissionDenied',['../structPashaBibko_1_1Util_1_1FileReadError.html#af38960e2d1da2c992b2232eb3f285c4ea4e582c9a5153f0c1eea69a9381f4d9ef',1,'PashaBibko::Util::FileReadError']]],
+  ['pre_20built_20binaries_5',['Pre-built binaries',['../index.html#autotoc_md3',1,'']]],
+  ['print_6',['Print',['../namespacePashaBibko_1_1Util.html#a7362d399551712e720dd3ca7ec2b0d30',1,'PashaBibko::Util']]],
+  ['project_7',['Adding to your project',['../index.html#autotoc_md1',1,'']]],
+  ['purple_8',['Purple',['../namespacePashaBibko_1_1Util.html#a9e9bef6b256d7e672e01a79a4019ecbcab9ba865fec061c9706d2fd7ce49c0cc7',1,'PashaBibko::Util']]]
 ];

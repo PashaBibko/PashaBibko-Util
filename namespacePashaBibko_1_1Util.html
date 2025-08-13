@@ -114,6 +114,9 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structPashaBibko_1_1Util_1_1StringLocation.html">StringLocation</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Location within a string.  <a href="structPashaBibko_1_1Util_1_1StringLocation.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">Vec</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mathmatical vector class.  <a href="structPashaBibko_1_1Util_1_1Vec.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
@@ -144,29 +147,59 @@ Enumerations</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a6f2ef157031255372cea1f26ae1c52f1" id="r_a6f2ef157031255372cea1f26ae1c52f1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classPashaBibko_1_1Util_1_1ReturnVal.html">ReturnVal</a>&lt; std::string, <a class="el" href="structPashaBibko_1_1Util_1_1FileReadError.html">FileReadError</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacePashaBibko_1_1Util.html#a6f2ef157031255372cea1f26ae1c52f1">ReadFile</a> (const std::filesystem::path &amp;path)</td></tr>
+<tr class="memitem:a9701c69f5b0436a65ca6b75951fa655c" id="r_a9701c69f5b0436a65ca6b75951fa655c"><td class="memTemplParams" colspan="2">template&lt;std::size_t len, <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">typename</a> <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">LhsTy</a> , <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">typename</a> <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">RhsTy</a> , <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">typename</a> <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">ResTy</a>  = Internal::AddResultT&lt;LhsTy, RhsTy&gt;&gt; <br />
+requires Internal::CanAdd&lt;<a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">LhsTy</a>, <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">RhsTy</a>&gt;</td></tr>
+<tr class="memitem:a9701c69f5b0436a65ca6b75951fa655c"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">Vec</a>&lt; <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">len</a>, <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">ResTy</a> &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacePashaBibko_1_1Util.html#a9701c69f5b0436a65ca6b75951fa655c">operator+</a> (<a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">const</a> <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">Vec</a>&lt; <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">len</a>, <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">LhsTy</a> &gt; &amp;<a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">lhs</a>, <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">const</a> <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">Vec</a>&lt; <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">len</a>, <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">RhsTy</a> &gt; &amp;<a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">rhs</a>)</td></tr>
+<tr class="memdesc:a9701c69f5b0436a65ca6b75951fa655c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds two vectors together.  <br /></td></tr>
+<tr class="separator:a9701c69f5b0436a65ca6b75951fa655c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a13d235b4a964214a382b3b6d742ed53b" id="r_a13d235b4a964214a382b3b6d742ed53b"><td class="memTemplParams" colspan="2">template&lt;std::size_t len, <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">typename</a> <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">LhsTy</a> , <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">typename</a> <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">RhsTy</a> , <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">typename</a> <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">ResTy</a>  = Internal::SubResultT&lt;LhsTy, RhsTy&gt;&gt; <br />
+requires Internal::CanSub&lt;<a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">LhsTy</a>, <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">RhsTy</a>&gt;</td></tr>
+<tr class="memitem:a13d235b4a964214a382b3b6d742ed53b"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">Vec</a>&lt; <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">len</a>, <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">ResTy</a> &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacePashaBibko_1_1Util.html#a13d235b4a964214a382b3b6d742ed53b">operator-</a> (<a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">const</a> <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">Vec</a>&lt; <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">len</a>, <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">LhsTy</a> &gt; &amp;<a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">lhs</a>, <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">const</a> <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">Vec</a>&lt; <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">len</a>, <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">RhsTy</a> &gt; &amp;<a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">rhs</a>)</td></tr>
+<tr class="memdesc:a13d235b4a964214a382b3b6d742ed53b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Subtracts the right vector by the left vector.  <br /></td></tr>
+<tr class="separator:a13d235b4a964214a382b3b6d742ed53b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adcfef04133ae14c20a76488181226a22" id="r_adcfef04133ae14c20a76488181226a22"><td class="memTemplParams" colspan="2">template&lt;std::size_t len, <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">typename</a> <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">LhsTy</a> , <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">typename</a> <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">RhsTy</a> , <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">typename</a> <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">ResTy</a>  = Internal::MulResultT&lt;LhsTy, RhsTy&gt;&gt; <br />
+requires Internal::CanMul&lt;<a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">LhsTy</a>, <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">RhsTy</a>&gt;</td></tr>
+<tr class="memitem:adcfef04133ae14c20a76488181226a22"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">Vec</a>&lt; <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">len</a>, <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">ResTy</a> &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacePashaBibko_1_1Util.html#adcfef04133ae14c20a76488181226a22">operator*</a> (<a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">const</a> <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">Vec</a>&lt; <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">len</a>, <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">LhsTy</a> &gt; &amp;<a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">lhs</a>, <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">const</a> <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">Vec</a>&lt; <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">len</a>, <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">RhsTy</a> &gt; &amp;<a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">rhs</a>)</td></tr>
+<tr class="memdesc:adcfef04133ae14c20a76488181226a22"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiplies two vectors together.  <br /></td></tr>
+<tr class="separator:adcfef04133ae14c20a76488181226a22"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a1e6bac4399a57938984b6444bb3cc9" id="r_a9a1e6bac4399a57938984b6444bb3cc9"><td class="memTemplParams" colspan="2">template&lt;std::size_t len, <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">typename</a> <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">LhsTy</a> , <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">typename</a> <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">RhsTy</a> , <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">typename</a> <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">ResTy</a>  = Internal::SubResultT&lt;LhsTy, RhsTy&gt;&gt; <br />
+requires Internal::CanDiv&lt;<a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">LhsTy</a>, <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">RhsTy</a>&gt;</td></tr>
+<tr class="memitem:a9a1e6bac4399a57938984b6444bb3cc9"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">Vec</a>&lt; <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">len</a>, <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">ResTy</a> &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacePashaBibko_1_1Util.html#a9a1e6bac4399a57938984b6444bb3cc9">operator/</a> (<a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">const</a> <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">Vec</a>&lt; <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">len</a>, <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">LhsTy</a> &gt; &amp;<a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">lhs</a>, <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">const</a> <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">Vec</a>&lt; <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">len</a>, <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">RhsTy</a> &gt; &amp;<a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">rhs</a>)</td></tr>
+<tr class="memdesc:a9a1e6bac4399a57938984b6444bb3cc9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Divides the left vector by the right vector.  <br /></td></tr>
+<tr class="separator:a9a1e6bac4399a57938984b6444bb3cc9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a4c8d43be95968273d793af3337f355" id="r_a0a4c8d43be95968273d793af3337f355"><td class="memTemplParams" colspan="2">template&lt;std::size_t len, <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">typename</a> <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">LhsTy</a> , <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">typename</a> <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">RhsTy</a> &gt; <br />
+requires Internal::CanEqualityCheck&lt;<a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">LhsTy</a>, <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">RhsTy</a>&gt;</td></tr>
+<tr class="memitem:a0a4c8d43be95968273d793af3337f355"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">bool</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacePashaBibko_1_1Util.html#a0a4c8d43be95968273d793af3337f355">operator==</a> (<a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">const</a> <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">Vec</a>&lt; <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">len</a>, <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">LhsTy</a> &gt; &amp;<a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">lhs</a>, <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">const</a> <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">Vec</a>&lt; <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">len</a>, <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">RhsTy</a> &gt; &amp;<a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">rhs</a>)</td></tr>
+<tr class="memdesc:a0a4c8d43be95968273d793af3337f355"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if two vectors are equal.  <br /></td></tr>
+<tr class="separator:a0a4c8d43be95968273d793af3337f355"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1346a1acdad1a6c152dfcdd6d371f1b1" id="r_a1346a1acdad1a6c152dfcdd6d371f1b1"><td class="memTemplParams" colspan="2">template&lt;std::size_t len, <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">typename</a> <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">LhsTy</a> , <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">typename</a> <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">RhsTy</a> &gt; <br />
+requires Internal::CanEqualityCheck&lt;<a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">LhsTy</a>, <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">RhsTy</a>&gt;</td></tr>
+<tr class="memitem:a1346a1acdad1a6c152dfcdd6d371f1b1"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">bool</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacePashaBibko_1_1Util.html#a1346a1acdad1a6c152dfcdd6d371f1b1">operator!=</a> (<a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">const</a> <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">Vec</a>&lt; <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">len</a>, <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">LhsTy</a> &gt; &amp;<a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">lhs</a>, <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">const</a> <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">Vec</a>&lt; <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">len</a>, <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">RhsTy</a> &gt; &amp;<a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">rhs</a>)</td></tr>
+<tr class="memdesc:a1346a1acdad1a6c152dfcdd6d371f1b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if two vectors are not equal.  <br /></td></tr>
+<tr class="separator:a1346a1acdad1a6c152dfcdd6d371f1b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f2ef157031255372cea1f26ae1c52f1" id="r_a6f2ef157031255372cea1f26ae1c52f1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classPashaBibko_1_1Util_1_1ReturnVal.html">ReturnVal</a>&lt; std::string, <a class="el" href="structPashaBibko_1_1Util_1_1FileReadError.html">FileReadError</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacePashaBibko_1_1Util.html#a6f2ef157031255372cea1f26ae1c52f1">ReadFile</a> (<a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">const</a> std::filesystem::path &amp;path)</td></tr>
 <tr class="memdesc:a6f2ef157031255372cea1f26ae1c52f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads a file to a string.  <br /></td></tr>
 <tr class="separator:a6f2ef157031255372cea1f26ae1c52f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7b10ee3720cce7cf87adcdbd7c2c8fe9" id="r_a7b10ee3720cce7cf87adcdbd7c2c8fe9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structPashaBibko_1_1Util_1_1StringLocation.html">StringLocation</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacePashaBibko_1_1Util.html#a7b10ee3720cce7cf87adcdbd7c2c8fe9">GetLocationAtStringIndex</a> (const std::string &amp;string, uint32_t index)</td></tr>
+<tr class="memitem:a7b10ee3720cce7cf87adcdbd7c2c8fe9" id="r_a7b10ee3720cce7cf87adcdbd7c2c8fe9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structPashaBibko_1_1Util_1_1StringLocation.html">StringLocation</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacePashaBibko_1_1Util.html#a7b10ee3720cce7cf87adcdbd7c2c8fe9">GetLocationAtStringIndex</a> (<a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">const</a> std::string &amp;<a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">string</a>, <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">uint32_t</a> index)</td></tr>
 <tr class="memdesc:a7b10ee3720cce7cf87adcdbd7c2c8fe9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds the location of [colummn, line] of a given index.  <br /></td></tr>
 <tr class="separator:a7b10ee3720cce7cf87adcdbd7c2c8fe9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7362d399551712e720dd3ca7ec2b0d30" id="r_a7362d399551712e720dd3ca7ec2b0d30"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="namespacePashaBibko_1_1Util.html#a9e9bef6b256d7e672e01a79a4019ecbc">Colour</a> colour = Colour::Default, typename... Args&gt; <br />
-requires (Internal::Logable&lt;std::remove_cvref_t&lt;Args&gt;&gt; &amp;&amp; ...)</td></tr>
-<tr class="memitem:a7362d399551712e720dd3ca7ec2b0d30"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacePashaBibko_1_1Util.html#a7362d399551712e720dd3ca7ec2b0d30">Print</a> (Args &amp;&amp;... args)</td></tr>
+requires (Internal::Logable&lt;std::remove_cvref_t&lt;<a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">Args</a>&gt;&gt; &amp;&amp; ...)</td></tr>
+<tr class="memitem:a7362d399551712e720dd3ca7ec2b0d30"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">void</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacePashaBibko_1_1Util.html#a7362d399551712e720dd3ca7ec2b0d30">Print</a> (<a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">Args</a> &amp;&amp;... <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">args</a>)</td></tr>
 <tr class="memdesc:a7362d399551712e720dd3ca7ec2b0d30"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints the message to the console.  <br /></td></tr>
 <tr class="separator:a7362d399551712e720dd3ca7ec2b0d30"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa322bb4cd9e732ae9e8d5e4565cab5d7" id="r_aa322bb4cd9e732ae9e8d5e4565cab5d7"><td class="memTemplParams" colspan="2">template&lt;typename... Args&gt; <br />
-requires (Internal::Logable&lt;std::remove_cvref_t&lt;Args&gt;&gt; &amp;&amp; ...)</td></tr>
-<tr class="memitem:aa322bb4cd9e732ae9e8d5e4565cab5d7"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacePashaBibko_1_1Util.html#aa322bb4cd9e732ae9e8d5e4565cab5d7">Log</a> (Args &amp;&amp;... args)</td></tr>
+requires (Internal::Logable&lt;std::remove_cvref_t&lt;<a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">Args</a>&gt;&gt; &amp;&amp; ...)</td></tr>
+<tr class="memitem:aa322bb4cd9e732ae9e8d5e4565cab5d7"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">void</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacePashaBibko_1_1Util.html#aa322bb4cd9e732ae9e8d5e4565cab5d7">Log</a> (<a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">Args</a> &amp;&amp;... <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">args</a>)</td></tr>
 <tr class="memdesc:aa322bb4cd9e732ae9e8d5e4565cab5d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logs the message to the log file and console.  <br /></td></tr>
 <tr class="separator:aa322bb4cd9e732ae9e8d5e4565cab5d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abf61e209e9dc0c1b185a2799e9a34219" id="r_abf61e209e9dc0c1b185a2799e9a34219"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacePashaBibko_1_1Util.html#abf61e209e9dc0c1b185a2799e9a34219">SetConsoleColor</a> (<a class="el" href="namespacePashaBibko_1_1Util.html#a9e9bef6b256d7e672e01a79a4019ecbc">Colour</a> col)</td></tr>
+<tr class="memitem:abf61e209e9dc0c1b185a2799e9a34219" id="r_abf61e209e9dc0c1b185a2799e9a34219"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacePashaBibko_1_1Util.html#abf61e209e9dc0c1b185a2799e9a34219">SetConsoleColor</a> (<a class="el" href="namespacePashaBibko_1_1Util.html#a9e9bef6b256d7e672e01a79a4019ecbc">Colour</a> <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">col</a>)</td></tr>
 <tr class="memdesc:abf61e209e9dc0c1b185a2799e9a34219"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the console to display text with a certain color.  <br /></td></tr>
 <tr class="separator:abf61e209e9dc0c1b185a2799e9a34219"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a58030e4ffdf1e350d00f4f1280c384d1" id="r_a58030e4ffdf1e350d00f4f1280c384d1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacePashaBibko_1_1Util.html#a58030e4ffdf1e350d00f4f1280c384d1">TriggerBreakpoint</a> ()</td></tr>
+<tr class="memitem:a58030e4ffdf1e350d00f4f1280c384d1" id="r_a58030e4ffdf1e350d00f4f1280c384d1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacePashaBibko_1_1Util.html#a58030e4ffdf1e350d00f4f1280c384d1">TriggerBreakpoint</a> ()</td></tr>
 <tr class="memdesc:a58030e4ffdf1e350d00f4f1280c384d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Triggers a breakpoint if there is a Debugger to attach to.  <br /></td></tr>
 <tr class="separator:a58030e4ffdf1e350d00f4f1280c384d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae73a9bc70413647e759b684774928a86" id="r_ae73a9bc70413647e759b684774928a86"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacePashaBibko_1_1Util.html#ae73a9bc70413647e759b684774928a86">EndProcess</a> (bool breakpoint=true)</td></tr>
+<tr class="memitem:ae73a9bc70413647e759b684774928a86" id="r_ae73a9bc70413647e759b684774928a86"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacePashaBibko_1_1Util.html#ae73a9bc70413647e759b684774928a86">EndProcess</a> (<a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">bool</a> <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">breakpoint</a>=<a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">true</a>)</td></tr>
 <tr class="memdesc:ae73a9bc70413647e759b684774928a86"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ends the current process.  <br /></td></tr>
 <tr class="separator:ae73a9bc70413647e759b684774928a86"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -181,7 +214,7 @@ requires (Internal::Logable&lt;std::remove_cvref_t&lt;Args&gt;&gt; &amp;&amp; ..
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">enum class <a class="el" href="namespacePashaBibko_1_1Util.html#a9e9bef6b256d7e672e01a79a4019ecbc">Colour</a> : unsigned short</td>
+          <td class="memname"><a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">enum</a> <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">class</a> <a class="el" href="namespacePashaBibko_1_1Util.html#a9e9bef6b256d7e672e01a79a4019ecbc">Colour</a> : <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">unsigned</a> <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">short</a></td>
         </tr>
       </table>
   </td>
@@ -237,10 +270,10 @@ requires (Internal::Logable&lt;std::remove_cvref_t&lt;Args&gt;&gt; &amp;&amp; ..
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void EndProcess </td>
+          <td class="memname"><a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">void</a> EndProcess </td>
           <td>(</td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>breakpoint</em> = <code>true</code></td><td>)</td>
+          <td class="paramtype"><a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">bool</a>&#160;</td>
+          <td class="paramname"><em>breakpoint</em> = <code><a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">true</a></code></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -265,13 +298,13 @@ requires (Internal::Logable&lt;std::remove_cvref_t&lt;Args&gt;&gt; &amp;&amp; ..
         <tr>
           <td class="memname"><a class="el" href="structPashaBibko_1_1Util_1_1StringLocation.html">StringLocation</a> GetLocationAtStringIndex </td>
           <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">const</a> std::string &amp;&#160;</td>
           <td class="paramname"><em>string</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramtype"><a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">uint32_t</a>&#160;</td>
           <td class="paramname"><em>index</em>&#160;</td>
         </tr>
         <tr>
@@ -301,15 +334,15 @@ requires (Internal::Logable&lt;std::remove_cvref_t&lt;Args&gt;&gt; &amp;&amp; ..
 <div class="memproto">
 <div class="memtemplate">
 template&lt;typename... Args&gt; <br />
-requires (Internal::Logable&lt;std::remove_cvref_t&lt;Args&gt;&gt; &amp;&amp; ...)</div>
+requires (Internal::Logable&lt;std::remove_cvref_t&lt;<a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">Args</a>&gt;&gt; &amp;&amp; ...)</div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void Log </td>
+          <td class="memname"><a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">void</a> Log </td>
           <td>(</td>
-          <td class="paramtype">Args &amp;&amp;...&#160;</td>
+          <td class="paramtype"><a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">Args</a> &amp;&amp;...&#160;</td>
           <td class="paramname"><em>args</em></td><td>)</td>
           <td></td>
         </tr>
@@ -323,14 +356,14 @@ requires (Internal::Logable&lt;std::remove_cvref_t&lt;Args&gt;&gt; &amp;&amp; ..
 
 <p>Logs the message to the log file and console. </p>
 <p>See <a class="el" href="namespacePashaBibko_1_1Util.html#a7362d399551712e720dd3ca7ec2b0d30" title="Prints the message to the console.">PashaBibko::Util::Print()</a> for how different types can be logged. <a class="el" href="namespacePashaBibko_1_1Util.html#aa322bb4cd9e732ae9e8d5e4565cab5d7" title="Logs the message to the log file and console.">Log()</a> also has a function overload for printing ranges. Any type that can be iterated over using begin() and end() such as std::array or std::vector. It also requires that type that is returned whilst iterating is also loggable. For example:</p>
-<div class="fragment"><div class="line"><span class="keyword">struct </span>A</div>
+<div class="fragment"><div class="line"><span class="keyword">struct </span><a class="code hl_struct" href="structPashaBibko_1_1Util_1_1Vec.html">A</a></div>
 <div class="line">{</div>
 <div class="line">    <span class="comment">// Empty //</span></div>
 <div class="line">}</div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">struct </span>B</div>
 <div class="line">{</div>
-<div class="line">    std::string LogStr()<span class="keyword"> const</span></div>
+<div class="line">    std::string <a class="code hl_function" href="structPashaBibko_1_1Util_1_1Vec.html#aaf06ec283f7b99e1e6c2a1fbe247cda3">LogStr</a>()<span class="keyword"> const</span></div>
 <div class="line"><span class="keyword">    </span>{</div>
 <div class="line">        <span class="keywordflow">return</span> <span class="stringliteral">&quot;Custom Log function called&quot;</span>;</div>
 <div class="line">    }</div>
@@ -347,9 +380,215 @@ requires (Internal::Logable&lt;std::remove_cvref_t&lt;Args&gt;&gt; &amp;&amp; ..
 <div class="line">    <a class="code hl_function" href="namespacePashaBibko_1_1Util.html#aa322bb4cd9e732ae9e8d5e4565cab5d7">Util::Log</a>(array_B);</div>
 <div class="line">}</div>
 <div class="ttc" id="anamespacePashaBibko_1_1Util_html_aa322bb4cd9e732ae9e8d5e4565cab5d7"><div class="ttname"><a href="namespacePashaBibko_1_1Util.html#aa322bb4cd9e732ae9e8d5e4565cab5d7">PashaBibko::Util::Log</a></div><div class="ttdeci">void Log(Args &amp;&amp;... args)</div><div class="ttdoc">Logs the message to the log file and console.</div><div class="ttdef"><b>Definition</b> Log.h:191</div></div>
+<div class="ttc" id="astructPashaBibko_1_1Util_1_1Vec_html"><div class="ttname"><a href="structPashaBibko_1_1Util_1_1Vec.html">PashaBibko::Util::Vec</a></div><div class="ttdoc">Mathmatical vector class.</div><div class="ttdef"><b>Definition</b> Vec.h:216</div></div>
+<div class="ttc" id="astructPashaBibko_1_1Util_1_1Vec_html_aaf06ec283f7b99e1e6c2a1fbe247cda3"><div class="ttname"><a href="structPashaBibko_1_1Util_1_1Vec.html#aaf06ec283f7b99e1e6c2a1fbe247cda3">PashaBibko::Util::Vec::Vec</a></div><div class="ttdeci">Vec()</div><div class="ttdoc">Default constructor which default constructs all items.</div><div class="ttdef"><b>Definition</b> Vec.h:224</div></div>
 </div><!-- fragment --><ul>
 <li>args The message that it will log to a file. </li>
 </ul>
+
+</div>
+</div>
+<a id="a1346a1acdad1a6c152dfcdd6d371f1b1" name="a1346a1acdad1a6c152dfcdd6d371f1b1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1346a1acdad1a6c152dfcdd6d371f1b1">&#9670;&#160;</a></span>operator!=()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;std::size_t len, <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">typename</a> <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">LhsTy</a> , <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">typename</a> <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">RhsTy</a> &gt; <br />
+requires Internal::CanEqualityCheck&lt;<a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">LhsTy</a>, <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">RhsTy</a>&gt;</div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">bool</a> <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">operator!</a>= </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">const</a> <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">Vec</a>&lt; <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">len</a>, <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">LhsTy</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>lhs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">const</a> <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">Vec</a>&lt; <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">len</a>, <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">RhsTy</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>rhs</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Checks if two vectors are not equal. </p>
+<p>Requires both the == and != operators to be available for both types. </p>
+
+</div>
+</div>
+<a id="adcfef04133ae14c20a76488181226a22" name="adcfef04133ae14c20a76488181226a22"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adcfef04133ae14c20a76488181226a22">&#9670;&#160;</a></span>operator*()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;std::size_t len, <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">typename</a> <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">LhsTy</a> , <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">typename</a> <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">RhsTy</a> , <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">typename</a> <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">ResTy</a>  = Internal::MulResultT&lt;LhsTy, RhsTy&gt;&gt; <br />
+requires Internal::CanMul&lt;<a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">LhsTy</a>, <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">RhsTy</a>&gt;</div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">Vec</a>&lt; <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">len</a>, <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">ResTy</a> &gt; <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">operator</a>* </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">const</a> <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">Vec</a>&lt; <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">len</a>, <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">LhsTy</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>lhs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">const</a> <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">Vec</a>&lt; <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">len</a>, <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">RhsTy</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>rhs</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Multiplies two vectors together. </p>
+<p>Requires the two types contained in the vector to be able to be multiplied together. The result type will also be the same type as when they are normally multiplied together. </p>
+
+</div>
+</div>
+<a id="a9701c69f5b0436a65ca6b75951fa655c" name="a9701c69f5b0436a65ca6b75951fa655c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9701c69f5b0436a65ca6b75951fa655c">&#9670;&#160;</a></span>operator+()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;std::size_t len, <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">typename</a> <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">LhsTy</a> , <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">typename</a> <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">RhsTy</a> , <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">typename</a> <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">ResTy</a>  = Internal::AddResultT&lt;LhsTy, RhsTy&gt;&gt; <br />
+requires Internal::CanAdd&lt;<a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">LhsTy</a>, <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">RhsTy</a>&gt;</div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">Vec</a>&lt; <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">len</a>, <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">ResTy</a> &gt; <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">operator</a>+ </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">const</a> <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">Vec</a>&lt; <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">len</a>, <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">LhsTy</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>lhs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">const</a> <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">Vec</a>&lt; <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">len</a>, <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">RhsTy</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>rhs</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Adds two vectors together. </p>
+<p>Requires the two types contained in the vector to be able to be added together. The result type will also be the same type as when they are normally added together. </p>
+
+</div>
+</div>
+<a id="a13d235b4a964214a382b3b6d742ed53b" name="a13d235b4a964214a382b3b6d742ed53b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a13d235b4a964214a382b3b6d742ed53b">&#9670;&#160;</a></span>operator-()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;std::size_t len, <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">typename</a> <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">LhsTy</a> , <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">typename</a> <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">RhsTy</a> , <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">typename</a> <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">ResTy</a>  = Internal::SubResultT&lt;LhsTy, RhsTy&gt;&gt; <br />
+requires Internal::CanSub&lt;<a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">LhsTy</a>, <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">RhsTy</a>&gt;</div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">Vec</a>&lt; <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">len</a>, <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">ResTy</a> &gt; <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">operator</a>- </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">const</a> <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">Vec</a>&lt; <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">len</a>, <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">LhsTy</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>lhs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">const</a> <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">Vec</a>&lt; <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">len</a>, <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">RhsTy</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>rhs</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Subtracts the right vector by the left vector. </p>
+<p>Requires the two types contained in the vector to be able to be subtracted from each other The result type will also be the same type as when they are normally subtracted. </p>
+
+</div>
+</div>
+<a id="a9a1e6bac4399a57938984b6444bb3cc9" name="a9a1e6bac4399a57938984b6444bb3cc9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9a1e6bac4399a57938984b6444bb3cc9">&#9670;&#160;</a></span>operator/()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;std::size_t len, <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">typename</a> <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">LhsTy</a> , <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">typename</a> <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">RhsTy</a> , <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">typename</a> <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">ResTy</a>  = Internal::SubResultT&lt;LhsTy, RhsTy&gt;&gt; <br />
+requires Internal::CanDiv&lt;<a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">LhsTy</a>, <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">RhsTy</a>&gt;</div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">Vec</a>&lt; <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">len</a>, <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">ResTy</a> &gt; <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">operator</a>/ </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">const</a> <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">Vec</a>&lt; <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">len</a>, <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">LhsTy</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>lhs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">const</a> <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">Vec</a>&lt; <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">len</a>, <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">RhsTy</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>rhs</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Divides the left vector by the right vector. </p>
+<p>Requires the two types contained in the vector to be able to be divided from each other. The result type will also be the same type as when they are normally divided together. </p>
+
+</div>
+</div>
+<a id="a0a4c8d43be95968273d793af3337f355" name="a0a4c8d43be95968273d793af3337f355"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0a4c8d43be95968273d793af3337f355">&#9670;&#160;</a></span>operator==()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;std::size_t len, <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">typename</a> <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">LhsTy</a> , <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">typename</a> <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">RhsTy</a> &gt; <br />
+requires Internal::CanEqualityCheck&lt;<a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">LhsTy</a>, <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">RhsTy</a>&gt;</div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">bool</a> <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">operator</a>== </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">const</a> <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">Vec</a>&lt; <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">len</a>, <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">LhsTy</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>lhs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">const</a> <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">Vec</a>&lt; <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">len</a>, <a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">RhsTy</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>rhs</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Checks if two vectors are equal. </p>
+<p>Requires both the == and != operators to be available for both types. </p>
 
 </div>
 </div>
@@ -360,15 +599,15 @@ requires (Internal::Logable&lt;std::remove_cvref_t&lt;Args&gt;&gt; &amp;&amp; ..
 <div class="memproto">
 <div class="memtemplate">
 template&lt;<a class="el" href="namespacePashaBibko_1_1Util.html#a9e9bef6b256d7e672e01a79a4019ecbc">Colour</a> colour = Colour::Default, typename... Args&gt; <br />
-requires (Internal::Logable&lt;std::remove_cvref_t&lt;Args&gt;&gt; &amp;&amp; ...)</div>
+requires (Internal::Logable&lt;std::remove_cvref_t&lt;<a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">Args</a>&gt;&gt; &amp;&amp; ...)</div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void Print </td>
+          <td class="memname"><a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">void</a> Print </td>
           <td>(</td>
-          <td class="paramtype">Args &amp;&amp;...&#160;</td>
+          <td class="paramtype"><a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">Args</a> &amp;&amp;...&#160;</td>
           <td class="paramname"><em>args</em></td><td>)</td>
           <td></td>
         </tr>
@@ -383,9 +622,9 @@ requires (Internal::Logable&lt;std::remove_cvref_t&lt;Args&gt;&gt; &amp;&amp; ..
 <p>Prints the message to the console. </p>
 <p>Types can be printed in 2 different ways. The first is if the type has a std::ostream&amp; bit-shift operator overload defined. This is the operator that std::cout uses for outputting so will be used by all intergral types.</p>
 <p>The second way is by having a LogStr() method that returns a string. Below are some examples of logging with these methods.</p>
-<div class="fragment"><div class="line"><span class="keyword">struct </span>LogableExample</div>
+<div class="fragment"><div class="line"><span class="keyword">struct </span><a class="code hl_struct" href="structPashaBibko_1_1Util_1_1Vec.html">LogableExample</a></div>
 <div class="line">{</div>
-<div class="line">    std::string LogStr() const <span class="comment">// Function is required to be const //</span></div>
+<div class="line">    std::string <a class="code hl_function" href="structPashaBibko_1_1Util_1_1Vec.html#aaf06ec283f7b99e1e6c2a1fbe247cda3">LogStr</a>() <a class="code hl_struct" href="structPashaBibko_1_1Util_1_1Vec.html">const</a> <span class="comment">// Function is required to be const //</span></div>
 <div class="line">    {</div>
 <div class="line">        <span class="keywordflow">return</span> <span class="stringliteral">&quot;Custom Log method called&quot;</span>;</div>
 <div class="line">    }</div>
@@ -426,7 +665,7 @@ requires (Internal::Logable&lt;std::remove_cvref_t&lt;Args&gt;&gt; &amp;&amp; ..
         <tr>
           <td class="memname"><a class="el" href="classPashaBibko_1_1Util_1_1ReturnVal.html">ReturnVal</a>&lt; std::string, <a class="el" href="structPashaBibko_1_1Util_1_1FileReadError.html">FileReadError</a> &gt; ReadFile </td>
           <td>(</td>
-          <td class="paramtype">const std::filesystem::path &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">const</a> std::filesystem::path &amp;&#160;</td>
           <td class="paramname"><em>path</em></td><td>)</td>
           <td></td>
         </tr>
@@ -451,7 +690,7 @@ requires (Internal::Logable&lt;std::remove_cvref_t&lt;Args&gt;&gt; &amp;&amp; ..
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void SetConsoleColor </td>
+          <td class="memname"><a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">void</a> SetConsoleColor </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="namespacePashaBibko_1_1Util.html#a9e9bef6b256d7e672e01a79a4019ecbc">Colour</a>&#160;</td>
           <td class="paramname"><em>col</em></td><td>)</td>
@@ -478,7 +717,7 @@ requires (Internal::Logable&lt;std::remove_cvref_t&lt;Args&gt;&gt; &amp;&amp; ..
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void TriggerBreakpoint </td>
+          <td class="memname"><a class="el" href="structPashaBibko_1_1Util_1_1Vec.html">void</a> TriggerBreakpoint </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>

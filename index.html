@@ -93,9 +93,10 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="md_README"></a> PashaBibko-Util is a C++ util library that I developed for use in my projects. It is cross platform and supports both Windows and Linux based systems. Some of the main features include coloured text in the console, logging/better console printing and lightweight implementations of STD classes for easier use and faster builds.</p>
-<p>NOTE: This project is not fully documented. All of the functions and classes within the latest release will be documentated but if you are using the latest push from Github some sections may be undocumented. The documentation for the language can be found <a href="https://pashabibko.github.io/PashaBibko-Util/">here</a>.</p>
 <h2><a class="anchor" id="autotoc_md1"></a>
 Adding to your project</h2>
+<h4><a class="anchor" id="autotoc_md2"></a>
+CMake</h4>
 <p>The library is built with CMake and is designed to be used as a git submodule. If you are unfamilar with git-submodules is recommended to learn about them before intergrating them with your project which can be done <a href="https://github.blog/open-source/git/working-with-submodules/">here</a>.</p>
 <p>To add the project to your project run this in the powershell of the root directory: </p><div class="fragment"><div class="line">cd path/to/your/project/root</div>
 <div class="line">mkdir external</div>
@@ -104,7 +105,14 @@ Adding to your project</h2>
 </div><!-- fragment --><p>Then to add it to your build process of your CMakeLists.txt file add: </p><div class="fragment"><div class="line">target_link_libraries(PROJECT PUBLIC PashaBibko-UTIL)</div>
 <div class="line">target_include_directories(PROJECT ${CMAKE_ROOT}/external/pb-util)</div>
 </div><!-- fragment --><p>Finally you should be able to use Util library within your project by adding (it is recommended to do this within a precompiled header): <code>#include &lt;<a class="el" href="Util_8h_source.html">Util.h</a>&gt;</code></p>
-<h2><a class="anchor" id="autotoc_md2"></a>
+<h4><a class="anchor" id="autotoc_md3"></a>
+Pre-built binaries</h4>
+<p>If you would like to use a pre-built binary of the project and link manually to your project you can find them <a href="https://github.com/PashaBibko/PashaBibko-Util/releases">here</a>. Prebuilt binaries are only available for windows.</p>
+<p>To add to your project you will need to add the PB-UTIL.lib to your linker dependencies. In VS-22 you can find this in [Linker-&gt;Input-&gt;Additional Dependencies]. You will also need to add the root of the project to the include paths as all paths are relative to it. In VS-22 you can find this in [C/C++-&gt;General-&gt;Additional Include Directories].</p>
+<h4><a class="anchor" id="autotoc_md4"></a>
+Build manually</h4>
+<p>If you would like to link to your project but still build the project you can run the build.bat file located within the scripts folder. This will require you to have CMake, Ninja and a C++ compiler available on your machine.</p>
+<h2><a class="anchor" id="autotoc_md5"></a>
 Getting started</h2>
 <p>To use any of the functions/classes within your project you can find them under the "PashaBibko::Util" namespace. As the namespace is quite long shorthands are provided:</p><ul>
 <li>PBU for <a class="el" href="namespacePashaBibko_1_1Util.html">PashaBibko::Util</a></li>
