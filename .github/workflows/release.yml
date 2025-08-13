@@ -27,7 +27,10 @@ jobs:
                 copy bin\PashaBibko-UTIL.lib package\PB-UTIL.lib
                 copy Util.h package\Util.h
                 robocopy classes package\classes *.h
+                if ($LASTEXITCODE -le 1) { exit 0 }
                 robocopy sections package\sections *.h
+                if ($LASTEXITCODE -le 1) { exit 0 }
+            shell: pwsh
 
         -   name: Create ZIP file
             run: powershell Compress-Archive -Path package\* -DestinationPath Win64-PB-UTIL.zip
