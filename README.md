@@ -5,11 +5,9 @@ It is cross platform and supports both Windows and Linux based systems.
 Some of the main features include coloured text in the console, logging/better console printing
 and lightweight implementations of STD classes for easier use and faster builds.
 
-NOTE: This project is not fully documented. All of the functions and classes within the latest release
-will be documentated but if you are using the latest push from Github some sections may be undocumented.
-The documentation for the language can be found [here](https://pashabibko.github.io/PashaBibko-Util/).
-
 ### Adding to your project
+
+##### CMake
 
 The library is built with CMake and is designed to be used as a git submodule.
 If you are unfamilar with git-submodules is recommended to learn about them
@@ -31,6 +29,24 @@ target_include_directories(PROJECT ${CMAKE_ROOT}/external/pb-util)
 
 Finally you should be able to use Util library within your project by adding
 (it is recommended to do this within a precompiled header): `#include <Util.h>`
+
+##### Pre-built binaries
+
+If you would like to use a pre-built binary of the project and link manually
+to your project you can find them [here](https://github.com/PashaBibko/PashaBibko-Util/releases).
+Prebuilt binaries are only available for windows.
+
+To add to your project you will need to add the PB-UTIL.lib to your linker
+dependencies. In VS-22 you can find this in [Linker->Input->Additional Dependencies].
+You will also need to add the root of the project to the include paths as
+all paths are relative to it. In VS-22 you can find this in
+[C/C++->General->Additional Include Directories].
+
+##### Build manually
+
+If you would like to link to your project but still build the project you can
+run the build.bat file located within the scripts folder. This will require you
+to have CMake, Ninja and a C++ compiler available on your machine.
 
 ### Getting started
 

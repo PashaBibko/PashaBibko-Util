@@ -994,6 +994,7 @@ WARN_LOGFILE           =
 INPUT                  = Util.h \
                          classes/Colour.h \
                          classes/ReturnVal.h \
+                         classes/Vec.h \
                          sections/FileRead.h \
                          sections/Log.h \
                          sections/Misc.h \
