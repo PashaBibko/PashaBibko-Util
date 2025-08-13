@@ -26,6 +26,7 @@ jobs:
                 mkdir package
                 copy bin\PashaBibko-UTIL.lib package\PB-UTIL.lib
                 copy Util.h package\Util.h
+                copy LICENSE package\LICENSE.md
                 Copy-Item -Path classes\*.h -Destination package\classes -Force
                 Copy-Item -Path sections\*.h -Destination package\sections -Force
             shell: pwsh
