@@ -4,6 +4,8 @@ on:
     release:
         types: [released]
 
+    workflow_dispatch: # Allows custom workflows
+
 jobs:
     build-and-package:
         runs-on: windows-latest # Needs windows to build .lib
@@ -24,9 +26,11 @@ jobs:
         -   name: Prepare release folder
             run: |
                 mkdir package
-                copy bin\PashaBibko-UTIL.lib package\PB-UTIL.lib
-                copy Util.h package\Util.h
-                copy LICENSE package\LICENSE.md
+                mkdir package\classes
+                mkdir package\sections
+                Copy-Item bin\PashaBibko-UTIL.lib package\PB-UTIL.lib
+                Copy-Item Util.h package\Util.h
+                Copy-Item LICENSE package\LICENSE.md
                 Copy-Item -Path classes\*.h -Destination package\classes -Force
                 Copy-Item -Path sections\*.h -Destination package\sections -Force
             shell: pwsh
