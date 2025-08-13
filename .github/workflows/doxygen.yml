@@ -3,7 +3,7 @@ name: Build and deploy doxygen documentation
 on:
     # Automatically runs when a new version is released #
     release:
-        types: [created]
+        types: [released]
 
     workflow_dispatch: # Allows manual dispatch incase of errors within documentation
 

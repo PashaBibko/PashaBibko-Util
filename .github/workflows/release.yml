@@ -12,8 +12,13 @@ jobs:
         -   name: Checkout code
             uses: actions/checkout@v3
 
+        -   name: Setup CMake
+            uses: lukka/get-cmake@v4
+            with:
+                cmake-version: "3.27.5"
+
         -   name: Build project
-            run: scripts/build.bat
+            run: scripts/build.bat "-DCMAKE_BUILD_TYPE=Release -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++"
             shell: cmd
 
         -   name: Prepare release folder
@@ -43,7 +48,10 @@ jobs:
             with:
                 github-token: ${{ secrets.GITHUB_TOKEN }}
                 script: |
-                    const releaseID = context.payload.id;
+                    const releaseID = await github.rest.repos.getLatestRelease({
+                        owner: context.repo.owner,
+                        repo: context.repo.repo
+                    });
 
                     const releaseText = `
                     This release provides a precompiled .lib and all headers for quick,
