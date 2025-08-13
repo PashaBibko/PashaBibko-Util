@@ -15,7 +15,7 @@ if /i "%SCRIPT_DIRNAME%"=="scripts" (
 
 :: Prepares the build files ::
 mkdir build
-cmake . -G Ninja -B build "%CMake_Config%"
+cmake . -G Ninja -B build %CMake_Config%
 
 :: Builds the project ::
 cmake --build build
