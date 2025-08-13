@@ -5,10 +5,6 @@ It is cross platform and supports both Windows and Linux based systems.
 Some of the main features include coloured text in the console, logging/better console printing
 and lightweight implementations of STD classes for easier use and faster builds.
 
-The library also has an optional math include. The math section includes lots of helpful
-classes including mathematical vectors, matrixs and helper classes and functions to use SIMD
-to optimise your code.
-
 NOTE: This project is not fully documented. All of the functions and classes within the latest release
 will be documentated but if you are using the latest push from Github some sections may be undocumented.
 The documentation for the language can be found [here](https://pashabibko.github.io/PashaBibko-Util/).

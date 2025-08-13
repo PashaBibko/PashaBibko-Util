@@ -1,0 +1,63 @@
+name: Build and add the Util library to a release and sets release text
+
+on:
+    release:
+        types: [released]
+
+jobs:
+    build-and-package:
+        runs-on: windows-latest # Needs windows to build .lib
+
+        steps:
+        -   name: Checkout code
+            uses: actions/checkout@v3
+
+        -   name: Build project
+            run: scripts/build.bat
+            shell: cmd
+
+        -   name: Prepare release folder
+            run: |
+                mkdir package
+                copy bin\PashaBibko-UTIL.lib package\PB-UTIL.lib
+                copy Util.h package\Util.h
+                robocopy classes package\classes *.h
+                robocopy sections package\sections *.h
+
+        -   name: Create ZIP file
+            run: powershell Compress-Archive -Path package\* -DestinationPath Win64-PB-UTIL.zip
+
+        -   name: Upload ZIP to release
+            uses: softprops/action-gh-release@v1
+            with:
+                files: Win64-PB-UTIL.zip
+            env:
+                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    set-release-text:
+        runs-on: ubuntu-latest # Cheaper than windows
+        
+        steps:
+        -   name: Update release body
+            uses: actions/github-script@v7
+            with:
+                github-token: ${{ secrets.GITHUB_TOKEN }}
+                script: |
+                    const releaseID = context.payload.id;
+
+                    const releaseText = `
+                    This release provides a precompiled .lib and all headers for quick,
+                    direct integration—perfect if you don’t want to use Git submodules.
+                    Simply download the zip, link the library, and include the headers.
+                    If you would like full documentation, examples, and advanced usage,
+                    you can visit [here](https://pashabibko.github.io/PashaBibko-Util/).
+                    While we recommend using the library as a git submodule for active
+                    development, this release is ideal for immediate use in your projects. 
+                    `;
+
+                    await github.rest.repos.updateRelease({
+                        owner: context.repo.owner;,
+                        repo: context.repo.repo,
+                        release_id: releaseID,
+                        body: releaseText
+                    });
