@@ -26,9 +26,8 @@ jobs:
                 mkdir package
                 copy bin\PashaBibko-UTIL.lib package\PB-UTIL.lib
                 copy Util.h package\Util.h
-                robocopy classes package\classes *.h
-                robocopy sections package\sections *.h
-                if ($LASTEXITCODE -gt 1) { exit 1 }
+                Copy-Item -Path classes\*.h -Destination package\classes -Force
+                Copy-Item -Path sections\*.h -Destination package\sections -Force
             shell: pwsh
 
         -   name: Create ZIP file
@@ -57,7 +56,7 @@ jobs:
 
                     const releaseID = response.data.id;
 
-                    const releaseText = `This release provides a precompiled .lib and all headers for quick, direct integration—perfect if you don’t want to use Git submodules. Simply download the zip, link the library, and include the headers. If you would like full documentation, examples, and advanced usage, you can visit [here](https://pashabibko.github.io/PashaBibko-Util/). While we recommend using the library as a git submodule for active development, this release is ideal for immediate use in your projects.`;
+                    const releaseText = `This release provides a precompiled .lib and all headers for quick, direct integrationï¿½perfect if you donï¿½t want to use Git submodules. Simply download the zip, link the library, and include the headers. If you would like full documentation, examples, and advanced usage, you can visit [here](https://pashabibko.github.io/PashaBibko-Util/). While we recommend using the library as a git submodule for active development, this release is ideal for immediate use in your projects.`;
 
                     await github.rest.repos.updateRelease({
                         owner: context.repo.owner,
