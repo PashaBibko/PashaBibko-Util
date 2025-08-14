@@ -3,7 +3,8 @@
 PashaBibko-Util is a C++ util library that I developed for use in my projects.
 It is cross platform and supports both Windows and Linux based systems.
 Some of the main features include coloured text in the console, logging/better console printing
-and lightweight implementations of STD classes for easier use and faster builds.
+and lightweight implementations of STD classes for easier use and faster builds. The documentation
+for the library can be found [here](https://pashabibko.github.io/PashaBibko-Util/index.html).
 
 ### Adding to your project
 
