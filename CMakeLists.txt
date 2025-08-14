@@ -6,7 +6,13 @@ set(CMAKE_CXX_STANDARD_REQUIED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
 # Creates a CMake project if it is the top level #
-IF (${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_CURRENT_SOURCE_DIR})
+if (${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_CURRENT_SOURCE_DIR})
+
+	# Enables Python extension on local builds (for testing) #
+	if (NOT GH_ACTION_BUILD)
+		set(PB_UTIL_PYTHON_EXTENSION_ENABLED ON)
+	endif()
+
 	set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/bin")
 	set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/bin")
 	set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/bin")
@@ -16,20 +22,25 @@ endif()
 
 # Creates the static library #
 add_library(PashaBibko-UTIL STATIC
-	# List of source files for the Util library #
-	"extensions/python/CTPython.cpp"
+	# List of core source files for the Util library #
 	"core/FileRead.cpp"
 	"core/Misc.cpp"
 	"core/Log.cpp"
 )
 
-# Sets the include paths for the Util library #
+# Checks if it should include the python extension (has it's own CMakeList.txt) #
+if (PB_UTIL_PYTHON_EXTENSION_ENABLED)
+	target_compile_definitions(PashaBibko-UTIL PUBLIC _PB_UTIL_PYTHON_EXTENSION_ENABLED)
+	add_subdirectory(extensions/python)
+endif()
+
+# Sets the include paths for the Util library        #
 # Shared with any projects that include this library #
 target_include_directories(PashaBibko-UTIL PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
-# Only builds the .exe when this is the root project #
+# Only builds the .exe when this is the root project and not a gh-action build                         #
 # This stops it building when this is included as a subproject but still allows testing of the library #
-if (${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_CURRENT_SOURCE_DIR})
+if (${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_CURRENT_SOURCE_DIR} AND NOT GH_ACTION_BUILD)
 	add_executable(PashaBibko-UTIL-Example example/ExampleUse.cpp)
 	target_link_libraries(PashaBibko-UTIL-Example PashaBibko-UTIL)
 endif()

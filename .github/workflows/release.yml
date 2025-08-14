@@ -18,7 +18,7 @@ jobs:
                 cmake-version: "3.27.5"
 
         -   name: Build project
-            run: scripts/build.bat "-DCMAKE_BUILD_TYPE=Release -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++"
+            run: scripts/build.bat "-DCMAKE_BUILD_TYPE=Release -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ -DGH_ACTION_BUILD=TRUE"
             shell: cmd
 
         -   name: Prepare release folder

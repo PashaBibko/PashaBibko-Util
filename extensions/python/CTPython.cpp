@@ -1,6 +1,6 @@
-#include <sections/CTPython.h>
+#include <extensions/python/CTPython.h>
 
-#include <sections/Log.h>
+#include <core/Log.h>
 
 #if defined(_WIN32) || defined(_WIN64)
     #ifndef NOMINMAX // Defined by GCC
