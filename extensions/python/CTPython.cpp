@@ -2,6 +2,15 @@
 
 #include <core/Log.h>
 
+/* Forces release version as MSVC has errors with debug headers */
+#ifdef _DEBUG
+#undef _DEBUG
+#include <Python.h>
+#define _DEBUG
+#else
+#include <Python.h>
+#endif
+
 #if defined(_WIN32) || defined(_WIN64)
     #ifndef NOMINMAX // Defined by GCC
     #define NOMINMAX
