@@ -1,6 +1,6 @@
 #pragma once
 
-#include <classes/Colour.h>
+#include <core/Colour.h>
 
 /**
  * @file Misc.h

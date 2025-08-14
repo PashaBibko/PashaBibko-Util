@@ -17,10 +17,10 @@ endif()
 # Creates the static library #
 add_library(PashaBibko-UTIL STATIC
 	# List of source files for the Util library #
-	"src/CTPython.cpp"
-	"src/FileRead.cpp"
-	"src/Misc.cpp"
-	"src/Log.cpp"
+	"extensions/python/CTPython.cpp"
+	"core/FileRead.cpp"
+	"core/Misc.cpp"
+	"core/Log.cpp"
 )
 
 # Sets the include paths for the Util library #

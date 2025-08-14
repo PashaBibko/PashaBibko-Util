@@ -18,16 +18,18 @@
 #define _LIKELY [[likely]]
 #endif // _LIKELY
 
-/* Includes the classes of the Util library */
-#include <classes/ReturnVal.h>
-#include <classes/Colour.h>
-#include <classes/Vec.h>
+/* Includes the core of the Util library */
+#include <core/ReturnVal.h>
+#include <core/Colour.h>
+#include <core/Vec.h>
+#include <core/FileRead.h>
+#include <core/Misc.h>
+#include <core/Log.h>
 
-/* Includes the additional sections of the Util library */
-#include <sections/CTPython.h>
-#include <sections/FileRead.h>
-#include <sections/Misc.h>
-#include <sections/Log.h>
+/* Includes the extensions (if enabled) */
+#ifdef _PB_UTIL_PYTHON_EXTENSION_ENABLED
+    #include<extensions/python/CTPython.h>
+#endif // _PB_UTIL_PYTHON_EXTENSION_ENABLED
 
 /* Shorthands for the namespace */
 namespace PBU = PashaBibko::Util;

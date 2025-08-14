@@ -2,7 +2,7 @@
 
 #include <cstdlib>
 
-#include <classes/Colour.h>
+#include <core/Colour.h>
 
 /*
  * Different operating systems have different includes needed for coloring in the console.
