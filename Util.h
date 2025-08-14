@@ -24,6 +24,7 @@
 #include <classes/Vec.h>
 
 /* Includes the additional sections of the Util library */
+#include <sections/CTPython.h>
 #include <sections/FileRead.h>
 #include <sections/Misc.h>
 #include <sections/Log.h>
