@@ -21,8 +21,8 @@ struct LogableExample
 	}
 };
 
-CTG_Python("x = len([1, 2, 3])");
-CTG_Python("x = 52 * 67 + 34");
+CTG_Python("x", "x = len([1, 2, 3])");
+CTG_Python("y", "y = 23110 + 7");
 
 int main()
 {

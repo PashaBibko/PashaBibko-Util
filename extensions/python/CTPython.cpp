@@ -21,7 +21,8 @@ namespace PashaBibko::Util::CTG
         return hModule;
     }
 
-    typedef const char* (*RunPythonSnippet)(const char*);
+    /* Helper typedef to extract the RunPythonSnippet function from the DLL */
+    typedef const char* (*RunPythonSnippet)(const char*, const char*);
 
     void InitialisePythonCTG()
     {
@@ -59,10 +60,10 @@ namespace PashaBibko::Util::CTG
         }
 
         /* Runs the RunPythonSnippet function on each of the code snippets */
-        std::vector<const char*> snippets = GetCodeStorage();
+        std::vector<PythonSnippet> snippets = GetCodeStorage();
         for (auto& snippet : snippets)
         {
-            const char* errorMessage = run(snippet);
+            const char* errorMessage = run(snippet.resName, snippet.code);
             if (errorMessage != nullptr)
             {
                 std::string errorMsg = errorMessage;

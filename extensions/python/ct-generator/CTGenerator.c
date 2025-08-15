@@ -40,7 +40,7 @@ static BOOL APIENTRY DllMain(HMODULE hModule, DWORD reason, LPVOID reserved)
 }
 
 /* Exported function to run python code from c-strings */
-__declspec(dllexport) const char* RunPythonSnippet(const char* snippet)
+__declspec(dllexport) const char* RunPythonSnippet(const char* varName, const char* snippet)
 {
     /* Fetches the dictionary from __main__ to store variables */
     PyObject* module = PyImport_AddModule("__main__");
@@ -50,7 +50,7 @@ __declspec(dllexport) const char* RunPythonSnippet(const char* snippet)
     PyRun_String(snippet, Py_file_input, global, global);
 
     /* Retrives value of X */
-    PyObject* xObj = PyDict_GetItemString(global, "x");
+    PyObject* xObj = PyDict_GetItemString(global, varName);
     long x = PyLong_AsLong(xObj);
 
     /* Displays it to the screen(temporary) */
