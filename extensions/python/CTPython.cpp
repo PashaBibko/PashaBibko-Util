@@ -2,15 +2,6 @@
 
 #include <core/Log.h>
 
-/* Forces release version as MSVC has errors with debug headers */
-#ifdef _DEBUG
-#undef _DEBUG
-#include <Python.h>
-#define _DEBUG
-#else
-#include <Python.h>
-#endif
-
 #if defined(_WIN32) || defined(_WIN64)
     #ifndef NOMINMAX // Defined by GCC
     #define NOMINMAX
@@ -51,6 +42,13 @@ namespace PashaBibko::Util::CTG
         for (const auto& snippet : pycode)
         {
             Util::Log("[CTG::InitalisePythonCTG]: Compiling python code: ", std::string(snippet));
+        }
+
+        /* Attaches the DLL to the process */
+        HMODULE hDLL = LoadLibraryA("PashaBibko-UTIL-PythonCTG.dll");
+        if (!hDLL)
+        {
+            Util::Log("Failed to load DLL");
         }
     }
 }
