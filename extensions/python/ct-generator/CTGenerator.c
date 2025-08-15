@@ -49,15 +49,33 @@ __declspec(dllexport) const char* RunPythonSnippet(const char* varName, const ch
     /* Runs the python code */
     PyRun_String(snippet, Py_file_input, global, global);
 
-    /* Retrives value of X */
+    /* Retrives the value object if it exists */
     PyObject* xObj = PyDict_GetItemString(global, varName);
-    long x = PyLong_AsLong(xObj);
+    if (xObj == NULL)
+    {
+        char* errorPrefixMessage = "Could not find value of: ";
+        size_t errorLen = strlen(errorPrefixMessage) + strlen(varName) + 1; // +1 for null terminator
+        char* fullErrorMessage = (char*)malloc(errorLen);
+        
+        if (fullErrorMessage == NULL)
+        {
+            return "Internal: \"malloc failed to allocate\"";
+        }
+
+        strcpy(fullErrorMessage, errorPrefixMessage);
+        strcat(fullErrorMessage, varName);
+
+        return fullErrorMessage;
+    }
 
     /* Displays it to the screen(temporary) */
-    char str[20];
-    sprintf(str, "%ld", x);
+    //char str[20];
+    //sprintf(str, "%ld", x);
 
-    MessageBoxA(NULL, str, "Info", MB_OK);
+    //MessageBoxA(NULL, str, "Info", MB_OK);
+
+    /* Resets the global dictionary to stop contamination between snippets */
+    PyDict_Clear(global);
 
     return NULL;
 }

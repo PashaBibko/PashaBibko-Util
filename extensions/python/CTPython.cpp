@@ -67,8 +67,7 @@ namespace PashaBibko::Util::CTG
             if (errorMessage != nullptr)
             {
                 std::string errorMsg = errorMessage;
-                Util::Log("ERROR[Python ran into error below]");
-                Util::Log(errorMsg);
+                Util::Log("Python ERROR[", errorMsg, "]");
                 Util::EndProcess();
             }  
         }
