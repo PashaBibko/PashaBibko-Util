@@ -1,5 +1,6 @@
 #include <extensions/python/CTPython.h>
 
+#include <core/Misc.h>
 #include <core/Log.h>
 
 #if defined(_WIN32) || defined(_WIN64)
@@ -20,6 +21,8 @@ namespace PashaBibko::Util::CTG
         return hModule;
     }
 
+    typedef const char* (*RunPythonSnippet)(const char*);
+
     void InitialisePythonCTG()
     {
         /* Checks if it is the first initalisation */
@@ -37,18 +40,36 @@ namespace PashaBibko::Util::CTG
             return;
         }
 
-        /* Else it is the first run after the compile so the values need to be loaded */
-        std::vector<const char*>& pycode = GetCodeStorage();
-        for (const auto& snippet : pycode)
-        {
-            Util::Log("[CTG::InitalisePythonCTG]: Compiling python code: ", std::string(snippet));
-        }
-
-        /* Attaches the DLL to the process */
+        /* Attaches the DLL to the process (automatically unloaded) */
         HMODULE hDLL = LoadLibraryA("PashaBibko-UTIL-PythonCTG.dll");
         if (!hDLL)
         {
-            Util::Log("Failed to load DLL");
+            Util::Log("ERROR[Failed to load PashaBibko-UTIL-PythonCTG.dll]");
+            Util::EndProcess();
+            return; // return is only here for intelisense
+        }
+
+        /* Loads the RunPythonSnippet function from the DLL */
+        RunPythonSnippet run = (RunPythonSnippet)GetProcAddress(hDLL, "RunPythonSnippet");
+        if (!run)
+        {
+            Util::Log("ERROR[Could not load RunPythonSnippet function from PashaBibko-UTIL-PythonCTG.dll]");
+            Util::EndProcess();
+            return; // return is only here for intelisense
+        }
+
+        /* Runs the RunPythonSnippet function on each of the code snippets */
+        std::vector<const char*> snippets = GetCodeStorage();
+        for (auto& snippet : snippets)
+        {
+            const char* errorMessage = run(snippet);
+            if (errorMessage != nullptr)
+            {
+                std::string errorMsg = errorMessage;
+                Util::Log("ERROR[Python ran into error below]");
+                Util::Log(errorMsg);
+                Util::EndProcess();
+            }  
         }
     }
 }

@@ -1,5 +1,3 @@
-#include <CTGenerator.h>
-
 /* Forces release version as MSVC has errors with debug headers */
 #ifdef _DEBUG
     #undef _DEBUG
@@ -20,19 +18,46 @@
     #error "Support for non-windows operating systems for this version has not been implemented yet"
 #endif
 
-BOOL APIENTRY DllMain(HMODULE hModule, DWORD reason, LPVOID reserved)
+/* C standard library */
+#include <stdio.h>
+
+/* [Windows only] function called when a DLL is loaded to an .exe */
+static BOOL APIENTRY DllMain(HMODULE hModule, DWORD reason, LPVOID reserved)
 {
     switch(reason)
     {
         case DLL_PROCESS_ATTACH:
-            MessageBoxA(NULL, "DLL attached!", "Info", MB_OK);
-            return;
+            Py_Initialize();
+            return TRUE;
 
         case DLL_PROCESS_DETACH:
-            MessageBoxA(NULL, "DLL detached!", "Info", MB_OK);
-            return;
+            Py_Finalize();
+            return TRUE;
 
         default:
-            return;
+            return TRUE;
     }
+}
+
+/* Exported function to run python code from c-strings */
+__declspec(dllexport) const char* RunPythonSnippet(const char* snippet)
+{
+    /* Fetches the dictionary from __main__ to store variables */
+    PyObject* module = PyImport_AddModule("__main__");
+    PyObject* global = PyModule_GetDict(module);
+
+    /* Runs the python code */
+    PyRun_String(snippet, Py_file_input, global, global);
+
+    /* Retrives value of X */
+    PyObject* xObj = PyDict_GetItemString(global, "x");
+    long x = PyLong_AsLong(xObj);
+
+    /* Displays it to the screen(temporary) */
+    char str[20];
+    sprintf(str, "%ld", x);
+
+    MessageBoxA(NULL, str, "Info", MB_OK);
+
+    return NULL;
 }
