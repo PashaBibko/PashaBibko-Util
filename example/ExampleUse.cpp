@@ -23,7 +23,7 @@ struct LogableExample
 
 CTG_Python("x", "x = len([1, 2, 3])");
 CTG_Python("y", "y = 23110 + 7");
-CTG_Python("x", "t = 342.0");
+CTG_Python("t", "t = 342.0");
 
 int main()
 {
