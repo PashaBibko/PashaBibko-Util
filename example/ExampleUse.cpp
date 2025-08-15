@@ -29,6 +29,7 @@ int main()
 {
 	/* Initalises the compile-time python */
 	Util::CTG::InitialisePythonCTG();
+	return 0;
 
 	/* This is a simple example of using coloured text with the Util library */
 	Util::Print<Util::Colour::LightAqua>("Hello, World!\n");

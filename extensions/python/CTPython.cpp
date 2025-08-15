@@ -21,8 +21,10 @@ namespace PashaBibko::Util::CTG
         return hModule;
     }
 
-    /* Helper typedef to extract the RunPythonSnippet function from the DLL */
+    /* Helper typedefs to extract functions from the DLL */
+
     typedef const char* (*RunPythonSnippet)(const char*, const char*);
+    typedef void (*SaveResults)(void);
 
     void InitialisePythonCTG()
     {
@@ -50,6 +52,15 @@ namespace PashaBibko::Util::CTG
             return; // return is only here for intelisense
         }
 
+        /* Loads the SaveResults function from the DLL */
+        SaveResults save = (SaveResults)GetProcAddress(hDLL, "SaveResults");
+        if (!save)
+        {
+            Util::Log("ERROR[Could not load SaveResults function from PashaBibko-UTIL-PythonCTG.dll");
+            Util:EndProcess();
+            return; // return is only here for intelisense
+        }
+
         /* Loads the RunPythonSnippet function from the DLL */
         RunPythonSnippet run = (RunPythonSnippet)GetProcAddress(hDLL, "RunPythonSnippet");
         if (!run)
@@ -71,5 +82,8 @@ namespace PashaBibko::Util::CTG
                 Util::EndProcess();
             }  
         }
+
+        /* Saves the results to a .cpp file */
+        save();
     }
 }
