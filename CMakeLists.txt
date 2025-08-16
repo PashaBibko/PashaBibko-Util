@@ -28,12 +28,6 @@ add_library(PashaBibko-UTIL STATIC
 	"core/Log.cpp"
 )
 
-# Checks if it should include the python extension (has it's own CMakeList.txt) #
-if (PB_UTIL_PYTHON_EXTENSION_ENABLED)
-	target_compile_definitions(PashaBibko-UTIL PUBLIC _PB_UTIL_PYTHON_EXTENSION_ENABLED)
-	add_subdirectory(extensions/python)
-endif()
-
 # Sets the include paths for the Util library        #
 # Shared with any projects that include this library #
 target_include_directories(PashaBibko-UTIL PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
@@ -43,4 +37,12 @@ target_include_directories(PashaBibko-UTIL PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 if (${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_CURRENT_SOURCE_DIR} AND NOT GH_ACTION_BUILD)
 	add_executable(PashaBibko-UTIL-Example example/ExampleUse.cpp)
 	target_link_libraries(PashaBibko-UTIL-Example PashaBibko-UTIL)
+
+	set(USES_PYTHON_CTG PashaBibko-UTIL-Example)
+endif()
+
+# Checks if it should include the python extension (has it's own CMakeList.txt) #
+if (PB_UTIL_PYTHON_EXTENSION_ENABLED)
+	target_compile_definitions(PashaBibko-UTIL PUBLIC _PB_UTIL_PYTHON_EXTENSION_ENABLED)
+	add_subdirectory(extensions/python)
 endif()

@@ -85,5 +85,8 @@ namespace PashaBibko::Util::CTG
 
         /* Saves the results to a .cpp file */
         save();
+
+        /* Exits the program */
+        Util::EndProcess();
     }
 }
