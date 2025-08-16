@@ -14,8 +14,8 @@ target_link_libraries(PashaBibko-UTIL-PythonCTG PRIVATE ${Python3_LIBRARIES})
 
 # Adds a command to run the main .exe after it is built to generate the PBUtilsPythonCTGValues.cpp #
 add_custom_command(
-	OUTPUT ${CMAKE_SOURCE_DIR}/.PBUTIL/PBUtilsPythonCTGValues.cpp
-	COMMAND ${CMAKE_COMMAND} -E rm -f ${CMAKE_SOURCE_DIR}/.PBUTIL/PBUtilsPythonCTGValues.cpp
+	OUTPUT ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/.PBUTIL/PBUtilsPythonCTGValues.cpp
+	COMMAND ${CMAKE_COMMAND} -E rm -f ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/.PBUTIL/PBUtilsPythonCTGValues.cpp
 	COMMAND $<TARGET_FILE:${USES_PYTHON_CTG}>
 	DEPENDS $<TARGET_FILE:${USES_PYTHON_CTG}>
 	COMMENT "Running [${USES_PYTHON_CTG}] to generate python outputs."

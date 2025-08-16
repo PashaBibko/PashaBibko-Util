@@ -40,17 +40,24 @@ static void DLL_Attach(void)
 }
 
 /* Saves results to a cpp file */
-__declspec(dllexport) void SaveResults(void)
+__declspec(dllexport) void SaveResults(const char* file)
 {
     if (!Py_IsInitialized())
         return;
 
+    /* Loads the saved values into the gloval dictionary for access */
     PyObject* mainModule = PyImport_AddModule("__main__");
     PyObject* global = PyModule_GetDict(mainModule);
 
     PyObject* savedCopy = PyDict_Copy(savedDict);
     PyDict_SetItemString(global, "values", savedCopy);
+
     Py_DECREF(savedCopy);
+
+    /* Loads the filepath into the dictionary so the python script knows where to write */
+    PyObject* filepath = PyUnicode_FromString(file);
+    PyDict_SetItemString(global, "filepath", filepath);
+    Py_DECREF(filepath);
 
     PyRun_SimpleString("exec(open('../extensions/python/ct-generator/GenerateCppFile.py').read())");
 

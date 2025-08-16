@@ -3,6 +3,8 @@
 #include <core/Misc.h>
 #include <core/Log.h>
 
+#include <filesystem>
+
 #if defined(_WIN32) || defined(_WIN64)
     #ifndef NOMINMAX // Defined by GCC
     #define NOMINMAX
@@ -24,7 +26,7 @@ namespace PashaBibko::Util::CTG
     /* Helper typedefs to extract functions from the DLL */
 
     typedef const char* (*RunPythonSnippet)(const char*, const char*);
-    typedef void (*SaveResults)(void);
+    typedef void (*SaveResults)(const char*);
 
     void InitialisePythonCTG()
     {
@@ -84,7 +86,14 @@ namespace PashaBibko::Util::CTG
         }
 
         /* Saves the results to a .cpp file */
-        save();
+        std::filesystem::path dir = "./.PBUTIL";
+        std::filesystem::create_directory(dir);
+
+        std::filesystem::path fp = "./.PBUTIL/PBUtilsPythonCTGValues.cpp";
+        std::filesystem::path ab = std::filesystem::absolute(fp);
+        std::string fpstring = ab.string();
+        const char* cstring = fpstring.c_str();
+        save(cstring);
 
         /* Exits the program */
         Util::EndProcess();

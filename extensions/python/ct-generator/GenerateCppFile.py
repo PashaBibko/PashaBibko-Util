@@ -1,4 +1,5 @@
 # Fetches data stored by C API #
+output_path = globals().get('filepath')
 values = globals().get('values')
 
 # Types that can be written to the CPP file #
@@ -83,9 +84,6 @@ for t, d in type_dicts.items():
         cpp_file += GenerateMapFromDict(t, d)
         cpp_file += GenerateMapGetter(t, d)
 
-# Prints the file to the console (temporary) #
-print(cpp_file)
-
-# TODO: Make CPP file [ dict->map ]
-#       Add CPP file to CMake BUILD [ .cpp->.dll ]
-#       Setup CMake to autorun project for CTG python
+# Writes the cpp to the provided file #
+with open(output_path, "w") as file:
+    file.write(cpp_file)
