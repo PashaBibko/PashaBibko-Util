@@ -21,15 +21,8 @@ struct LogableExample
 	}
 };
 
-CTG_Python("len([1, 2, 3])");
-
-CTG_Python("print(\"hello world\")");
-
 int main()
 {
-	/* Initalises the compile-time python */
-	Util::CTG::InitialisePythonCTG();
-
 	/* This is a simple example of using coloured text with the Util library */
 	Util::Print<Util::Colour::LightAqua>("Hello, World!\n");
 
