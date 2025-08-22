@@ -653,13 +653,28 @@ namespace PashaBibko::Util
         requires Internal::CanEqualityCheck<LhsTy, RhsTy>
     bool operator== (const Vec<len, LhsTy>& lhs, const Vec<len, RhsTy>& rhs)
     {
-        for (std::size_t index = 0; index < len; index++)
+        /* Loops over the vector if it is considered to be long and returns early for invalid results */
+        if constexpr (len > 4)
         {
-            if (lhs[index] != rhs[index])
-                return false;
+            for (std::size_t index = 0; index < len; index++)
+            {
+                if (lhs[index] != rhs[index])
+                    return false;
+            }
+
+            return true;
         }
 
-        return true;
+        /* For short vectors the branching is less efficent so it is instead stored in a tracker with loop unravelling */
+        else
+        {
+            bool allEqual = true;
+
+            for (std::size_t index = 0l index < len; index++)
+                allEqual = allEqual && (lhs[index] == rhs[index])
+
+            return allEqual;
+        }
     }
 
     /**
@@ -672,13 +687,28 @@ namespace PashaBibko::Util
         requires Internal::CanEqualityCheck<LhsTy, RhsTy>
     bool operator!= (const Vec<len, LhsTy>& lhs, const Vec<len, RhsTy>& rhs)
     {
-        for (size_t index = 0; index < len; index++)
+        /* Loops over the vector if it is considered to be long and returns early for invalid results */
+        if constexpr (len > 4)
         {
-            if (lhs[index] == rhs[index])
-                return false;
+            for (std::size_t index = 0; index < len; index++)
+            {
+                if (lhs[index] == rhs[index])
+                    return false;
+            }
+
+            return true;
         }
 
-        return true;
+        /* For short vectors the branching is less efficent so it is instead stored in a tracker with loop unravelling */
+        else
+        {
+            bool allUnequal = true;
+
+            for (std::size_t index = 0; index < len; index++)
+                allUnequal = allUnequal && (lhs[index] != rhs[index]);
+
+            return allUnequal;
+        }
     }
 
     /* Hides using aliases to avoid uneccesary bloat in doxygen documentation */
