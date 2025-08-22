@@ -1,6 +1,7 @@
 #pragma once
 
 #include <core/Colour.h>
+#include <core/Macros.h>
 #include <core/Misc.h>
 
 #include <type_traits>
@@ -34,18 +35,28 @@ namespace PashaBibko::Util
             { os << arg } -> std::same_as<std::ostream&>;
         };
 
-        /* Checks if the type has a LogStr function */
-        template<typename Ty> concept TypeHasLogFunction = requires(Ty obj)
+        /* Checks if the type has a legacy LogStr function */
+        template<typename Ty> concept TypeHasLegacyLogFunction = requires(Ty obj)
         {
             { obj.LogStr() } -> std::same_as<std::string>;
         };
 
-	/* Helper type to display type name in static_assert() */
-	template<typename Ty> struct DependentFalse : std::false_type {};
+        /* Checks if the type has a valid (non-legacy) LogStr function */
+        template<typename Ty> concept TypeHasLogFunction = requires(Ty obj, std::ostringstream& os, unsigned depth)
+        {
+            { obj.LogStr(os, depth) } -> std::same_as<void>;
+        };
+
+	    /* Helper type to display type name in static_assert() */
+	    template<typename Ty> struct DependentFalse : std::false_type {};
+
+        /* Helper function to call legacy LogStr function, has to be seperate to mark as deprecated */
+        template<typename Ty>
+        _DEPRECATED("\n\tTy.LogStr() is deprecated, please define Ty.LogStr(std::ostringstream& os, unsigned depth).\n\tSee documentation for more information\n")
+        std::string ProcessLegacyArg(Ty&& arg) { return arg.LogStr(); }
 
         /* Assumes all types passed are valid as it is an internal function */
-        template<typename Ty>
-        std::string ProcessArg(Ty&& arg)
+        template<typename Ty> std::string ProcessArg(Ty&& arg, unsigned depth = 0)
         {
             /* Checks if the argument type is a pointer */
             if constexpr(std::is_pointer_v<std::remove_cvref_t<Ty>>)
@@ -60,10 +71,21 @@ namespace PashaBibko::Util
                 return std::move(os).str();
             }
 
-            /* Custom log function has highest precedence */
+            /* Checks for non-legacy log function */
             else if constexpr (TypeHasLogFunction<Ty>)
             {
-                return arg.LogStr();
+                std::ostringstream os{};
+                arg.LogStr(os, depth);
+
+                os.flush();
+                return os.str();
+            }
+
+            /* Custom log function has highest precedence                                                         */
+            /* Still calls the function but throws a warning as it is legacy and should be changed to new version */
+            else if constexpr (TypeHasLegacyLogFunction<Ty>)
+            {
+                return ProcessLegacyArg(arg);
             }
 
             /* Checks for standard logging (std::ostream& << Ty) */
@@ -89,7 +111,7 @@ namespace PashaBibko::Util
             return (ProcessArg(std::forward<Args>(args)) + ... + "");
         }
 
-        template<typename Ty> concept LogableBase = Internal::StandardLogable<Ty> || Internal::TypeHasLogFunction<Ty>;
+        template<typename Ty> concept LogableBase = Internal::StandardLogable<Ty> || Internal::TypeHasLogFunction<Ty> || Internal::TypeHasLegacyLogFunction<Ty>;
         template<typename Ty> concept Logable = LogableBase<Ty> || (LogableBase<std::remove_cv_t<std::remove_pointer_t<std::remove_cvref_t<Ty>>>>);
     }
 
@@ -215,8 +237,12 @@ namespace PashaBibko::Util
         unsigned counter = 0;
         for (const auto& item : container)
         {
-            std::string itemStr = Internal::ProcessArg(item);
-            os << '\t' << std::setw(4) << std::left << counter << " | " << itemStr << '\n';
+            std::ostringstream prefixStream{};
+            prefixStream << std::string(8, ' ') << std::setw(4) << std::left << counter << " | ";
+            std::string prefix = prefixStream.str();
+
+            std::string itemStr = Internal::ProcessArg(item, prefix.length());
+            os << prefix << itemStr << '\n';
             counter++;
         }
 

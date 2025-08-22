@@ -19,6 +19,10 @@
 #define _LIKELY [[likely]]
 #endif // _LIKELY
 
+#ifndef _DEPRECATED
+#define _DEPRECATED(reason) [[deprecated(reason)]]
+#endif // _DEPRECATED
+
 /* Includes the core of the Util library */
 #include <core/ReturnVal.h>
 #include <core/Colour.h>

@@ -15,9 +15,11 @@ static Util::ReturnVal<int> SafeDivide(int x, int y)
 
 struct LogableExample
 {
-	std::string LogStr() const
+	void LogStr(std::ostringstream& os, unsigned depth) const
 	{
-		return "Custom Log method called";
+		os << "Custom log method called\n";
+		os << std::string(depth, ' ');
+		os << "Can be on multiple lines";
 	}
 };
 
@@ -42,7 +44,7 @@ int main()
 	Util::PrintLn(null);
 
 	/* Example of using an iterator with the log */
-	std::array<int, 5> array = { 1, 2, 3, 4, 5 };
+	std::array<LogableExample, 2> array = {};
 	Util::Log("Example-Array", array);
 
 	/* Vector example usage */
@@ -52,7 +54,7 @@ int main()
 	Util::Vec<4, int> vecB(5);
 	Util::Vec<4, int> vecC = vecA + vecB;
 
-	Util::Log("Vector: ", vecC);
+	//Util::Log("Vector: ", vecC);
 
 	/* Check vectors are not equal */
 	Util::Log("Are vectors equal: ", vecA != vecB);
