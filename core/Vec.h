@@ -1,8 +1,8 @@
 #pragma once
 
-#include <type_traits>
-#include <utility>
 #include <cstddef>
+
+#include <core/Log.h>
 
 /**
  * @file Vec.h
@@ -38,6 +38,29 @@ namespace PashaBibko::Util
             };
 
             template<typename... Args> VecMembers(Args&&... args) : data{ std::forward<Args>(args)... } {}
+
+            /* Requires the type to be loggable to the console in some way */
+            template<typename Enable = std::enable_if_t<Internal::Logable<Ty>>>
+            std::string LogStr() const
+            {
+                /* If the type can be outpuutted to the console by the ostream& << operator */
+                if constexpr (Internal::StandardLogable<Ty>)
+                {
+                    std::ostringstream os;
+                    os << "{ x: " << x << " y: " << y << " }";
+
+                    return os.str();
+                }
+
+                /* Else means the type has a LogStr function */
+                else
+                {
+                    std::ostringstream os;
+                    os << "\n{\n\tx: " << x.LogStr() << "\n\ty: " << y.LogStr() << "\n}";
+
+                    return os.str();
+                }
+            }
         };
 
         /* Provides aliases of [X, Y, Z] and [R, G, B] to indecies of [0, 1, 2] to the array when of length 3 */
@@ -52,6 +75,29 @@ namespace PashaBibko::Util
             };
 
             template<typename... Args> VecMembers(Args&&... args) : data{ std::forward<Args>(args)... } {}
+
+            /* Requires the type to be loggable to the console in some way */
+            template<typename Enable = std::enable_if_t<Internal::Logable<Ty>>>
+            std::string LogStr() const
+            {
+                /* If the type can be outpuutted to the console by the ostream& << operator */
+                if constexpr (Internal::StandardLogable<Ty>)
+                {
+                    std::ostringstream os;
+                    os << "{ x: " << x << " y: " << y << " z: " << z << " }";
+
+                    return os.str();
+                }
+
+                /* Else means the type has a LogStr function */
+                else
+                {
+                    std::ostringstream os;
+                    os << "\n{\n\tx: " << x.LogStr() << "\n\ty: " << y.LogStr() << "\n\tz: " << z.LogStr() << "\n}";
+
+                    return os.str();
+                }
+            }
         };
 
         /* Provides aliases of [X, Y, Z, Z] and [R, G, B, A] to indecies of [0, 1, 2, 3] to the array when of length 4 */
@@ -66,6 +112,29 @@ namespace PashaBibko::Util
             };
 
             template<typename... Args> VecMembers(Args&&... args) : data{ std::forward<Args>(args)... } {}
+
+            /* Requires the type to be loggable to the console in some way */
+            template<typename Enable = std::enable_if_t<Internal::Logable<Ty>>>
+            std::string LogStr() const
+            {
+                /* If the type can be outpuutted to the console by the ostream& << operator */
+                if constexpr (Internal::StandardLogable<Ty>)
+                {
+                    std::ostringstream os;
+                    os << "{ x: " << x << " y: " << y << " z: " << z << " w: " << w << " }";
+
+                    return os.str();
+                }
+
+                /* Else means the type has a LogStr function */
+                else
+                {
+                    std::ostringstream os;
+                    os << "\n{\n\tx: " << x.LogStr() << "\n\ty: " << y.LogStr() << "\n\tz: " << z.LogStr() << "\n\tw: " << w.LogStr() << "\n}";
+
+                    return os.str();
+                }
+            }
         };
 
         /* Checks all types within a variadic template are the same */
