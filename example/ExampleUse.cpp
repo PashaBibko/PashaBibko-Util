@@ -54,7 +54,7 @@ int main()
 	Util::Vec<4, int> vecB(5);
 	Util::Vec<4, int> vecC = vecA + vecB;
 
-	//Util::Log("Vector: ", vecC);
+	Util::Log("Vector: ", vecC);
 
 	/* Check vectors are not equal */
 	Util::Log("Are vectors equal: ", vecA != vecB);

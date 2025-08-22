@@ -39,27 +39,12 @@ namespace PashaBibko::Util
 
             template<typename... Args> VecMembers(Args&&... args) : data{ std::forward<Args>(args)... } {}
 
-            /* Requires the type to be loggable to the console in some way */
-            template<typename Enable = std::enable_if_t<Internal::Logable<Ty>>>
-            std::string LogStr() const
+            /* Requires the type to be loggable to the console via std::ostream& operator */
+            /* If the type has a LogStr function for logging it will be logged via that   */
+            template<typename Enable = std::enable_if_t<Internal::StandardLogable<Ty>>>
+            void LogStr(std::ostringstream& os, unsigned depth) const
             {
-                /* If the type can be outpuutted to the console by the ostream& << operator */
-                if constexpr (Internal::StandardLogable<Ty>)
-                {
-                    std::ostringstream os;
-                    os << "{ x: " << x << " y: " << y << " }";
-
-                    return os.str();
-                }
-
-                /* Else means the type has a LogStr function */
-                else
-                {
-                    std::ostringstream os;
-                    os << "\n{\n\tx: " << x.LogStr() << "\n\ty: " << y.LogStr() << "\n}";
-
-                    return os.str();
-                }
+                os << "{ x: " << x << " y: " << y << " }";
             }
         };
 
@@ -76,27 +61,12 @@ namespace PashaBibko::Util
 
             template<typename... Args> VecMembers(Args&&... args) : data{ std::forward<Args>(args)... } {}
 
-            /* Requires the type to be loggable to the console in some way */
-            template<typename Enable = std::enable_if_t<Internal::Logable<Ty>>>
-            std::string LogStr() const
+            /* Requires the type to be loggable to the console via std::ostream& operator */
+            /* If the type has a LogStr function for logging it will be logged via that   */
+            template<typename Enable = std::enable_if_t<Internal::StandardLogable<Ty>>>
+            void LogStr(std::ostringstream& os, unsigned depth) const
             {
-                /* If the type can be outpuutted to the console by the ostream& << operator */
-                if constexpr (Internal::StandardLogable<Ty>)
-                {
-                    std::ostringstream os;
-                    os << "{ x: " << x << " y: " << y << " z: " << z << " }";
-
-                    return os.str();
-                }
-
-                /* Else means the type has a LogStr function */
-                else
-                {
-                    std::ostringstream os;
-                    os << "\n{\n\tx: " << x.LogStr() << "\n\ty: " << y.LogStr() << "\n\tz: " << z.LogStr() << "\n}";
-
-                    return os.str();
-                }
+                os << "{ x: " << x << " y: " << y << " z: " << z << " }";
             }
         };
 
@@ -113,27 +83,12 @@ namespace PashaBibko::Util
 
             template<typename... Args> VecMembers(Args&&... args) : data{ std::forward<Args>(args)... } {}
 
-            /* Requires the type to be loggable to the console in some way */
-            template<typename Enable = std::enable_if_t<Internal::Logable<Ty>>>
-            std::string LogStr() const
+            /* Requires the type to be loggable to the console via std::ostream& operator */
+            /* If the type has a LogStr function for logging it will be logged via that   */
+            template<typename Enable = std::enable_if_t<Internal::StandardLogable<Ty>>>
+            void LogStr(std::ostringstream& os, unsigned depth) const
             {
-                /* If the type can be outpuutted to the console by the ostream& << operator */
-                if constexpr (Internal::StandardLogable<Ty>)
-                {
-                    std::ostringstream os;
-                    os << "{ x: " << x << " y: " << y << " z: " << z << " w: " << w << " }";
-
-                    return os.str();
-                }
-
-                /* Else means the type has a LogStr function */
-                else
-                {
-                    std::ostringstream os;
-                    os << "\n{\n\tx: " << x.LogStr() << "\n\ty: " << y.LogStr() << "\n\tz: " << z.LogStr() << "\n\tw: " << w.LogStr() << "\n}";
-
-                    return os.str();
-                }
+                os << "{ x: " << x << " y: " << y << " z: " << z << " w: " << w << " }";
             }
         };
 
