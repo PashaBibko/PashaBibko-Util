@@ -54,6 +54,9 @@ int main()
 
 	Util::Log("Vector: ", vecC);
 
+	/* Check vectors are not equal */
+	Util::Log("Are vectors equal: ", vecA != vecB);
+
 	/* Example of using the Util::ReturnVal class for functions that can fail */
 	Util::ReturnVal res = SafeDivide(6, 0);
 	if (res.Failed())

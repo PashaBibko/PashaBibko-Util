@@ -608,7 +608,7 @@ namespace PashaBibko::Util
      */
     template<std::size_t len, typename LhsTy, typename RhsTy, typename ResTy = Internal::MulResultT<LhsTy, RhsTy>>
         requires Internal::CanMul<LhsTy, RhsTy>
-    Vec<len, ResTy> operator* (const Vec<len, LhsTy>& lhs, const Vec<len, RhsTy>& rhs)
+    Vec<len, ResTy> operator* (const LhsTy& lhs, const Vec<len, RhsTy>& rhs)
     {
         return [&]<std::size_t... index>(std::index_sequence<index...>) { return Vec<len, ResTy>{ (lhs * rhs[index])... }; } (std::make_index_sequence<len>{});
     }
@@ -670,8 +670,8 @@ namespace PashaBibko::Util
         {
             bool allEqual = true;
 
-            for (std::size_t index = 0l index < len; index++)
-                allEqual = allEqual && (lhs[index] == rhs[index])
+            for (std::size_t index = 0; index < len; index++)
+                allEqual = allEqual && (lhs[index] == rhs[index]);
 
             return allEqual;
         }
@@ -687,28 +687,7 @@ namespace PashaBibko::Util
         requires Internal::CanEqualityCheck<LhsTy, RhsTy>
     bool operator!= (const Vec<len, LhsTy>& lhs, const Vec<len, RhsTy>& rhs)
     {
-        /* Loops over the vector if it is considered to be long and returns early for invalid results */
-        if constexpr (len > 4)
-        {
-            for (std::size_t index = 0; index < len; index++)
-            {
-                if (lhs[index] == rhs[index])
-                    return false;
-            }
-
-            return true;
-        }
-
-        /* For short vectors the branching is less efficent so it is instead stored in a tracker with loop unravelling */
-        else
-        {
-            bool allUnequal = true;
-
-            for (std::size_t index = 0; index < len; index++)
-                allUnequal = allUnequal && (lhs[index] != rhs[index]);
-
-            return allUnequal;
-        }
+        return !(lhs == rhs);
     }
 
     /* Hides using aliases to avoid uneccesary bloat in doxygen documentation */
