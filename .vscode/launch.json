@@ -1,0 +1,44 @@
+{
+    "version": "0.2.0",
+    
+    "configurations":
+    [
+        {
+            "name": "[Linux] Run Example",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceRoot}/bin/PashaBibko-UTIL-Example",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": true,
+
+            "preLaunchTask": "build",
+            "MIMode": "gdb",
+
+            "setupCommands":
+            [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": false
+                }
+            ]
+        },
+
+        {
+            "name": "[Win64] Run Example",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${workspaceRoot}/bin/PashaBibko-UTIL-Example",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "console": "externalTerminal",
+            
+            "preLaunchTask": "build"
+        }
+    ]
+}

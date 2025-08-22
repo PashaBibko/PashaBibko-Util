@@ -8,7 +8,8 @@
  *        No other files should be included directly from this library.
  */
 
-/* MSVC Built in macros for non-MSVC enviroments */
+/* MSVC Built in macros for non-MSVC enviroments                 */
+/* Macros are used as attributes do not show up with intelisense */
 
 #ifndef _UNLIKELY
 #define _UNLIKELY [[unlikely]]
@@ -26,23 +27,20 @@
 #include <core/Misc.h>
 #include <core/Log.h>
 
-/* Includes the extensions (if enabled) */
-#ifdef _PB_UTIL_PYTHON_EXTENSION_ENABLED
-    #include<extensions/python/CTPython.h>
-#endif // _PB_UTIL_PYTHON_EXTENSION_ENABLED
-
 /* Shorthands for the namespace */
 namespace PBU = PashaBibko::Util;
 namespace PB = PashaBibko;
 
 /* Commonly used STD files */
-#include <unordered_map>
-#include <type_traits>
-#include <functional>
-#include <cstdint>
-#include <cstring>
-#include <memory>
-#include <vector>
-#include <ranges>
-#include <array>
-#include <span>
+#ifndef PB_UTIL_EXCLUDE_STD_INCLUDES
+    #include <unordered_map>
+    #include <type_traits>
+    #include <functional>
+    #include <cstdint>
+    #include <cstring>
+    #include <memory>
+    #include <vector>
+    #include <ranges>
+    #include <array>
+    #include <span>
+#endif // PB_UTIL_EXCLUDE_STD_INCLUDES
