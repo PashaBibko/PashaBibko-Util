@@ -376,6 +376,23 @@ namespace PashaBibko::Util
         }
 
         /**
+         * @brief Adds a single item of to each of the vectors elements.
+         * 
+         * @details Requires OtherTy to be able to be added to Ty,
+         *          otherwise it will not compile and the result type
+         *          to be the same as Ty.
+         */
+        template<typename OtherTy>
+            requires Internal::CanAdd<Ty, OtherTy> && std::is_same_v<Ty, Internal::AddResultT<Ty, OtherTy>>
+        Vec& operator+= (const OtherTy& other)
+        {
+            for (std::size_t index = 0; index < len; index++)
+                this->data[index] += other;
+
+            return *this;
+        }
+
+        /**
          * @brief Subtracts another vector of the same size to itself.
          * 
          * @details Requires OtherTy to be able to be subtracted from Ty,
@@ -387,7 +404,24 @@ namespace PashaBibko::Util
         Vec& operator-= (const Vec<len, OtherTy>& other)
         {
             for (std::size_t index = 0; index < len; index++)
-                this->data[index] += other[index];
+                this->data[index] -= other[index];
+
+            return *this;
+        }
+
+        /**
+         * @brief Subtracts a single item to each of the vectors elements.
+         * 
+         * @details Requires OtherTy to be able to be subtracted from Ty,
+         *          otherwise it will not compile and the result type
+         *          to be the same as Ty.
+         */
+        template<typename OtherTy>
+            requires Internal::CanSub<Ty, OtherTy> && std::is_same_v<Ty, Internal::SubResultT<Ty, OtherTy>>
+        Vec& operator-= (const OtherTy& other)
+        {
+            for (std::size_t index = 0; index < len; index++)
+                this->data[index] -= other;
 
             return *this;
         }
@@ -404,7 +438,24 @@ namespace PashaBibko::Util
         Vec& operator*= (const Vec<len, OtherTy>& other)
         {
             for (std::size_t index = 0; index < len; index++)
-                this->data[index] += other[index];
+                this->data[index] *= other[index];
+
+            return *this;
+        }
+
+        /**
+         * @brief Multiplies a single item to each of the vectors elements.
+         * 
+         * @details Requires Ty to be able to be multipled by OtherTy,
+         *          otherwise it will not compile and the result type
+         *          to be the same as Ty.
+         */
+        template<typename OtherTy>
+            requires Internal::CanMul<Ty, OtherTy> && std::is_same_v<Ty, Internal::MulResultT<Ty, OtherTy>>
+        Vec& operator*= (const OtherTy& other)
+        {
+            for (std::size_t index = 0; index < len; index++)
+                this->data[index] *= other;
 
             return *this;
         }
@@ -421,7 +472,24 @@ namespace PashaBibko::Util
         Vec& operator/= (const Vec<len, OtherTy>& other)
         {
             for (std::size_t index = 0; index < len; index++)
-                this->data[index] += other[index];
+                this->data[index] /= other[index];
+
+            return *this;
+        }
+
+        /**
+         * @brief Divides a single item to each of the vectors elements.
+         * 
+         * @details Requires Ty to be able to be divided by OtherTy,
+         *          otherwise it will not compile and the result type
+         *          to be the same as Ty.
+         */
+        template<typename OtherTy>
+            requires Internal::CanDiv<Ty, OtherTy> && std::is_same_v<Ty, Internal::DivResultT<Ty, OtherTy>>
+        Vec& operator/= (const OtherTy& other)
+        {
+            for (std::size_t index = 0; index < len; index++)
+                this->data[index] /= other;
 
             return *this;
         }
@@ -443,6 +511,36 @@ namespace PashaBibko::Util
     }
 
     /**
+     * @brief Adds a single item to each element of the vector.
+     * 
+     * @details Requires the two types contained in the vector to
+     *          be able to be added together. The result type will
+     *          also be the same type as when they are normally
+     *          added together.
+     */
+    template<std::size_t len, typename LhsTy, typename RhsTy, typename ResTy = Internal::AddResultT<LhsTy, RhsTy>>
+        requires Internal::CanAdd<LhsTy, RhsTy>
+    Vec<len, ResTy> operator+ (const Vec<len, LhsTy>& lhs, const RhsTy& rhs)
+    {
+        return [&]<std::size_t... index>(std::index_sequence<index...>) { return Vec<len, ResTy>{ (lhs[index] + rhs)... }; } (std::make_index_sequence<len>{});
+    }
+
+    /**
+     * @brief Adds a single item to each element of the vector.
+     * 
+     * @details Requires the two types contained in the vector to
+     *          be able to be added together. The result type will
+     *          also be the same type as when they are normally
+     *          added together.
+     */
+    template<std::size_t len, typename LhsTy, typename RhsTy, typename ResTy = Internal::AddResultT<LhsTy, RhsTy>>
+        requires Internal::CanAdd<LhsTy, RhsTy>
+    Vec<len, ResTy> operator+ (const LhsTy& lhs, const Vec<len, RhsTy>& rhs)
+    {
+        return [&]<std::size_t... index>(std::index_sequence<index...>) { return Vec<len, ResTy>{ (lhs + rhs[index])... }; } (std::make_index_sequence<len>{});
+    }
+
+    /**
      * @brief Subtracts the right vector by the left vector.
      * 
      * @details Requires the two types contained in the vector to
@@ -454,6 +552,20 @@ namespace PashaBibko::Util
     Vec<len, ResTy> operator- (const Vec<len, LhsTy>& lhs, const Vec<len, RhsTy>& rhs)
     {
         return [&]<std::size_t... index>(std::index_sequence<index...>) { return Vec<len, ResTy>{ (lhs[index] - rhs[index])... }; } (std::make_index_sequence<len>{});
+    }
+
+    /**
+     * @brief Subtracts an item from each element in a vector.
+     * 
+     * @details Requires the two types contained in the vector to
+     *          be able to be subtracted from each other The result type will
+     *          also be the same type as when they are normally subtracted.
+     */
+    template<std::size_t len, typename LhsTy, typename RhsTy, typename ResTy = Internal::SubResultT<LhsTy, RhsTy>>
+        requires Internal::CanSub<LhsTy, RhsTy>
+    Vec<len, ResTy> operator- (const Vec<len, LhsTy>& lhs, const RhsTy& rhs)
+    {
+        return [&]<std::size_t... index>(std::index_sequence<index...>) { return Vec<len, ResTy>{ (lhs[index] - rhs)... }; } (std::make_index_sequence<len>{});
     }
 
     /**
@@ -472,6 +584,36 @@ namespace PashaBibko::Util
     }
 
     /**
+     * @brief Multiplies an item with each element in a vector.
+     * 
+     * @details Requires the two types contained in the vector to
+     *          be able to be multiplied together. The result type will
+     *          also be the same type as when they are normally
+     *          multiplied together.
+     */
+    template<std::size_t len, typename LhsTy, typename RhsTy, typename ResTy = Internal::MulResultT<LhsTy, RhsTy>>
+        requires Internal::CanMul<LhsTy, RhsTy>
+    Vec<len, ResTy> operator* (const Vec<len, LhsTy>& lhs, const RhsTy& rhs)
+    {
+        return [&]<std::size_t... index>(std::index_sequence<index...>) { return Vec<len, ResTy>{ (lhs[index] * rhs)... }; } (std::make_index_sequence<len>{});
+    }
+
+    /**
+     * @brief Multiplies an item with each element in a vector.
+     * 
+     * @details Requires the two types contained in the vector to
+     *          be able to be multiplied together. The result type will
+     *          also be the same type as when they are normally
+     *          multiplied together.
+     */
+    template<std::size_t len, typename LhsTy, typename RhsTy, typename ResTy = Internal::MulResultT<LhsTy, RhsTy>>
+        requires Internal::CanMul<LhsTy, RhsTy>
+    Vec<len, ResTy> operator* (const Vec<len, LhsTy>& lhs, const Vec<len, RhsTy>& rhs)
+    {
+        return [&]<std::size_t... index>(std::index_sequence<index...>) { return Vec<len, ResTy>{ (lhs * rhs[index])... }; } (std::make_index_sequence<len>{});
+    }
+
+    /**
      * @brief Divides the left vector by the right vector.
      * 
      * @details Requires the two types contained in the vector to
@@ -484,6 +626,21 @@ namespace PashaBibko::Util
     Vec<len, ResTy> operator/ (const Vec<len, LhsTy>& lhs, const Vec<len, RhsTy>& rhs)
     {
         return [&]<std::size_t... index>(std::index_sequence<index...>) { return Vec<len, ResTy>{ (lhs[index] / rhs[index])... }; } (std::make_index_sequence<len>{});
+    }
+
+    /**
+     * @brief Divides each element in the vector by a single item.
+     * 
+     * @details Requires the two types contained in the vector to
+     *          be able to be divided from each other. The result type will
+     *          also be the same type as when they are normally
+     *          divided together.
+     */
+    template<std::size_t len, typename LhsTy, typename RhsTy, typename ResTy = Internal::SubResultT<LhsTy, RhsTy>>
+        requires Internal::CanDiv<LhsTy, RhsTy>
+    Vec<len, ResTy> operator/ (const Vec<len, LhsTy>& lhs, const RhsTy& rhs)
+    {
+        return [&]<std::size_t... index>(std::index_sequence<index...>) { return Vec<len, ResTy>{ (lhs[index] / rhs)... }; } (std::make_index_sequence<len>{});
     }
 
     /**
