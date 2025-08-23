@@ -47,6 +47,16 @@ namespace PashaBibko::Util
             { obj.LogStr(os, depth) } -> std::same_as<void>;
         };
 
+        #define CREATE_LOG_STR_FUNCTION void LogStr(std::ostringstream& os, unsigned depth) const
+
+        /* Checks if a type has a custom log iterator */
+        template<typename Ty> concept TypeHasCustomLogIterator = requires(Ty obj, std::ostringstream& os, std::size_t index)
+        {
+            { obj.CustomLogIter(os, index) } -> std::same_as<void>;
+        };
+
+        #define CREATE_CUSTOM_LOG_ITERATOR_FUNCTION void CustomLogIter(std::ostringstream& os, std::size_t index) const
+
 	    /* Helper type to display type name in static_assert() */
 	    template<typename Ty> struct DependentFalse : std::false_type {};
 
@@ -234,16 +244,27 @@ namespace PashaBibko::Util
         std::ostringstream os{};
         os << "[PB_Util::Log]: \"" << Internal::ProcessArg(name) << "\"\n{\n";
 
-        unsigned counter = 0;
+        std::size_t index = 0;
         for (const auto& item : container)
         {
+            /* Adds an indent to each item to make them stick out more in the log */
             std::ostringstream prefixStream{};
-            prefixStream << std::string(8, ' ') << std::setw(4) << std::left << counter << " | ";
+            prefixStream << std::string(8, ' ') << std::setw(4) << std::left;
+
+            /* Uses the custom iterator if it is availble, else does it by index */
+            if constexpr (Internal::TypeHasCustomLogIterator<Container_Ty>)
+                container.CustomLogIter(prefixStream, index);
+
+            else
+                prefixStream << index;
+            
+            prefixStream << " | ";
             std::string prefix = prefixStream.str();
 
+            /* Prints the item to the stream with the prefix(indent + iterator + seperator) */
             std::string itemStr = Internal::ProcessArg(item, prefix.length());
             os << prefix << itemStr << '\n';
-            counter++;
+            index++;
         }
 
         os << "}\n";

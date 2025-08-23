@@ -39,12 +39,13 @@ namespace PashaBibko::Util
 
             template<typename... Args> VecMembers(Args&&... args) : data{ std::forward<Args>(args)... } {}
 
-            /* Requires the type to be loggable to the console via std::ostream& operator */
-            /* If the type has a LogStr function for logging it will be logged via that   */
-            template<typename Enable = std::enable_if_t<Internal::StandardLogable<Ty>>>
-            void LogStr(std::ostringstream& os, unsigned depth) const
+            CREATE_CUSTOM_LOG_ITERATOR_FUNCTION
             {
-                os << "{ x: " << x << " y: " << y << " }";
+                if (index = 0)
+                    os << "x";
+
+                else
+                    os << "y";
             }
         };
 
@@ -61,12 +62,16 @@ namespace PashaBibko::Util
 
             template<typename... Args> VecMembers(Args&&... args) : data{ std::forward<Args>(args)... } {}
 
-            /* Requires the type to be loggable to the console via std::ostream& operator */
-            /* If the type has a LogStr function for logging it will be logged via that   */
-            template<typename Enable = std::enable_if_t<Internal::StandardLogable<Ty>>>
-            void LogStr(std::ostringstream& os, unsigned depth) const
+            CREATE_CUSTOM_LOG_ITERATOR_FUNCTION
             {
-                os << "{ x: " << x << " y: " << y << " z: " << z << " }";
+                if (index == 0)
+                    os << "x";
+
+                else if (index == 1)
+                    os << "y";
+
+                else
+                    os << "z";
             }
         };
 
@@ -83,12 +88,19 @@ namespace PashaBibko::Util
 
             template<typename... Args> VecMembers(Args&&... args) : data{ std::forward<Args>(args)... } {}
 
-            /* Requires the type to be loggable to the console via std::ostream& operator */
-            /* If the type has a LogStr function for logging it will be logged via that   */
-            template<typename Enable = std::enable_if_t<Internal::StandardLogable<Ty>>>
-            void LogStr(std::ostringstream& os, unsigned depth) const
+            CREATE_CUSTOM_LOG_ITERATOR_FUNCTION
             {
-                os << "{ x: " << x << " y: " << y << " z: " << z << " w: " << w << " }";
+                if (index == 0)
+                    os << "x";
+
+                else if (index == 1)
+                    os << "y";
+
+                else if (index == 2)
+                    os << "z";
+
+                else
+                    os << "w";
             }
         };
 
