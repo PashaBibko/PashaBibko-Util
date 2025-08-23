@@ -16,7 +16,6 @@
  * @brief Includes the functions for logging types to the console and log file.
  */
 
-
 namespace PashaBibko::Util
 {
     namespace Internal
@@ -26,15 +25,15 @@ namespace PashaBibko::Util
         {
             { os << arg } -> std::same_as<std::ostream&>;
         };
+
+        template<typename Ty> std::string ProcessArg(Ty&& arg, unsigned depth = 0);
     };
 
     /**/
     class LogStream final
     {
         public:
-            LogStream(std::ostringstream& stream, unsigned depth)
-                : m_Stream(stream), m_Depth(depth)
-            {}
+            template<typename Ty> friend std::string Internal::ProcessArg(Ty&& arg, unsigned depth);
 
             template<typename Ty>
                 requires Internal::StandardLogable<Ty>
@@ -47,6 +46,15 @@ namespace PashaBibko::Util
             inline void NextLine() { m_Stream << '\n' << std::string(m_Depth, ' '); }
 
         private:
+            LogStream(std::ostringstream& stream, unsigned depth)
+                : m_Stream(stream), m_Depth(depth)
+            {}
+
+            LogStream(const LogStream&) = default;
+            LogStream(LogStream&&) noexcept = default;
+
+            ~LogStream() = default;
+
             std::ostringstream& m_Stream;
             unsigned m_Depth;
     };
@@ -92,7 +100,7 @@ namespace PashaBibko::Util
         std::string ProcessLegacyArg(Ty&& arg) { return arg.LogStr(); }
 
         /* Assumes all types passed are valid as it is an internal function */
-        template<typename Ty> std::string ProcessArg(Ty&& arg, unsigned depth = 0)
+        template<typename Ty> std::string ProcessArg(Ty&& arg, unsigned depth)
         {
             /* Checks if the argument type is a pointer */
             if constexpr(std::is_pointer_v<std::remove_cvref_t<Ty>>)

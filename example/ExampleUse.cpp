@@ -13,7 +13,7 @@ static PB::Util::ReturnVal<int> SafeDivide(int x, int y)
 
 struct LogableExample
 {
-	void LogStr(PB::Util::LogStream stream) const
+	void LogStr(PB::Util::LogStream& stream) const
 	{
 		stream << "Custom log method called";
 		stream.NextLine();
