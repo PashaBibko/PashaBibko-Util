@@ -13,11 +13,13 @@ static PB::Util::ReturnVal<int> SafeDivide(int x, int y)
 
 struct LogableExample
 {
-	void LogStr(std::ostringstream& os, unsigned depth) const
+	void LogStr(PB::Util::LogStream stream) const
 	{
-		os << "Custom log method called\n";
-		os << std::string(depth, ' ');
-		os << "Can be on multiple lines";
+		stream << "Custom log method called";
+		stream.NextLine();
+		stream << "Can be on multiple lines";
+		stream.NextLine();
+		stream << "And will be indented properly";
 	}
 };
 

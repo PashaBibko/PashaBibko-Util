@@ -19,6 +19,38 @@
 
 namespace PashaBibko::Util
 {
+    namespace Internal
+    {
+        /* Checks if a type can be outputted to std::ostream */
+        template<typename Ty> concept StandardLogable = requires(std::ostream & os, Ty arg)
+        {
+            { os << arg } -> std::same_as<std::ostream&>;
+        };
+    };
+
+    /**/
+    class LogStream final
+    {
+        public:
+            LogStream(std::ostringstream& stream, unsigned depth)
+                : m_Stream(stream), m_Depth(depth)
+            {}
+
+            template<typename Ty>
+                requires Internal::StandardLogable<Ty>
+            friend LogStream& operator<<(LogStream& _log, Ty&& _val)
+            {
+                _log.m_Stream << _val;
+                return _log;
+            }
+
+            inline void NextLine() { m_Stream << '\n' << std::string(m_Depth, ' '); }
+
+        private:
+            std::ostringstream& m_Stream;
+            unsigned m_Depth;
+    };
+
     /* Excludes the internal namespace from the docs */
     #ifndef DOXYGEN_HIDE
 
@@ -29,12 +61,6 @@ namespace PashaBibko::Util
         void WriteToConsole(const char* message);
         void WriteToLog(const char* message);
 
-        /* Checks if a type can be outputted to std::ostream */
-        template<typename Ty> concept StandardLogable = requires(std::ostream & os, Ty arg)
-        {
-            { os << arg } -> std::same_as<std::ostream&>;
-        };
-
         /* Checks if the type has a legacy LogStr function */
         template<typename Ty> concept TypeHasLegacyLogFunction = requires(Ty obj)
         {
@@ -42,12 +68,12 @@ namespace PashaBibko::Util
         };
 
         /* Checks if the type has a valid (non-legacy) LogStr function */
-        template<typename Ty> concept TypeHasLogFunction = requires(Ty obj, std::ostringstream& os, unsigned depth)
+        template<typename Ty> concept TypeHasLogFunction = requires(Ty obj, LogStream& stream)
         {
-            { obj.LogStr(os, depth) } -> std::same_as<void>;
+            { obj.LogStr(stream) } -> std::same_as<void>;
         };
 
-        #define CREATE_LOG_STR_FUNCTION void LogStr(std::ostringstream& os, unsigned depth) const
+        #define CREATE_LOG_STR_FUNCTION void LogStr(LogStream& stream) const
 
         /* Checks if a type has a custom log iterator */
         template<typename Ty> concept TypeHasCustomLogIterator = requires(Ty obj, std::ostringstream& os, std::size_t index)
@@ -85,7 +111,9 @@ namespace PashaBibko::Util
             else if constexpr (TypeHasLogFunction<Ty>)
             {
                 std::ostringstream os{};
-                arg.LogStr(os, depth);
+                LogStream stream(os, depth);
+
+                arg.LogStr(stream);
 
                 return os.str();
             }
