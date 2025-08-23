@@ -43,7 +43,33 @@ namespace PashaBibko::Util
                 return _log;
             }
 
-            inline void NextLine() { m_Stream << '\n' << std::string(m_Depth, ' '); }
+            struct LogCommand
+            {
+                enum class CommandInstruction
+                {
+                    NewLine
+                };
+
+                LogCommand(CommandInstruction providedInstruction)
+                    : instruction(providedInstruction)
+                {}
+
+                const CommandInstruction instruction;
+            };
+
+            friend LogStream& operator<<(LogStream& _log, const LogCommand& cmd)
+            {
+                switch (cmd.instruction)
+                {
+                    case LogStream::LogCommand::CommandInstruction::NewLine:
+                        _log.m_Stream << '\n' << std::string(_log.m_Depth, ' ');
+                        return _log;
+
+                    default:
+                        TriggerBreakpoint();
+                        return _log;
+                }
+            }
 
         private:
             LogStream(std::ostringstream& stream, unsigned depth)
@@ -58,6 +84,8 @@ namespace PashaBibko::Util
             std::ostringstream& m_Stream;
             unsigned m_Depth;
     };
+
+    const LogStream::LogCommand NewLine = LogStream::LogCommand(LogStream::LogCommand::CommandInstruction::NewLine);
 
     /* Excludes the internal namespace from the docs */
     #ifndef DOXYGEN_HIDE

@@ -15,10 +15,8 @@ struct LogableExample
 {
 	void LogStr(PB::Util::LogStream& stream) const
 	{
-		stream << "Custom log method called";
-		stream.NextLine();
-		stream << "Can be on multiple lines";
-		stream.NextLine();
+		stream << "Custom log method called" << PB::Util::NewLine;
+		stream << "Can be on multiple lines" << PB::Util::NewLine;
 		stream << "And will be indented properly";
 	}
 };
