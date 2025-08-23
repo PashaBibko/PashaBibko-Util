@@ -3,12 +3,10 @@
 
 #include <Util.h>
 
-using namespace PashaBibko;
-
-static Util::ReturnVal<int> SafeDivide(int x, int y)
+static PB::Util::ReturnVal<int> SafeDivide(int x, int y)
 {
 	if (y == 0)
-		return Util::FunctionFail<>("");
+		return PB::Util::FunctionFail<>("");
 
 	return x / y;
 }
@@ -26,41 +24,41 @@ struct LogableExample
 int main()
 {
 	/* This is a simple example of using coloured text with the Util library */
-	Util::Print<Util::Colour::LightAqua>("Hello, World!\n");
+	PB::Util::Print<PB::Util::Colour::LightAqua>("Hello, World!\n");
 
 	/* Example of using custom log functions */
 	LogableExample object;
-	Util::PrintLn(object);
+	PB::Util::PrintLn(object);
 
 	/* Example of auto de-referencing pointers */
 	int temp = 3;
 	int* ptr = &temp;
-	Util::PrintLn(ptr);
+	PB::Util::PrintLn(ptr);
 
 	int** ptrRecursion = &ptr;
-	Util::PrintLn("PointerRecursion: ", ptrRecursion);
+	PB::Util::PrintLn("PointerRecursion: ", ptrRecursion);
 
 	int* null = nullptr;
-	Util::PrintLn(null);
+	PB::Util::PrintLn(null);
 
 	/* Example of using an iterator with the log */
 	std::array<LogableExample, 2> array = {};
-	Util::Log("Example-Array", array);
+	PB::Util::Log("Example-Array", array);
 
 	/* Vector example usage */
-	Util::Vec<4, int> vecA(2, 3, 4, 5);
+	PB::Util::Vec<4, int> vecA(2, 3, 4, 5);
 	vecA += vecA;
 
-	Util::Vec<4, int> vecB(5);
-	Util::Vec<4, int> vecC = vecA + vecB;
+	PB::Util::Vec<4, int> vecB(5);
+	PB::Util::Vec<4, int> vecC = vecA + vecB;
 
-	Util::Log("Vector: ", vecC);
+	PB::Util::Log("Vector: ", vecC);
 
 	/* Check vectors are not equal */
-	Util::Log("Are vectors equal: ", vecA != vecB);
+	PB::Util::Log("Are vectors equal: ", vecA != vecB);
 
-	/* Example of using the Util::ReturnVal class for functions that can fail */
-	Util::ReturnVal res = SafeDivide(6, 0);
+	/* Example of using the PB::Util::ReturnVal class for functions that can fail */
+	PB::Util::ReturnVal res = SafeDivide(6, 0);
 	if (res.Failed())
 	{
 		return 1;
