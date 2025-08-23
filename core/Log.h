@@ -87,7 +87,6 @@ namespace PashaBibko::Util
                 std::ostringstream os{};
                 arg.LogStr(os, depth);
 
-                os.flush();
                 return os.str();
             }
 
@@ -101,10 +100,21 @@ namespace PashaBibko::Util
             /* Checks for standard logging (std::ostream& << Ty) */
             else if constexpr (StandardLogable<Ty>)
             {
+                /* Checks if the type is a boolean in which case it replaces it with true/false */
+                if constexpr (std::same_as<bool, std::remove_cvref_t<Ty>>)
+                {
+                    if (arg)
+                        return "TRUE";
+
+                    else
+                        return "FALSE";
+                }
+
+                /* Else uses the ostream& operator to get the desired output */
                 std::ostringstream os{};
                 os << arg;
 
-                return std::move(os).str();
+                return os.str();
             }
 
             /* Else returns an error */
