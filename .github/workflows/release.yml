@@ -4,7 +4,7 @@ on:
     release:
         types: [released]
 
-    workflow_dispatch: # Allows custom workflows
+    workflow_dispatch: # Allows custom workflows for when there are bugs in released binaries
 
 jobs:
     build-and-package:
@@ -31,8 +31,7 @@ jobs:
                 Copy-Item bin\PashaBibko-UTIL.lib package\PB-UTIL.lib
                 Copy-Item Util.h package\Util.h
                 Copy-Item LICENSE package\LICENSE.md
-                Copy-Item -Path classes\*.h -Destination package\classes -Force
-                Copy-Item -Path sections\*.h -Destination package\sections -Force
+                Copy-Item -Path core\*.h -Destination package\core -Force
             shell: pwsh
 
         -   name: Create ZIP file
