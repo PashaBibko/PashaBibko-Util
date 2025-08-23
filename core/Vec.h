@@ -41,7 +41,7 @@ namespace PashaBibko::Util
 
             CREATE_CUSTOM_LOG_ITERATOR_FUNCTION
             {
-                if (index = 0)
+                if (index == 0)
                     os << "x";
 
                 else
