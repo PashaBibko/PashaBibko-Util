@@ -4,14 +4,6 @@
 
 #include <filesystem>
 
-/**
- * @file FileRead.h
- * 
- * @brief Contains the function for reading a file as well as the error
- *        that can be returned if the function failed. Also includes
- *        function to find location of an index within a string.
- */
-
 namespace PashaBibko::Util
 {
     /**

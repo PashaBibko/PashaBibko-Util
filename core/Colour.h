@@ -1,11 +1,5 @@
 #pragma once
 
-/**
- * @file Colour.h
- * 
- * @brief Contains the colour enum
- */
-
 namespace PashaBibko::Util
 {
     /**
@@ -14,7 +8,7 @@ namespace PashaBibko::Util
      */
 	enum class Colour : unsigned short
     {
-        Default =       0x07, ///< The default colour of the console 
+        Default = 0x07,       ///< The default colour of the console 
 
         Black = 0x00,         ///< <span style="color:#000000;">Black</span>
         Blue = 0x01,          ///< <span style="color:#000080;">Blue</span>

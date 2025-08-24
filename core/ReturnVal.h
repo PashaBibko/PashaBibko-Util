@@ -6,13 +6,6 @@
 #include <concepts>
 #include <utility>
 
-/**
- * @file ReturnVal.h
- * 
- * @brief Contains the declaration for Util::ReturnVal<T, Error>
- *		  as well as relevant functions and classes such as Util::FunctionFail<Error>
- */
-
 namespace PashaBibko::Util
 {
 	#ifndef DOXYGEN_HIDE

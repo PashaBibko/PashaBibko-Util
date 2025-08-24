@@ -10,12 +10,6 @@
 #include <ostream>
 #include <ranges>
 
-/**
- * @file Log.h
- * 
- * @brief Includes the functions for logging types to the console and log file.
- */
-
 namespace PashaBibko::Util
 {
     /* Excludes the internal namespace from the docs */
@@ -46,34 +40,19 @@ namespace PashaBibko::Util
 
             template<typename Ty>
                 requires Internal::StandardLogable<Ty>
-            friend LogStream& operator<<(LogStream& _log, Ty&& _val)
+            LogStream& operator<<(Ty&& _val)
             {
-                _log.m_Stream << _val;
-                return _log;
+                m_Stream << _val;
+                return *this;
             }
 
-            friend LogStream& operator<<(LogStream& _log, const Internal::LogCommand cmd)
-            {
-                switch (cmd)
-                {
-                    case Internal::LogCommand::NewLine:
-                        _log.m_Stream << '\n' << std::string(_log.m_Depth, ' ');
-                        return _log;
-                    
-                    /* Invalid command has been passed to LogStream */
-                    default:
-                        TriggerBreakpoint();
-                        return _log;
-                }
-            }
+            LogStream& operator<<(const Internal::LogCommand cmd);
 
         private:
-            LogStream(std::ostringstream& stream, unsigned depth)
-                : m_Stream(stream), m_Depth(depth)
-            {}
+            LogStream(std::ostringstream& stream, unsigned depth);
 
-            LogStream(const LogStream&) = default;
-            LogStream(LogStream&&) noexcept = default;
+            LogStream(const LogStream&) = delete;
+            LogStream(LogStream&&) noexcept = delete;
 
             ~LogStream() = default;
 

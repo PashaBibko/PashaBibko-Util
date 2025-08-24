@@ -31,6 +31,7 @@ namespace PashaBibko::Util::Internal
     #elif defined(__linux__)
 	    #include <unistd.h>
 	    #include <limits.h>
+#include "Log.h"
 
         /* Linuix implementation of GetProcessName */
         static std::string GetProcessName()
@@ -77,5 +78,28 @@ namespace PashaBibko::Util::Internal
     {
         log << message;
         log.flush();
+    }
+}
+
+namespace PashaBibko::Util
+{
+    LogStream::LogStream(std::ostringstream& stream, unsigned depth)
+        : m_Stream(stream), m_Depth(depth)
+    {}
+
+    /**/
+    LogStream& LogStream::operator<<(const Internal::LogCommand cmd)
+    {
+        switch (cmd)
+        {
+            case Internal::LogCommand::NewLine:
+                m_Stream << '\n' << std::string(m_Depth, ' ');
+                return *this;
+            
+            /* Invalid command has been passed to LogStream */
+            default:
+                TriggerBreakpoint();
+                return *this;
+        }
     }
 }
