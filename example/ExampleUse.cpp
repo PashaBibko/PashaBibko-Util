@@ -23,6 +23,9 @@ struct LogableExample
 
 int main()
 {
+	/**/
+	PB::Util::PrintLn<PB::Util::Colour::LightRed>(PB::Util::TempFilePath("file.txt"));
+
 	/* This is a simple example of using coloured text with the Util library */
 	PB::Util::Print<PB::Util::Colour::LightAqua>("Hello, World!", PB::Util::NewLine);
 

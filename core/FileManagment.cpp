@@ -3,6 +3,14 @@
 #include <iostream>
 #include <fstream>
 
+#if defined(_WIN32) || defined(_WIN64)
+    #define NOMINMAX
+    #define WIN32_LEAN_AND_MEAN
+    #include <Windows.h>
+#elif defined(__linux__)
+    #error "Linux is not currently supported for this library version"
+#endif
+
 namespace PashaBibko::Util
 {
     FileReadError::FileReadError(const std::filesystem::path& _path, Reason _reason)
@@ -67,5 +75,15 @@ namespace PashaBibko::Util
         }
 
         return location;
+    }
+
+    std::filesystem::path TempFilePath(const std::string& name)
+    {
+        char tempFolderPath[MAX_PATH];
+        GetTempPath(MAX_PATH, tempFolderPath);
+
+        std::filesystem::path fsPath = tempFolderPath;
+
+        return fsPath / name;
     }
 }

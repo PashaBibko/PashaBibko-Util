@@ -17,7 +17,7 @@ endif()
 # Creates the static library #
 add_library(PashaBibko-UTIL STATIC
 	# List of core source files for the Util library #
-	"core/FileRead.cpp"
+	"core/FileManagment.cpp"
 	"core/Misc.cpp"
 	"core/Log.cpp"
 )

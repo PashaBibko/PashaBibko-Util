@@ -31,7 +31,7 @@ namespace PashaBibko::Util::Internal
     #elif defined(__linux__)
 	    #include <unistd.h>
 	    #include <limits.h>
-#include "Log.h"
+
 
         /* Linuix implementation of GetProcessName */
         static std::string GetProcessName()

@@ -78,4 +78,7 @@ namespace PashaBibko::Util
      *       it will return { 0, 0 } instead of a valid location.
      */
     StringLocation GetLocationAtStringIndex(const std::string& string, uint32_t index);
+
+    /** */
+    std::filesystem::path TempFilePath(const std::string& name);
 }
