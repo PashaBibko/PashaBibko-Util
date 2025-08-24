@@ -31,7 +31,8 @@ namespace PashaBibko::Util
 
         enum class LogCommand
         {
-            NewLine
+            NewLine,
+            ClearConsole
         };
 
         template<typename Ty> std::string ProcessArg(Ty&& arg, unsigned depth = 0);
@@ -58,7 +59,8 @@ namespace PashaBibko::Util
                     case Internal::LogCommand::NewLine:
                         _log.m_Stream << '\n' << std::string(_log.m_Depth, ' ');
                         return _log;
-                        
+                    
+                    /* Invalid command has been passed to LogStream */
                     default:
                         TriggerBreakpoint();
                         return _log;
@@ -82,6 +84,7 @@ namespace PashaBibko::Util
     /* Creates shorthands for the 'commands' */
 
     constexpr Internal::LogCommand NewLine = Internal::LogCommand::NewLine;
+    constexpr Internal::LogCommand ClearConsole = Internal::LogCommand::ClearConsole;
 
     namespace Internal
     {
@@ -145,6 +148,10 @@ namespace PashaBibko::Util
                 {
                     case LogCommand::NewLine:
                         return "\n";
+
+                    case LogCommand::ClearConsole:
+                        system("cls");
+                        return "";
                 }
             }
 
@@ -305,7 +312,7 @@ namespace PashaBibko::Util
         requires (Internal::Logable<std::remove_cvref_t<Args>> && ...)
     inline void Log(Args&&... args)
     {
-        std::string message = Internal::ProcessArgs("[PB_Util::Log()]: ", std::forward<Args>(args)..., '\n');
+        std::string message = Internal::ProcessArgs("[PB_Util::Log]: ", std::forward<Args>(args)..., NewLine);
         Internal::WriteToConsole(message.c_str());
         Internal::WriteToLog(message.c_str());
     }
@@ -326,7 +333,7 @@ namespace PashaBibko::Util
     {
         /* Creates a JSON like formatting of the range */
         std::ostringstream os{};
-        os << "[PB_Util::Log]: \"" << Internal::ProcessArg(name) << "\"\n{\n";
+        os << "[PB_Util::LogContainer]: \"" << Internal::ProcessArg(name) << "\"\n{\n";
 
         std::size_t index = 0;
         for (const auto& item : container)
