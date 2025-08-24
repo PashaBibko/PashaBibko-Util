@@ -24,7 +24,7 @@ struct LogableExample
 int main()
 {
 	/* This is a simple example of using coloured text with the Util library */
-	PB::Util::Print<PB::Util::Colour::LightAqua>("Hello, World!\n");
+	PB::Util::Print<PB::Util::Colour::LightAqua>("Hello, World!", PB::Util::NewLine);
 
 	/* Example of using custom log functions */
 	LogableExample object;

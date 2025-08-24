@@ -18,12 +18,20 @@
 
 namespace PashaBibko::Util
 {
+    /* Excludes the internal namespace from the docs */
+    #ifndef DOXYGEN_HIDE
+
     namespace Internal
     {
         /* Checks if a type can be outputted to std::ostream */
         template<typename Ty> concept StandardLogable = requires(std::ostream & os, Ty arg)
         {
             { os << arg } -> std::same_as<std::ostream&>;
+        };
+
+        enum class LogCommand
+        {
+            NewLine
         };
 
         template<typename Ty> std::string ProcessArg(Ty&& arg, unsigned depth = 0);
@@ -43,28 +51,14 @@ namespace PashaBibko::Util
                 return _log;
             }
 
-            struct LogCommand
+            friend LogStream& operator<<(LogStream& _log, const Internal::LogCommand cmd)
             {
-                enum class CommandInstruction
+                switch (cmd)
                 {
-                    NewLine
-                };
-
-                LogCommand(CommandInstruction providedInstruction)
-                    : instruction(providedInstruction)
-                {}
-
-                const CommandInstruction instruction;
-            };
-
-            friend LogStream& operator<<(LogStream& _log, const LogCommand& cmd)
-            {
-                switch (cmd.instruction)
-                {
-                    case LogStream::LogCommand::CommandInstruction::NewLine:
+                    case Internal::LogCommand::NewLine:
                         _log.m_Stream << '\n' << std::string(_log.m_Depth, ' ');
                         return _log;
-
+                        
                     default:
                         TriggerBreakpoint();
                         return _log;
@@ -85,10 +79,9 @@ namespace PashaBibko::Util
             unsigned m_Depth;
     };
 
-    const LogStream::LogCommand NewLine = LogStream::LogCommand(LogStream::LogCommand::CommandInstruction::NewLine);
+    /* Creates shorthands for the 'commands' */
 
-    /* Excludes the internal namespace from the docs */
-    #ifndef DOXYGEN_HIDE
+    constexpr Internal::LogCommand NewLine = Internal::LogCommand::NewLine;
 
     namespace Internal
     {
@@ -130,8 +123,10 @@ namespace PashaBibko::Util
         /* Assumes all types passed are valid as it is an internal function */
         template<typename Ty> std::string ProcessArg(Ty&& arg, unsigned depth)
         {
+            using RawTy = std::remove_cvref_t<Ty>;
+
             /* Checks if the argument type is a pointer */
-            if constexpr(std::is_pointer_v<std::remove_cvref_t<Ty>>)
+            if constexpr(std::is_pointer_v<RawTy>)
             {
                 /* If the pointer is valid forwards the derefenced arg */
                 if (arg != nullptr)
@@ -141,6 +136,16 @@ namespace PashaBibko::Util
                 std::ostringstream os{};
                 os << "Nullptr of type: [" << typeid(Ty).name() << ']';
                 return std::move(os).str();
+            }
+
+            /* Checks if the type is a log 'command' */
+            else if constexpr (std::same_as<RawTy, LogCommand>)
+            {
+                switch (arg)
+                {
+                    case LogCommand::NewLine:
+                        return "\n";
+                }
             }
 
             /* Checks for non-legacy log function */
@@ -195,7 +200,12 @@ namespace PashaBibko::Util
             return (ProcessArg(std::forward<Args>(args)) + ... + "");
         }
 
-        template<typename Ty> concept LogableBase = Internal::StandardLogable<Ty> || Internal::TypeHasLogFunction<Ty> || Internal::TypeHasLegacyLogFunction<Ty>;
+        template<typename Ty> concept LogableBase =
+            Internal::StandardLogable<Ty>               ||
+            Internal::TypeHasLogFunction<Ty>            ||
+            Internal::TypeHasLegacyLogFunction<Ty>      ||
+            std::same_as<Ty, Internal::LogCommand>      ;
+
         template<typename Ty> concept Logable = LogableBase<Ty> || (LogableBase<std::remove_cv_t<std::remove_pointer_t<std::remove_cvref_t<Ty>>>>);
     }
 
@@ -307,7 +317,7 @@ namespace PashaBibko::Util
         requires (Internal::Logable<std::remove_cvref_t<Args>> && ...)
     inline void PrintLn(Args&&... args)
     {
-        Print(std::forward<Args>(args)..., '\n');
+        Print(std::forward<Args>(args)..., NewLine);
     }
 
     template<typename Ty, std::ranges::range Container_Ty, typename Cargo_Ty = std::ranges::range_value_t<Container_Ty>>
