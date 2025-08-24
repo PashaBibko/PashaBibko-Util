@@ -995,7 +995,7 @@ INPUT                  = Util.h \
                          core/Colour.h \
                          core/ReturnVal.h \
                          core/Vec.h \
-                         core/FileRead.h \
+                         core/FileManagment.h \
                          core/Log.h \
                          core/Misc.h \
                          README.md
