@@ -64,7 +64,7 @@ int main()
 	PB::Util::ReturnVal res = SafeDivide(6, 0);
 	if (res.Failed())
 	{
-		return 1;
+		PB::Util::PrintLn("Dividing by zero returned a function fail");
 	}
 
 	return 0;
