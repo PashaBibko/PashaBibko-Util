@@ -237,7 +237,26 @@ namespace PashaBibko::Util
 			 */
 			inline bool Success() const
 			{
+				return m_ResultState != s_FailAddress;
+			}
+
+			/**
+			 * 
+			 */
+			inline bool SuccessNoWarnings()
+			{
 				return m_ResultState == s_SuccAddress;
+			}
+
+			/**
+			 * 
+			 */
+			WarningTy* GetWarning()
+			{
+				if (m_ResultState == s_FailAddress || m_ResultState == s_SuccAddress)
+					return nullptr;
+
+				return m_ResultState;
 			}
 
 		private:
