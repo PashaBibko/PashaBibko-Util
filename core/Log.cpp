@@ -79,6 +79,13 @@ namespace PashaBibko::Util::Internal
         log << message;
         log.flush();
     }
+
+    std::string GetConsoleInput()
+    {
+        std::string out;
+        std::getline(std::cin, out);
+        return out;
+    }
 }
 
 namespace PashaBibko::Util

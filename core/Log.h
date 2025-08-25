@@ -10,6 +10,8 @@
 #include <ostream>
 #include <ranges>
 
+#include <iostream>
+
 namespace PashaBibko::Util
 {
     /* Excludes the internal namespace from the docs */
@@ -71,6 +73,16 @@ namespace PashaBibko::Util
 
         void WriteToConsole(const char* message);
         void WriteToLog(const char* message);
+
+        std::string GetConsoleInput();
+
+        /* Checks if the type can be inputted via the console */
+        template<typename Ty> concept AllowedConsoleInputType =
+            std::same_as<Ty, std::string>   ||
+            std::same_as<Ty, int>           ||
+            std::same_as<Ty, long long>     ||
+            std::same_as<Ty, float>         ||
+            std::same_as<Ty, double>        ;
 
         /* Checks if the type has a legacy LogStr function */
         template<typename Ty> concept TypeHasLegacyLogFunction = requires(Ty obj)
@@ -299,7 +311,7 @@ namespace PashaBibko::Util
     /* These functions documentation are covered by Util::Print and Util::Log so they can be excluded */
     #ifndef DOXYGEN_HIDE
 
-    template< Colour colour = Colour::Default, typename... Args>
+    template<Colour colour = Colour::Default, typename... Args>
         requires (Internal::Logable<std::remove_cvref_t<Args>> && ...)
     inline void PrintLn(Args&&... args)
     {
@@ -346,4 +358,42 @@ namespace PashaBibko::Util
     }
 
     #endif // DOXYGEN_HIDE
+
+    template<typename OutTy, Colour col = Colour::Default, typename... Args>
+        requires (Internal::Logable<std::remove_cvref_t<Args>> && ...) && Internal::AllowedConsoleInputType<OutTy>
+    OutTy Input(Args&&... args)
+    {
+        Print<col>(std::forward<Args>(args)...);
+        std::string input = Internal::GetConsoleInput();
+
+        if constexpr (std::same_as<OutTy, std::string>)
+        {
+            return input;
+        }
+
+        else if constexpr (std::same_as<OutTy, int> || std::same_as<OutTy, long long>)
+        {
+            long long res = std::stoll(input);
+
+            if (res > std::numeric_limits<OutTy>::max())
+                return std::numeric_limits<OutTy>::max();
+            
+            return res;
+        }
+
+        else if constexpr (std::same_as<OutTy, float> || std::same_as<OutTy, double>)
+        {
+            double res = std::stod(input);
+
+            if (res > std::numeric_limits<OutTy>::max())
+                return std::numeric_limits<OutTy>::max();
+
+            return res;
+        }
+
+        else
+        {
+            static_assert(Internal::DependentFalse<OutTy>::value, "Unkown type");
+        }
+    }
 }

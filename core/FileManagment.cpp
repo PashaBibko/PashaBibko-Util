@@ -84,6 +84,6 @@ namespace PashaBibko::Util
 
         std::filesystem::path fsPath = tempFolderPath;
 
-        return fsPath / name;
+        return fsPath /  name;
     }
 }
