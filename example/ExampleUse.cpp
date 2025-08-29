@@ -21,6 +21,8 @@ struct LogableExample
 	}
 };
 
+PB_TEST;
+
 int main()
 {
 	/**/

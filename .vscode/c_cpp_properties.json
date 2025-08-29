@@ -10,6 +10,11 @@
                 "${workspaceFolder}/**"
             ],
 
+            "defines":
+            [
+                "PB_UTIL_VSC_DEV"
+            ],
+
             "cppStandard": "c++20"
         }
     ]

@@ -22,11 +22,8 @@ add_library(PashaBibko-UTIL STATIC
 	"core/Log.cpp"
 )
 
-# Checks if it should include the python extension (has it's own CMakeList.txt) #
-if (PB_UTIL_PYTHON_EXTENSION_ENABLED)
-	target_compile_definitions(PashaBibko-UTIL PUBLIC _PB_UTIL_PYTHON_EXTENSION_ENABLED)
-	add_subdirectory(extensions/python)
-endif()
+# Includes the test-extension (temporary) #
+add_subdirectory(extensions/testing)
 
 # Sets the include paths for the Util library        #
 # Shared with any projects that include this library #

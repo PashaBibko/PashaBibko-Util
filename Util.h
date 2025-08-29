@@ -31,6 +31,11 @@
 #include <core/Misc.h>
 #include <core/Log.h>
 
+/* Optional extensions of the library */
+#if defined(_PBUTIL_TEST_EXTENSION_ENABLED) || defined(PB_UTIL_VSC_DEV)
+    #include <extensions/testing/PBTesting.h>
+#endif // _PBUTIL_TEST_EXTENSION_ENABLED
+
 /* Shorthands for the namespace */
 namespace PBU = PashaBibko::Util;
 namespace PB = PashaBibko;
