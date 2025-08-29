@@ -21,7 +21,10 @@ struct LogableExample
 	}
 };
 
-PB_TEST;
+PB_TEST(group, test)
+{
+	PB::Util::PrintLn("Test has been called");
+};
 
 int main()
 {
