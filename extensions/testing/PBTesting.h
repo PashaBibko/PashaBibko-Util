@@ -8,13 +8,10 @@ namespace PashaBibko::Util::Testing
     };
 }
 
-#define PB_TEST_IMPL(fulltestname, group, name, file) \
-    struct _PBUTIL_TEST_##fulltestname final : public ::PashaBibko::Util::Testing::UnitTest { \
-        _PBUTIL_TEST_##fulltestname() : UnitTest(#group, #name, file) { TestBody(); } \
+#define PB_TEST(group, name) \
+    struct name final : public ::PashaBibko::Util::Testing::UnitTest { \
+        name() : UnitTest(#group, #name, __FILE__) { TestBody(); } \
         void TestBody(); \
     }; \
-    _PBUTIL_TEST_##fulltestname  fulltestname_instance; \
-    void _PBUTIL_TEST_##fulltestname::TestBody()
-
-
-#define PB_TEST(group, name) PB_TEST_IMPL(group_##name, group, name, __FILE__)
+    ##name  name_instance;\
+    void name::TestBody()
