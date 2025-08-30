@@ -6,11 +6,28 @@
 
 namespace PashaBibko::Util::Testing
 {
+    struct TestReturnVal
+    {
+        virtual bool Passed() { return false; }
+    };
+
+    struct TestPassed : public TestReturnVal
+    {
+        virtual bool Passed() override { return true; }
+    };
+
     struct UnitTest
     {
-        UnitTest(const char* testGroup, const char* testName, const char* filename) {}
+        UnitTest(const char* testGroup, const char* testName, const char* filename)
+            : name(testName)
+        {}
 
-        virtual void TestBody() {}
+        virtual TestReturnVal* TestBody()
+        {
+            return nullptr;
+        }
+
+        const std::string name;
     };
 
     class UnitTestGroup
@@ -28,8 +45,22 @@ namespace PashaBibko::Util::Testing
         private:
             void ExecuteBatch()
             {
+                bool batchPassed = true;
+
                 for (UnitTest* test : m_Tests)
-                    test->TestBody();
+                {
+                    TestReturnVal* result = test->TestBody();
+
+                    /* Handles passing / failing of the test */
+                    if (result->Passed())
+                        Util::Print<Util::Colour::LightGreen>("[ Passed ] ");
+                    else
+                        Util::Print<Util::Colour::LightRed>("[ Failed ] ");
+
+                    Util::PrintLn(test->name);
+
+                    batchPassed = batchPassed && result->Passed();
+                }
             }
 
             std::vector<UnitTest*> m_Tests;
@@ -46,7 +77,7 @@ namespace PashaBibko::Util::Testing
         name(::PashaBibko::Util::Testing::UnitTestGroup& _group) : UnitTest(#group, #name, __FILE__) { \
             _group.RegisterTest(this); \
         } \
-        void TestBody() override; \
+        ::PashaBibko::Util::Testing::TestReturnVal* TestBody() override; \
     }; \
-    name name_instance(group);\
-    void name::TestBody()
+    name test_instance##name(group);\
+    ::PashaBibko::Util::Testing::TestReturnVal* name::TestBody()

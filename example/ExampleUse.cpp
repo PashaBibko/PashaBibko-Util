@@ -26,8 +26,13 @@ PB_TEST_GROUP(OtherExampleTests);
 
 PB_TEST(ExampleTests, Example)
 {
-	PB::Util::PrintLn("Test has been called");
+	return new PashaBibko::Util::Testing::TestPassed;
 };
+
+PB_TEST(OtherExampleTests, OtherExample)
+{
+	return new PashaBibko::Util::Testing::TestReturnVal;
+}
 
 int main()
 {
