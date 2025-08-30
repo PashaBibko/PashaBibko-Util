@@ -44,7 +44,7 @@ namespace PashaBibko::Util::Testing
 
         while (group != nullptr)
         {
-            Util::Print<Util::Colour::LightGreen>("[ Invoke ] ");
+            Util::Print<Util::Colour::LightGreen>("[ Invoke  ] ");
 
             size_t testCount = group->tests->m_Tests.size();
             if (testCount == 1)

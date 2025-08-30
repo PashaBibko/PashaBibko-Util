@@ -30,9 +30,14 @@ PB_TEST(ExampleTests, Example)
 	PB_EXPECT_FALSE(false);
 };
 
+PB_TEST(ExampleTests, Example1)
+{
+	PB_EXPECT_TRUE(3 == 4);
+}
+
 PB_TEST(OtherExampleTests, OtherExample)
 {
-	PB_EXPECT_EQL(1, 4);
+	PB_EXPECT_EQL(1, 1);
 }
 
 int main()

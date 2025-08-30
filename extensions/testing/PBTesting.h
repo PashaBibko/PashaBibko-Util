@@ -41,8 +41,8 @@ namespace PashaBibko::Util::Testing
         private:
             void ExecuteBatch()
             {
-                bool batchPassed = true;
-
+                /* Runs the tests and counts all the failures */
+                size_t testsFailed = 0;
                 for (UnitTest* test : m_Tests)
                 {
                     /* Runs the test and captures all the errors */
@@ -53,17 +53,30 @@ namespace PashaBibko::Util::Testing
                     if (errors.size() == 0)
                     {
                         /* Prints the sucess to the console */
-                        Util::Print<Util::Colour::LightGreen>("[ Passed ] ");
+                        Util::Print<Util::Colour::LightGreen>("[ Passed  ] ");
                         Util::Print(test->name, Util::NewLine);
                     }
 
                     else
                     {
-                        Util::Print<Util::Colour::LightRed>("[ Failed ] ");
+                        Util::Print<Util::Colour::LightRed>("[ Failed  ] ");
                         Util::Print(test->name, Util::NewLine);
 
-                        batchPassed = false;
+                        testsFailed++;
                     }
+                }
+
+                /* Displays a summary to the console */
+                if (testsFailed == 0)
+                {
+                    Util::Print<Util::Colour::LightGreen>("[ Summary ] ");
+                    Util::Print<Util::Colour::Green>("All tests in ", m_Name, " group passed.", Util::NewLine);
+                }
+
+                else
+                {
+                    Util::Print<Util::Colour::Yellow>("[ Summary ] ");
+                    Util::Print<Util::Colour::Yellow>(testsFailed, " out of ", m_Tests.size(), " tests failed.", Util::NewLine);
                 }
             }
 
