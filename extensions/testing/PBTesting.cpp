@@ -44,10 +44,19 @@ namespace PashaBibko::Util::Testing
 
         while (group != nullptr)
         {
-            Util::PrintLn("Executing test batch [", group->tests->m_Name, "]");
-            group->tests->ExecuteBatch();
+            Util::Print<Util::Colour::LightGreen>("[ Invoke ] ");
 
+            size_t testCount = group->tests->m_Tests.size();
+            if (testCount == 1)
+                Util::PrintLn(group->tests->m_Name, " ( 1 test )");
+
+            else
+                Util::PrintLn(group->tests->m_Name, " ( ", testCount, " )");
+            
+            group->tests->ExecuteBatch();
             group = group->next;
+
+            Util::PrintLn();
         }
     }
 }
