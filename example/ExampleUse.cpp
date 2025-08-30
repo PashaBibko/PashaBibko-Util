@@ -22,6 +22,7 @@ struct LogableExample
 };
 
 PB_TEST_GROUP ExampleTests;
+PB_TEST_GROUP OtherExampleTests;
 
 PB_TEST(ExampleTests, Example)
 {
@@ -30,6 +31,8 @@ PB_TEST(ExampleTests, Example)
 
 int main()
 {
+	PB::Util::Testing::ExecuteAllTests();
+
 	/**/
 	PB::Util::PrintLn<PB::Util::Colour::LightRed>(PB::Util::TempFilePath("file.txt"));
 
