@@ -16,7 +16,8 @@ namespace PashaBibko::Util::Testing
         return &root;
     }
 
-    UnitTestGroup::UnitTestGroup()
+    UnitTestGroup::UnitTestGroup(const char* name)
+        : m_Name(name)
     {
         /* Finds the last node in the linked list */
         GroupTy group = GetTestGroups();
@@ -35,8 +36,6 @@ namespace PashaBibko::Util::Testing
 
         group->next = nullptr;
         group->tests = this;
-
-        Util::PrintLn("Added test group ", isRoot);
     }
 
     void ExecuteAllTests()
@@ -45,7 +44,9 @@ namespace PashaBibko::Util::Testing
 
         while (group != nullptr)
         {
-            Util::PrintLn("Executing test batch ", group->tests != nullptr);
+            Util::PrintLn("Executing test batch [", group->tests->m_Name, "]");
+            group->tests->ExecuteBatch();
+
             group = group->next;
         }
     }

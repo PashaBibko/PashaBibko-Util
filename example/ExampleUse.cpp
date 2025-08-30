@@ -21,8 +21,8 @@ struct LogableExample
 	}
 };
 
-PB_TEST_GROUP ExampleTests;
-PB_TEST_GROUP OtherExampleTests;
+PB_TEST_GROUP(ExampleTests);
+PB_TEST_GROUP(OtherExampleTests);
 
 PB_TEST(ExampleTests, Example)
 {

@@ -16,11 +16,10 @@ namespace PashaBibko::Util::Testing
     class UnitTestGroup
     {
         public:
-            UnitTestGroup();
+            UnitTestGroup(const char* name);
 
             void RegisterTest(UnitTest* _test)
             {
-                Util::PrintLn("Registered test");
                 m_Tests.push_back(_test);
             }
 
@@ -33,14 +32,14 @@ namespace PashaBibko::Util::Testing
                     test->TestBody();
             }
 
-            std::vector<UnitTestGroup*> s_Groups;
             std::vector<UnitTest*> m_Tests;
+            std::string m_Name;
     };
 
     void ExecuteAllTests();
 }
 
-#define PB_TEST_GROUP ::PashaBibko::Util::Testing::UnitTestGroup
+#define PB_TEST_GROUP(name) ::PashaBibko::Util::Testing::UnitTestGroup name(#name)
 
 #define PB_TEST(group, name) \
     struct name final : public ::PashaBibko::Util::Testing::UnitTest { \
