@@ -26,17 +26,19 @@ PB_TEST_GROUP(OtherExampleTests);
 
 PB_TEST(ExampleTests, Example)
 {
-	return new PashaBibko::Util::Testing::TestPassed;
+	PB_EXPECT_TRUE(true);
+	PB_EXPECT_FALSE(false);
 };
 
 PB_TEST(OtherExampleTests, OtherExample)
 {
-	return new PashaBibko::Util::Testing::TestReturnVal;
+	PB_EXPECT_EQL(1, 4);
 }
 
 int main()
 {
 	PB::Util::Testing::ExecuteAllTests();
+	PB::Util::EndProcess(false);
 
 	/**/
 	PB::Util::PrintLn<PB::Util::Colour::LightRed>(PB::Util::TempFilePath("file.txt"));
