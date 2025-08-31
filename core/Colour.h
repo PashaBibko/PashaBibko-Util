@@ -1,5 +1,11 @@
 #pragma once
 
+/**
+ * @file Colour.h
+ * 
+ * @brief No tests as it is currently just an enum within this file.
+ */
+
 namespace PashaBibko::Util
 {
     /**

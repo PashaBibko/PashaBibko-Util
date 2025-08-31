@@ -1,5 +1,12 @@
 #pragma once
 
+/**
+ * @file Macros.h
+ * 
+ * @brief No tests as macros are handled in the compiler itself where we
+ *        cannot check things easily.
+ */
+
 /* MSVC Built in macros for non-MSVC enviroments                 */
 /* Macros are used as attributes do not show up with intelisense */
 

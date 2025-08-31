@@ -12,6 +12,15 @@
 
 #include <iostream>
 
+/**
+ * @file Log.h
+ * 
+ * @brief Tests are located in code-tests/src/LogTests.cpp but are mostly
+ *        contained to the Internal::HandleArg and Internal::HandleArgs as that
+ *        is the underlying logic of all logging functions and the rest of the
+ *        logic cannot be eaily tested.
+ */
+
 namespace PashaBibko::Util
 {
     /* Excludes the internal namespace from the docs */

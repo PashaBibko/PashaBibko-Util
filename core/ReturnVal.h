@@ -6,6 +6,12 @@
 #include <concepts>
 #include <utility>
 
+/**
+ * @file ReturnVal.h
+ * 
+ * @brief Tests are in code-tests/src/ReturnValTests.cpp
+ */
+
 namespace PashaBibko::Util
 {
 	#ifndef DOXYGEN_HIDE

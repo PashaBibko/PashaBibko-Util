@@ -7,8 +7,7 @@
 /**
  * @file Vec.h
  * 
- * @brief Contains the defenition of Vec<Len, Ty> with operator overloads
- *        for mathmatical expressions.
+ * @brief Tests in code-tests/src/VecTests.cpp
  */
 
 namespace PashaBibko::Util

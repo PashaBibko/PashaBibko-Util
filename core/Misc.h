@@ -2,6 +2,13 @@
 
 #include <core/Colour.h>
 
+/**
+ * @file Misc.h
+ * 
+ * @brief No tests as these are either developer functions which trigger actions within the IDE
+ *        or do not have a direct way to test via code.
+ */
+
 namespace PashaBibko::Util
 {
     /**
