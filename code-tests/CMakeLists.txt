@@ -23,5 +23,5 @@ target_include_directories(PBUtil-Tests PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 set(PB_UTIL_EXTENSIONS ON)
 set(PB_TESTS ON)
 
-add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/.. ${CMAKE_CURRENT_BINARY_DIR}/lib-build) # <- TODO: Fix absolute file path
+add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/.. ${CMAKE_CURRENT_BINARY_DIR}/lib-build)
 target_link_libraries(PBUtil-Tests PashaBibko-UTIL)
