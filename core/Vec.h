@@ -511,7 +511,7 @@ namespace PashaBibko::Util
      * @brief Subtracts the right vector by the left vector.
      * 
      * @details Requires the two types contained in the vector to
-     *          be able to be subtracted from each other The result type will
+     *          be able to be subtracted from each other. The result type will
      *          also be the same type as when they are normally subtracted.
      */
     template<std::size_t len, typename LhsTy, typename RhsTy, typename ResTy = Internal::SubResultT<LhsTy, RhsTy>>
@@ -525,7 +525,7 @@ namespace PashaBibko::Util
      * @brief Subtracts an item from each element in a vector.
      * 
      * @details Requires the two types contained in the vector to
-     *          be able to be subtracted from each other The result type will
+     *          be able to be subtracted from each other. The result type will
      *          also be the same type as when they are normally subtracted.
      */
     template<std::size_t len, typename LhsTy, typename RhsTy, typename ResTy = Internal::SubResultT<LhsTy, RhsTy>>
@@ -533,6 +533,20 @@ namespace PashaBibko::Util
     Vec<len, ResTy> operator- (const Vec<len, LhsTy>& lhs, const RhsTy& rhs)
     {
         return [&]<std::size_t... index>(std::index_sequence<index...>) { return Vec<len, ResTy>{ (lhs[index] - rhs)... }; } (std::make_index_sequence<len>{});
+    }
+
+    /**
+     * @brief Subtracts an item from each element in a vector.
+     * 
+     * @details Requires the two types contained in the vector to
+     *          be able to be subtracted from each other. The result type will
+     *          also be the same type as when they are normally subtracted
+     */
+    template<std::size_t len, typename LhsTy, typename RhsTy, typename ResTy = Internal::SubResultT<LhsTy, RhsTy>>
+        requires Internal::CanSub<LhsTy, RhsTy>
+    Vec<len, ResTy> operator- (const LhsTy& lhs, const Vec<len, RhsTy>& rhs)
+    {
+        return [&]<std::size_t... index>(std::index_sequence<index...>) { return Vec<len, ResTy>{ (lhs - rhs[index])... }; } (std::make_index_sequence<len>{});
     }
 
     /**
@@ -588,7 +602,7 @@ namespace PashaBibko::Util
      *          also be the same type as when they are normally
      *          divided together.
      */
-    template<std::size_t len, typename LhsTy, typename RhsTy, typename ResTy = Internal::SubResultT<LhsTy, RhsTy>>
+    template<std::size_t len, typename LhsTy, typename RhsTy, typename ResTy = Internal::DivResultT<LhsTy, RhsTy>>
         requires Internal::CanDiv<LhsTy, RhsTy>
     Vec<len, ResTy> operator/ (const Vec<len, LhsTy>& lhs, const Vec<len, RhsTy>& rhs)
     {
@@ -603,11 +617,26 @@ namespace PashaBibko::Util
      *          also be the same type as when they are normally
      *          divided together.
      */
-    template<std::size_t len, typename LhsTy, typename RhsTy, typename ResTy = Internal::SubResultT<LhsTy, RhsTy>>
+    template<std::size_t len, typename LhsTy, typename RhsTy, typename ResTy = Internal::DivResultT<LhsTy, RhsTy>>
         requires Internal::CanDiv<LhsTy, RhsTy>
     Vec<len, ResTy> operator/ (const Vec<len, LhsTy>& lhs, const RhsTy& rhs)
     {
         return [&]<std::size_t... index>(std::index_sequence<index...>) { return Vec<len, ResTy>{ (lhs[index] / rhs)... }; } (std::make_index_sequence<len>{});
+    }
+
+    /**
+     * @brief Divides each element in the vector by a single item.
+     * 
+     * @details Requires the two types contained in the vector to,
+     *          be also able to be divided from each other. The result type will
+     *          also be the same type as when they are normally
+     *          divided together.
+     */
+    template<std::size_t len, typename LhsTy, typename RhsTy, typename ResTy = Internal::DivResultT<LhsTy, RhsTy>>
+        requires Internal::CanDiv<LhsTy, RhsTy>
+    Vec<len, ResTy> operator/ (const LhsTy& lhs, const Vec<len, RhsTy>& rhs)
+    {
+        return [&]<std::size_t... index>(std::index_sequence<index...>) { return Vec<len, ResTy>{ (lhs / rhs[index])... }; } (std::make_index_sequence<len>());
     }
 
     /**

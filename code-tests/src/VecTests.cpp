@@ -201,6 +201,11 @@ namespace PashaBibko::Util::CodeTests
         Vec3i a4(44, 45, 46);
         Vec3i b4 = a4 - 12;
         PB_EXPECT_EQL(b4, Vec3i(32, 33, 34));
+
+        /* Vec = Item - Vec */
+        Vec3i a5(22, 54, 29);
+        Vec3i b5 = 100 - a5;
+        PB_EXPECT_EQL(b5, Vec3i(78, 46, 71));
     }
 
     PB_TEST(PBU_VectorTests, VecMul)
@@ -256,5 +261,10 @@ namespace PashaBibko::Util::CodeTests
         Vec3i a4(50, 55, 60);
         Vec3i b4 = a4 / 5;
         PB_EXPECT_EQL(b4, Vec3i(10, 11, 12));
+
+        /* Vec = Item / Vec */
+        Vec3i a5(2, 3, 4);
+        Vec3i b5 = 24 / a5;
+        PB_EXPECT_EQL(b5, Vec3i(12, 8, 6));
     }
 };
