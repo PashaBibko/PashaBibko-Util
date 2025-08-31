@@ -12,6 +12,9 @@ if (${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_CURRENT_SOURCE_DIR})
 	set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/bin")
 
 	project(PashaBibko-Util-Project)
+
+	# Enables extensions for local testing #
+	set(PB_UTIL_EXTENSIONS ON)
 endif()
 
 # Creates the static library #
@@ -23,8 +26,10 @@ add_library(PashaBibko-UTIL STATIC
 	"core/Log.cpp"
 )
 
-# Includes the test-extension (temporary) #
-add_subdirectory(extensions/testing)
+# Includes the extensions if they are turned on #
+if (PB_UTIL_EXTENSIONS)
+	add_subdirectory(extensions/testing)
+endif()
 
 # Sets the include paths for the Util library        #
 # Shared with any projects that include this library #
