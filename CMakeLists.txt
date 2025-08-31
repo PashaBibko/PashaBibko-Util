@@ -18,6 +18,7 @@ endif()
 add_library(PashaBibko-UTIL STATIC
 	# List of core source files for the Util library #
 	"core/FileManagment.cpp"
+	"core/ReturnVal.cpp"
 	"core/Misc.cpp"
 	"core/Log.cpp"
 )

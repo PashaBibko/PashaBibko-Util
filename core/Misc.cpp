@@ -103,6 +103,6 @@ void PashaBibko::Util::EndProcess(bool breakpoint)
 	if (breakpoint)
 		TriggerBreakpoint();
 
-	std::abort();
+	std::exit(0);
 }
 
