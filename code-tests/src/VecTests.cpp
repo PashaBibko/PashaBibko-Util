@@ -147,4 +147,114 @@ namespace PashaBibko::Util::CodeTests
 
         PB_EXPECT_FALSE(c != d);
     }
+
+    PB_TEST(PBU_VectorTests, VecAdd)
+    {
+        /* Vec += Vec */
+        Vec3i a1(1, 2, 3);
+        Vec3i b1(3, 3, 4);
+        a1 += b1;
+        PB_EXPECT_EQL(a1, Vec3i(4, 5, 7));
+
+        /* Vec += Item */
+        Vec3i a2(45, 50, 55);
+        a2 += 5;
+        PB_EXPECT_EQL(a2, Vec3i(50, 55, 60));
+
+        /* Vec = Vec + Vec */
+        Vec3i a3(33, 44, 55);
+        Vec3i b3(22, 44, 66);
+        Vec3i c3 = a3 + b3;
+        PB_EXPECT_EQL(c3, Vec3i(55, 88, 121));
+
+        /* Vec = Vec + Item */
+        Vec3i a4(24, 46, 68);
+        Vec3i b4 = a4 + 2;
+        PB_EXPECT_EQL(b4, Vec3i(26, 48, 70));
+
+        /* Vec = Item + Vec */
+        Vec3i a5(13, 15, 17);
+        Vec3i b5 = 3 + a5;
+        PB_EXPECT_EQL(b5, Vec3i(16, 18, 20));
+    }
+
+    PB_TEST(PBU_VectorTests, VecSub)
+    {
+        /* Vec -= Vec */
+        Vec3i a1(4, 5, 6);
+        Vec3i b1(3, 4, 6);
+        a1 -= b1;
+        PB_EXPECT_EQL(a1, Vec3i(1, 1, 0));
+
+        /* Vec -= Item */
+        Vec3i a2(66, 77, 88);
+        a2 -= 11;
+        PB_EXPECT_EQL(a2, Vec3i(55, 66, 77));
+
+        /* Vec = Vec - Vec */
+        Vec3i a3(35, 40 , 45);
+        Vec3i b3(5, 10, 10);
+        Vec3i c3 = a3 - b3;
+        PB_EXPECT_EQL(c3, Vec3i(30, 30, 35));
+
+        /* Vec = Vec - Item */
+        Vec3i a4(44, 45, 46);
+        Vec3i b4 = a4 - 12;
+        PB_EXPECT_EQL(b4, Vec3i(32, 33, 34));
+    }
+
+    PB_TEST(PBU_VectorTests, VecMul)
+    {
+        /* Vec *= Vec */
+        Vec3i a1(3, 4, 5);
+        Vec3i b1(6, 5, 4);
+        a1 *= b1;
+        PB_EXPECT_EQL(a1, Vec3i(18, 20, 20));
+
+        /* Vec *= Item */
+        Vec3i a2(6, 7, 8);
+        a2 *= 3;
+        PB_EXPECT_EQL(a2, Vec3i(18, 21, 24));
+
+        /* Vec = Vec * Vec */
+        Vec3i a3(8, 9, 10);
+        Vec3i b3(11, 12, 10);
+        Vec3i c3 = a3 * b3;
+        PB_EXPECT_EQL(c3, Vec3i(88, 108, 100));
+
+        /* Vec = Vec * Item */
+        Vec3i a4(10, 20, 30);
+        Vec3i b4 = a4 * 5;
+        PB_EXPECT_EQL(b4, Vec3i(50, 100, 150));
+
+        /* Vec = Item * Vec */
+        Vec3i a5(12, 15, 20);
+        Vec3i b5 = 5 * a5;
+        PB_EXPECT_EQL(b5, Vec3i(60, 75, 100));
+    }
+
+    PB_TEST(PBU_VectorTests, VecDiv)
+    {
+        /* Vec /= Vec */
+        Vec3i a1(24, 35, 48);
+        Vec3i b1(6, 7, 8);
+        Vec3i c1 = a1 / b1;
+        PB_EXPECT_EQL(c1, Vec3i(4, 5, 6));
+
+        /* Vec /= Item */
+        Vec3i a2(22, 88, 99);
+        a2 /= 11;
+        PB_EXPECT_EQL(a2, Vec3i(2, 8, 9));
+
+        /* Vec = Vec / Vec */
+        Vec3i a3(56, 80, 90);
+        Vec3i b3(8, 4, 90);
+        Vec3i c3 = a3 / b3;
+        PB_EXPECT_EQL(c3, Vec3i(7, 20, 1));
+
+        /* Vec = Vec / Item */
+        Vec3i a4(50, 55, 60);
+        Vec3i b4 = a4 / 5;
+        PB_EXPECT_EQL(b4, Vec3i(10, 11, 12));
+    }
 };

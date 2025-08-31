@@ -37,8 +37,16 @@ namespace PashaBibko::Util::Testing
         {
             PrintLocation();
             PrintLn("Expected values to be equal: ");
-            PrintLn("\t\"", m_Lhs, "\" got {", m_LhsVal, "}");
-            PrintLn("\t\"", m_Rhs, "\" got {", m_RhsVal, "}");
+
+            if constexpr (Internal::Logable<LhsTy>)
+                PrintLn("\t\"", m_Lhs, "\" got {", m_LhsVal, "}");
+            else
+                PrintLn("\t\"", m_Lhs, "\" got {unknown}");
+
+            if constexpr (Internal::Logable<RhsTy>)
+                PrintLn("\t\"", m_Rhs, "\" got {", m_RhsVal, "}");
+            else
+                PrintLn("\t\"", m_Rhs, "\" got {unknown}");
         }
 
         const std::string m_Lhs;
