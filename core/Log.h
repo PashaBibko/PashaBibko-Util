@@ -315,7 +315,7 @@ namespace PashaBibko::Util
         requires (Internal::Logable<std::remove_cvref_t<Args>> && ...)
     inline void PrintLn(Args&&... args)
     {
-        Print(std::forward<Args>(args)..., NewLine);
+        Print<colour>(std::forward<Args>(args)..., NewLine);
     }
 
     template<typename Ty, std::ranges::range Container_Ty, typename Cargo_Ty = std::ranges::range_value_t<Container_Ty>>
