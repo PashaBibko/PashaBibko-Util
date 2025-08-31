@@ -17,11 +17,12 @@ namespace PashaBibko::Util::Testing
     struct UnitTest
     {
         UnitTest(const char* testGroup, const char* testName, const char* filename)
-            : name(testName)
+            : group(testGroup), name(testName)
         {}
 
         virtual void Dispatch(std::vector<TestError*>& errors) {}
 
+        const std::string group;
         const std::string name;
     };
 
@@ -39,7 +40,7 @@ namespace PashaBibko::Util::Testing
             friend void ExecuteAllTests();
 
         private:
-            void ExecuteBatch()
+            void ExecuteBatch(std::vector<UnitTest*>& failures)
             {
                 /* Runs the tests and counts all the failures */
                 size_t testsFailed = 0;
@@ -49,19 +50,23 @@ namespace PashaBibko::Util::Testing
                     std::vector<TestError*> errors;
                     test->Dispatch(errors);
 
-                    /* Handles passing / failing of the test */
                     if (errors.size() == 0)
                     {
                         /* Prints the sucess to the console */
-                        Util::Print<Util::Colour::LightGreen>("[ Passed  ] ");
+                        Util::Print<Util::Colour::LightGreen>("[ Passed ] ");
                         Util::Print(test->name, Util::NewLine);
                     }
 
                     else
                     {
-                        Util::Print<Util::Colour::LightRed>("[ Failed  ] ");
+                        /* Prints the failure to the console */
+                        Util::Print<Util::Colour::LightRed>("[ Failed ] ");
                         Util::Print(test->name, Util::NewLine);
 
+                        /* TODO: Print error in the console from the test */
+
+                        /* Registers the test as a failure */
+                        failures.push_back(test);
                         testsFailed++;
                     }
                 }
@@ -69,14 +74,19 @@ namespace PashaBibko::Util::Testing
                 /* Displays a summary to the console */
                 if (testsFailed == 0)
                 {
-                    Util::Print<Util::Colour::LightGreen>("[ Summary ] ");
+                    Util::Print<Util::Colour::LightGreen>("[ ------ ] ");
                     Util::Print<Util::Colour::Green>("All tests in ", m_Name, " group passed.", Util::NewLine);
                 }
 
                 else
                 {
-                    Util::Print<Util::Colour::Yellow>("[ Summary ] ");
-                    Util::Print<Util::Colour::Yellow>(testsFailed, " out of ", m_Tests.size(), " tests failed.", Util::NewLine);
+                    Util::Print<Util::Colour::Yellow>("[ ------ ] ");
+                    
+                    if (m_Tests.size() != 1)
+                        Util::Print<Util::Colour::Yellow>(testsFailed, " out of ", m_Tests.size(), " tests failed.", Util::NewLine);
+
+                    else
+                        Util::Print<Util::Colour::Yellow>("1 out of 1 test failed.", Util::NewLine);
                 }
             }
 
