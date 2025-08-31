@@ -1,5 +1,7 @@
 #include <extensions/testing/PBTesting.h>
 
+#include <core/Log.h>
+
 namespace PashaBibko::Util::Testing
 {
     UnitTest::UnitTest(const char* testGroup, const char* testName, const char* filename)
@@ -69,7 +71,9 @@ namespace PashaBibko::Util::Testing
                 Util::Print<Util::Colour::LightRed>("[ Failed ] ");
                 Util::Print(test->name, Util::NewLine);
                 
-                /* TODO: Print error in the console from the test */
+                /* Prints all errors collected to the console */
+                for (TestError* error : errors)
+                    error->PrintToConsole();
 
                 /* Registers the test as a failure */
                 failures.push_back(test);

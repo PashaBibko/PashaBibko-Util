@@ -1,18 +1,13 @@
 #pragma once
 
 #include <vector>
+#include <string>
 
-#include <core/Log.h>
+#include <extensions/testing/PBTestErrors.h>
 
 /* Classes used by the macros, should not be accesed by the user */
 namespace PashaBibko::Util::Testing
 {
-    /* Base class of all errors that can occur in a test */
-    struct TestError {};
-
-    /* Error when values are not equal when they should be */
-    struct NotEqualError : public TestError {};
-
     /* Base class of every unit test, constructor is auto filled and user defines the contents of the Dispatch() function */
     struct UnitTest
     {
@@ -46,7 +41,8 @@ namespace PashaBibko::Util::Testing
 }
 
 /* Defines a group of unit tests, each test is required to be a part of a group */
-#define PB_TEST_GROUP(name, ...) ::PashaBibko::Util::Testing::UnitTestGroup name(#name, std::vector<::PashaBibko::Util::Testing::UnitTestGroup*>{ __VA_ARGS__ } )
+#define PB_TEST_GROUP(name, ...) \
+::PashaBibko::Util::Testing::UnitTestGroup name(#name, std::vector<::PashaBibko::Util::Testing::UnitTestGroup*>{ __VA_ARGS__ } )
 
 /* Declares a unit test belogining to a certain group */
 #define PB_TEST(group, name) \
@@ -59,8 +55,14 @@ namespace PashaBibko::Util::Testing
     name test_instance##name(group);\
     void name::Dispatch(std::vector<::PashaBibko::Util::Testing::TestError*>& errors)
 
+/* Internal macros */
+#define _PB_INTERNAL_LOCATION __FILE__, __LINE__
+#define _PB_INTERNAL_EXPAND_PARAM(param) #param, param
+
 /* Checks two values are equal within a PB_TEST */
-#define PB_EXPECT_EQL(lhs, rhs) if (lhs != rhs) errors.push_back(new ::PashaBibko::Util::Testing::NotEqualError);
+#define PB_EXPECT_EQL(lhs, rhs) if (lhs != rhs) \
+errors.push_back(new ::PashaBibko::Util::Testing::NotEqualError( \
+_PB_INTERNAL_EXPAND_PARAM(lhs), _PB_INTERNAL_EXPAND_PARAM(rhs), _PB_INTERNAL_LOCATION));
 
 /* Helpers for checking values of booleans */
 
