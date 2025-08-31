@@ -12,7 +12,7 @@ namespace PashaBibko::Util::Testing
     struct UnitTest
     {
         UnitTest(const char* testGroup, const char* testName, const char* filename);
-        virtual void Dispatch(std::vector<TestError*>& errors) = 0;
+        virtual void Dispatch(std::vector<TestError*>& errors, std::size_t& passed) = 0;
 
         const std::string group;
         const std::string name;
@@ -50,10 +50,10 @@ namespace PashaBibko::Util::Testing
         name(::PashaBibko::Util::Testing::UnitTestGroup& _group) : UnitTest(#group, #name, __FILE__) { \
             _group.RegisterTest(this); \
         } \
-        void Dispatch(std::vector<::PashaBibko::Util::Testing::TestError*>& errors) override; \
+        void Dispatch(std::vector<::PashaBibko::Util::Testing::TestError*>& errors, std::size_t& passed) override; \
     }; \
     name test_instance##name(group);\
-    void name::Dispatch(std::vector<::PashaBibko::Util::Testing::TestError*>& errors)
+    void name::Dispatch(std::vector<::PashaBibko::Util::Testing::TestError*>& errors, std::size_t& passed)
 
 /* Internal macros */
 #define _PB_INTERNAL_LOCATION __FILE__, __LINE__
@@ -61,8 +61,8 @@ namespace PashaBibko::Util::Testing
 
 /* Checks two values are equal within a PB_TEST */
 #define PB_EXPECT_EQL(lhs, rhs) if (lhs != rhs) \
-errors.push_back(new ::PashaBibko::Util::Testing::NotEqualError( \
-_PB_INTERNAL_EXPAND_PARAM(lhs), _PB_INTERNAL_EXPAND_PARAM(rhs), _PB_INTERNAL_LOCATION));
+{ errors.push_back(new ::PashaBibko::Util::Testing::NotEqualError(_PB_INTERNAL_EXPAND_PARAM(lhs), _PB_INTERNAL_EXPAND_PARAM(rhs), _PB_INTERNAL_LOCATION)); } \
+else { passed++; }
 
 /* Helpers for checking values of booleans */
 

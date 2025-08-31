@@ -2,6 +2,8 @@
 
 #include <core/Log.h>
 
+#include <chrono>
+
 namespace PashaBibko::Util::Testing
 {
     UnitTest::UnitTest(const char* testGroup, const char* testName, const char* filename)
@@ -56,13 +58,25 @@ namespace PashaBibko::Util::Testing
         {
             /* Runs the test and captures all the errors */
             std::vector<TestError*> errors;
-            test->Dispatch(errors);
+            std::size_t checksPassed = 0;
+
+            std::chrono::steady_clock::time_point start = std::chrono::steady_clock::now();
+            test->Dispatch(errors, checksPassed);
+
+            std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
+            std::chrono::nanoseconds duration = end - start;
 
             if (errors.size() == 0)
             {
                 /* Prints the sucess to the console */
                 Util::Print<Util::Colour::LightGreen>("[ Passed ] ");
-                Util::Print(test->name, Util::NewLine);
+                Util::Print(test->name, " [", checksPassed, '/', checksPassed, "] ");
+                
+                if (duration < std::chrono::milliseconds(1))
+                    Util::PrintLn("(<1 ms)");
+
+                else
+                    Util::PrintLn('(', duration / 1000000, "ms)");
             }
             
             else
