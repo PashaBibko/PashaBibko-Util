@@ -58,10 +58,9 @@ namespace PashaBibko::Util::Testing
         {
             /* Runs the test and captures all the errors */
             std::vector<TestError*> errors;
-            std::size_t checksPassed = 0;
 
             std::chrono::steady_clock::time_point start = std::chrono::steady_clock::now();
-            test->Dispatch(errors, checksPassed);
+            test->Dispatch(errors);
 
             std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
             std::chrono::nanoseconds duration = end - start;
@@ -70,7 +69,7 @@ namespace PashaBibko::Util::Testing
             {
                 /* Prints the sucess to the console */
                 Util::Print<Util::Colour::LightGreen>("[ Passed ] ");
-                Util::Print(test->name, " [", checksPassed, '/', checksPassed, "] ");
+                Util::Print(test->name, " in ");
                 
                 if (duration < std::chrono::milliseconds(1))
                     Util::PrintLn("(<1 ms)");
