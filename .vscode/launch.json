@@ -39,6 +39,20 @@
             "console": "externalTerminal",
             
             "preLaunchTask": "build"
+        },
+
+        {
+            "name": "[Win64] Run tests",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${workspaceRoot}/code-tests/bin/PBUtil-Tests",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "console": "externalTerminal",
+
+            "preLaunchTask": "build-tests"
         }
     ]
 }

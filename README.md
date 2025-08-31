@@ -59,3 +59,9 @@ To use any of the functions/classes within your project you can find them under 
 Example uses of some of the classes and functions can be found within the examples/ subdir
 or can be seen [here](https://github.com/PashaBibko/PashaBibko-Util/blob/main/example/ExampleUse.cpp)
 on the Github repository.
+
+### Tests
+
+This library does come with tests that use the PB-UTIL test extension. More information about the
+tests can be found [here](https://github.com/PashaBibko/PashaBibko-Util/blob/main/code-tests/AboutTests.md)
+on the online or in 'code-tests/AboutTests.md' if you download the repository.

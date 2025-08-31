@@ -95,7 +95,7 @@ namespace PashaBibko::Util::Testing
         }
     }
 
-    void ExecuteAllTests()
+    int ExecuteAllTests()
     {
         /* Fetches the linked list of groups and stores the root */
         GroupTy group = GetTestGroups();
@@ -139,7 +139,9 @@ namespace PashaBibko::Util::Testing
         if (failures.size() == 0)
         {
             Util::Print<Util::Colour::LightGreen>("[ ====== ] ");
-            Util::Print<Util::Colour::Green>("All tests passed.", Util::NewLine);
+            Util::Print<Util::Colour::Green>("All tests passed.", Util::NewLine, Util::NewLine);
+
+            return EXIT_SUCCESS; // 0
         }
 
         else
@@ -149,8 +151,9 @@ namespace PashaBibko::Util::Testing
 
             for (UnitTest* failedTest : failures)
                 Util::Print<Util::Colour::LightRed>("[ Failed ] ", failedTest->group, '.', failedTest->name, Util::NewLine);
-        }
 
-        Util::Print(Util::NewLine);
+            Util::Print(Util::NewLine);
+            return EXIT_FAILURE; // 1
+        }
     }
 }

@@ -33,7 +33,7 @@ namespace PashaBibko::Util::Testing
             inline operator UnitTestGroup*() { return this; }
 
         private:
-            friend void ExecuteAllTests();
+            friend int ExecuteAllTests();
 
             void ExecuteBatch(std::vector<UnitTest*>& failures);
 
@@ -42,7 +42,7 @@ namespace PashaBibko::Util::Testing
             std::string m_Name;
     };
 
-    void ExecuteAllTests();
+    int ExecuteAllTests();
 }
 
 /* Defines a group of unit tests, each test is required to be a part of a group */

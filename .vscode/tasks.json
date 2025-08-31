@@ -20,6 +20,16 @@
             "problemMatcher": [],
             
             "dependsOn": [ "Clear console" ]
+        },
+
+        {
+            "label": "build-tests",
+            "type": "shell",
+            "command": "cmake --build code-tests/build",
+            "group": "build",
+            "problemMatcher": [],
+
+            "dependsOn": [ "Clear console" ]
         }
     ]
 }
