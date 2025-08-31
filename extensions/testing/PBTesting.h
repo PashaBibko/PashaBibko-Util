@@ -16,80 +16,28 @@ namespace PashaBibko::Util::Testing
     /* Base class of every unit test, constructor is auto filled and user defines the contents of the Dispatch() function */
     struct UnitTest
     {
-        UnitTest(const char* testGroup, const char* testName, const char* filename)
-            : group(testGroup), name(testName)
-        {}
-
-        virtual void Dispatch(std::vector<TestError*>& errors) {}
+        UnitTest(const char* testGroup, const char* testName, const char* filename);
+        virtual void Dispatch(std::vector<TestError*>& errors) = 0;
 
         const std::string group;
         const std::string name;
     };
 
-    /* Class to hold a selection of related unit tests and run them together */
+    /* Holds a selection of related unit tests and run them together */
     class UnitTestGroup final
     {
         public:
-            UnitTestGroup(const char* name);
+            UnitTestGroup(const char* name, const std::vector<UnitTestGroup*>& deps);
 
-            void RegisterTest(UnitTest* _test)
-            {
-                m_Tests.push_back(_test);
-            }
-
-            friend void ExecuteAllTests();
+            inline void RegisterTest(UnitTest* _test) { m_Tests.push_back(_test); }
+            inline operator UnitTestGroup*() { return this; }
 
         private:
-            void ExecuteBatch(std::vector<UnitTest*>& failures)
-            {
-                /* Runs the tests and counts all the failures */
-                size_t testsFailed = 0;
-                for (UnitTest* test : m_Tests)
-                {
-                    /* Runs the test and captures all the errors */
-                    std::vector<TestError*> errors;
-                    test->Dispatch(errors);
+            friend void ExecuteAllTests();
 
-                    if (errors.size() == 0)
-                    {
-                        /* Prints the sucess to the console */
-                        Util::Print<Util::Colour::LightGreen>("[ Passed ] ");
-                        Util::Print(test->name, Util::NewLine);
-                    }
+            void ExecuteBatch(std::vector<UnitTest*>& failures);
 
-                    else
-                    {
-                        /* Prints the failure to the console */
-                        Util::Print<Util::Colour::LightRed>("[ Failed ] ");
-                        Util::Print(test->name, Util::NewLine);
-
-                        /* TODO: Print error in the console from the test */
-
-                        /* Registers the test as a failure */
-                        failures.push_back(test);
-                        testsFailed++;
-                    }
-                }
-
-                /* Displays a summary to the console */
-                if (testsFailed == 0)
-                {
-                    Util::Print<Util::Colour::LightGreen>("[ ------ ] ");
-                    Util::Print<Util::Colour::Green>("All tests in ", m_Name, " group passed.", Util::NewLine);
-                }
-
-                else
-                {
-                    Util::Print<Util::Colour::Yellow>("[ ------ ] ");
-                    
-                    if (m_Tests.size() != 1)
-                        Util::Print<Util::Colour::Yellow>(testsFailed, " out of ", m_Tests.size(), " tests failed.", Util::NewLine);
-
-                    else
-                        Util::Print<Util::Colour::Yellow>("1 out of 1 test failed.", Util::NewLine);
-                }
-            }
-
+            std::vector<UnitTestGroup*> m_GroupDependencies;
             std::vector<UnitTest*> m_Tests;
             std::string m_Name;
     };
@@ -98,7 +46,7 @@ namespace PashaBibko::Util::Testing
 }
 
 /* Defines a group of unit tests, each test is required to be a part of a group */
-#define PB_TEST_GROUP(name) ::PashaBibko::Util::Testing::UnitTestGroup name(#name)
+#define PB_TEST_GROUP(name, ...) ::PashaBibko::Util::Testing::UnitTestGroup name(#name, std::vector<::PashaBibko::Util::Testing::UnitTestGroup*>{ __VA_ARGS__ } )
 
 /* Declares a unit test belogining to a certain group */
 #define PB_TEST(group, name) \
