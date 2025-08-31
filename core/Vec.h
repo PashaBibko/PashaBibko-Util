@@ -670,23 +670,26 @@ namespace PashaBibko::Util
     template<typename Ty = float>
     using Vec4 = Vec<4, Ty>;
 
-    using Vec2s = Vec3<short>;
-    using Vec2i = Vec3<int>;
-    using Vec2u = Vec3<unsigned int>;
-    using Vec2l = Vec3<long>;
-    using Vec2d = Vec3<double>;
+    using Vec2s = Vec2<short>;
+    using Vec2i = Vec2<int>;
+    using Vec2u = Vec2<unsigned int>;
+    using Vec2l = Vec2<long>;
+    using Vec2f = Vec2<float>;
+    using Vec2d = Vec2<double>;
 
     using Vec3s = Vec3<short>;
     using Vec3i = Vec3<int>;
     using Vec3u = Vec3<unsigned int>;
     using Vec3l = Vec3<long>;
+    using Vec3f = Vec3<float>;
     using Vec3d = Vec3<double>;
 
-    using Vec3s = Vec3<short>;
-    using Vec3i = Vec3<int>;
-    using Vec3u = Vec3<unsigned int>;
-    using Vec3l = Vec3<long>;
-    using Vec3d = Vec3<double>;
+    using Vec4s = Vec4<short>;
+    using Vec4i = Vec4<int>;
+    using Vec4u = Vec4<unsigned int>;
+    using Vec4l = Vec4<long>;
+    using Vec4f = Vec4<float>;
+    using Vec4d = Vec4<double>;
 
     #endif // DOXYGEN_HIDE
 }
