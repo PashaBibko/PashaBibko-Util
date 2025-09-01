@@ -6,9 +6,6 @@
     PBTest extension
     Extensions
 
-- Vec.h
-    Fix so many typos in the doxygen comments
-
 - ReturnVal.h
     Update documentation to work with the new version
 
@@ -30,7 +27,7 @@
 
 ### Code (linux-only)
 
-- Misc.cpp TriggerBreakpoint
+- Misc.cpp TriggerBreakpoint (Can be in later release)
     Figure out how to detect debuggers on Linux
     Make sure that breakpoints are actually triggered
 

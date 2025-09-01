@@ -291,7 +291,8 @@ namespace PashaBibko::Util
          * 
          * @warning The function does not check if the index is within
          *          the bounds of the vector. Accessing elements not
-         *          within the bounds is classified as UB.
+         *          within the bounds is classified as UB. Has a const
+         *          version to be used if needed.
          */
         Ty& operator[](std::size_t index) { return this->data[index]; }
 
@@ -299,7 +300,9 @@ namespace PashaBibko::Util
          * @brief Returns a pointer to the beginning of the array.
          * 
          * @details Used by C++ to allow the data type to be iterated
-         *          over by a range for loop.
+         *          over by a range for loop. Has a const version so
+         *          can be iterated over via "for (const auto&)"
+         *          instead of "for (auto&)".
          */
         Ty* begin() noexcept { return this->data; }
 
@@ -307,7 +310,9 @@ namespace PashaBibko::Util
          * @brief Returns a pointer to the end of the vector.
          * 
          * @details Used by C++ to allow the data type to be iterated
-         *          over by a range for loop.
+         *          over by a range for loop. Has a const version so
+         *          can be iterated over via "for (const auto&)"
+         *          instead of "for (auto&)".
          */
         Ty* end() { return this->data + len; }
 
@@ -328,8 +333,9 @@ namespace PashaBibko::Util
          * @brief Adds another vector of the same size to itself.
          * 
          * @details Requires OtherTy to be able to be added to Ty,
-         *          otherwise it will not compile and the result type
-         *          to be the same as Ty.
+         *          and the result type of that operation to be Ty
+         *          otherwise it will not be treated as a
+         *          valid template.
          */
         template<typename OtherTy>
             requires Internal::CanAdd<Ty, OtherTy> && std::is_same_v<Ty, Internal::AddResultT<Ty, OtherTy>>
@@ -345,8 +351,9 @@ namespace PashaBibko::Util
          * @brief Adds a single item of to each of the vectors elements.
          * 
          * @details Requires OtherTy to be able to be added to Ty,
-         *          otherwise it will not compile and the result type
-         *          to be the same as Ty.
+         *          and the result type of that operation to be Ty
+         *          otherwise it will not be treated as a
+         *          valid template.
          */
         template<typename OtherTy>
             requires Internal::CanAdd<Ty, OtherTy> && std::is_same_v<Ty, Internal::AddResultT<Ty, OtherTy>>
@@ -362,8 +369,9 @@ namespace PashaBibko::Util
          * @brief Subtracts another vector of the same size to itself.
          * 
          * @details Requires OtherTy to be able to be subtracted from Ty,
-         *          otherwise it will not compile and the result type
-         *          to be the same as Ty.
+         *          and the result type of that operation to be Ty
+         *          otherwise it will not be treated as a
+         *          valid template.
          */
         template<typename OtherTy>
             requires Internal::CanSub<Ty, OtherTy> && std::is_same_v<Ty, Internal::SubResultT<Ty, OtherTy>>
@@ -379,8 +387,9 @@ namespace PashaBibko::Util
          * @brief Subtracts a single item to each of the vectors elements.
          * 
          * @details Requires OtherTy to be able to be subtracted from Ty,
-         *          otherwise it will not compile and the result type
-         *          to be the same as Ty.
+         *          and the result type of that operation to be Ty
+         *          otherwise it will not be treated as a
+         *          valid template.
          */
         template<typename OtherTy>
             requires Internal::CanSub<Ty, OtherTy> && std::is_same_v<Ty, Internal::SubResultT<Ty, OtherTy>>
@@ -396,8 +405,9 @@ namespace PashaBibko::Util
          * @brief Multiplies another vector of the same size to itself.
          * 
          * @details Requires Ty to be able to be multipled by OtherTy,
-         *          otherwise it will not compile and the result type
-         *          to be the same as Ty.
+         *          and the result type of that operation to be Ty
+         *          otherwise it will not be treated as a
+         *          valid template.
          */
         template<typename OtherTy>
             requires Internal::CanMul<Ty, OtherTy> && std::is_same_v<Ty, Internal::MulResultT<Ty, OtherTy>>
@@ -413,8 +423,9 @@ namespace PashaBibko::Util
          * @brief Multiplies a single item to each of the vectors elements.
          * 
          * @details Requires Ty to be able to be multipled by OtherTy,
-         *          otherwise it will not compile and the result type
-         *          to be the same as Ty.
+         *          and the result type of that operation to be Ty
+         *          otherwise it will not be treated as a
+         *          valid template.
          */
         template<typename OtherTy>
             requires Internal::CanMul<Ty, OtherTy> && std::is_same_v<Ty, Internal::MulResultT<Ty, OtherTy>>
@@ -430,8 +441,9 @@ namespace PashaBibko::Util
          * @brief Divides another vector of the same size to itself.
          * 
          * @details Requires Ty to be able to be divided by OtherTy,
-         *          otherwise it will not compile and the result type
-         *          to be the same as Ty.
+         *          and the result type of that operation to be Ty
+         *          otherwise it will not be treated as a
+         *          valid template.
          */
         template<typename OtherTy>
             requires Internal::CanDiv<Ty, OtherTy> && std::is_same_v<Ty, Internal::DivResultT<Ty, OtherTy>>
@@ -447,8 +459,9 @@ namespace PashaBibko::Util
          * @brief Divides a single item to each of the vectors elements.
          * 
          * @details Requires Ty to be able to be divided by OtherTy,
-         *          otherwise it will not compile and the result type
-         *          to be the same as Ty.
+         *          and the result type of that operation to be Ty
+         *          otherwise it will not be treated as a
+         *          valid template.
          */
         template<typename OtherTy>
             requires Internal::CanDiv<Ty, OtherTy> && std::is_same_v<Ty, Internal::DivResultT<Ty, OtherTy>>
@@ -465,9 +478,9 @@ namespace PashaBibko::Util
      * @brief Adds two vectors together.
      * 
      * @details Requires the two types contained in the vector to
-     *          be able to be added together. The result type will
-     *          also be the same type as when they are normally
-     *          added together.
+     *          be able to be added together. The result vector 
+     *          contained type will also be the same type as when
+     *          they are normally added together.
      */
     template<std::size_t len, typename LhsTy, typename RhsTy, typename ResTy = Internal::AddResultT<LhsTy, RhsTy>>
         requires Internal::CanAdd<LhsTy, RhsTy>
@@ -479,10 +492,10 @@ namespace PashaBibko::Util
     /**
      * @brief Adds a single item to each element of the vector.
      * 
-     * @details Requires the two types contained in the vector to
-     *          be able to be added together. The result type will
-     *          also be the same type as when they are normally
-     *          added together.
+     * @details Requires the type within the vector and the item
+     *          type to be added together. The result vector
+     *          contained type will also be the same type as when
+     *          they are normally added together.
      */
     template<std::size_t len, typename LhsTy, typename RhsTy, typename ResTy = Internal::AddResultT<LhsTy, RhsTy>>
         requires Internal::CanAdd<LhsTy, RhsTy>
@@ -494,10 +507,10 @@ namespace PashaBibko::Util
     /**
      * @brief Adds a single item to each element of the vector.
      * 
-     * @details Requires the two types contained in the vector to
-     *          be able to be added together. The result type will
-     *          also be the same type as when they are normally
-     *          added together.
+     * @details Requires the type within the vector and the item
+     *          type to be added together. The result vector
+     *          contained type will also be the same type as when
+     *          they are normally added together.
      */
     template<std::size_t len, typename LhsTy, typename RhsTy, typename ResTy = Internal::AddResultT<LhsTy, RhsTy>>
         requires Internal::CanAdd<LhsTy, RhsTy>
@@ -507,11 +520,12 @@ namespace PashaBibko::Util
     }
 
     /**
-     * @brief Subtracts the right vector by the left vector.
+     * @brief Subtracts the right vector from the left vector.
      * 
      * @details Requires the two types contained in the vector to
-     *          be able to be subtracted from each other. The result type will
-     *          also be the same type as when they are normally subtracted.
+     *          be able to be subtracted from each other. The result vector 
+     *          contained type will also be the same type as when
+     *          they are normally subtracted from each other.
      */
     template<std::size_t len, typename LhsTy, typename RhsTy, typename ResTy = Internal::SubResultT<LhsTy, RhsTy>>
         requires Internal::CanSub<LhsTy, RhsTy>
@@ -523,9 +537,10 @@ namespace PashaBibko::Util
     /**
      * @brief Subtracts an item from each element in a vector.
      * 
-     * @details Requires the two types contained in the vector to
-     *          be able to be subtracted from each other. The result type will
-     *          also be the same type as when they are normally subtracted.
+     * @details Requires the type within the vector and the item
+     *          type to be subtracted from each other. The result vector
+     *          contained type will also be the same type as when
+     *          they are normally subtracted from each other.
      */
     template<std::size_t len, typename LhsTy, typename RhsTy, typename ResTy = Internal::SubResultT<LhsTy, RhsTy>>
         requires Internal::CanSub<LhsTy, RhsTy>
@@ -535,11 +550,12 @@ namespace PashaBibko::Util
     }
 
     /**
-     * @brief Subtracts an item from each element in a vector.
+     * @brief Subtracts each element in a vector from an item.
      * 
-     * @details Requires the two types contained in the vector to
-     *          be able to be subtracted from each other. The result type will
-     *          also be the same type as when they are normally subtracted
+     * @details Requires the type within the vector and the item
+     *          type to be subtracted from each other. The result vector
+     *          contained type will also be the same type as when
+     *          they are normally subtracted from each other.
      */
     template<std::size_t len, typename LhsTy, typename RhsTy, typename ResTy = Internal::SubResultT<LhsTy, RhsTy>>
         requires Internal::CanSub<LhsTy, RhsTy>
@@ -552,9 +568,9 @@ namespace PashaBibko::Util
      * @brief Multiplies two vectors together.
      * 
      * @details Requires the two types contained in the vector to
-     *          be able to be multiplied together. The result type will
-     *          also be the same type as when they are normally
-     *          multiplied together.
+     *          be able to be multipled together. The result vector 
+     *          contained type will also be the same type as when
+     *          they are normally multiplied together.
      */
     template<std::size_t len, typename LhsTy, typename RhsTy, typename ResTy = Internal::MulResultT<LhsTy, RhsTy>>
         requires Internal::CanMul<LhsTy, RhsTy>
@@ -566,10 +582,10 @@ namespace PashaBibko::Util
     /**
      * @brief Multiplies an item with each element in a vector.
      * 
-     * @details Requires the two types contained in the vector to
-     *          be able to be multiplied together. The result type will
-     *          also be the same type as when they are normally
-     *          multiplied together.
+     * @details Requires the type within the vector and the item
+     *          type to be multiplied with each other. The result vector
+     *          contained type will also be the same type as when
+     *          they are normally multiplied together.
      */
     template<std::size_t len, typename LhsTy, typename RhsTy, typename ResTy = Internal::MulResultT<LhsTy, RhsTy>>
         requires Internal::CanMul<LhsTy, RhsTy>
@@ -581,10 +597,10 @@ namespace PashaBibko::Util
     /**
      * @brief Multiplies an item with each element in a vector.
      * 
-     * @details Requires the two types contained in the vector to
-     *          be able to be multiplied together. The result type will
-     *          also be the same type as when they are normally
-     *          multiplied together.
+     * @details Requires the type within the vector and the item
+     *          type to be multiplied with each other. The result vector
+     *          contained type will also be the same type as when
+     *          they are normally multiplied together.
      */
     template<std::size_t len, typename LhsTy, typename RhsTy, typename ResTy = Internal::MulResultT<LhsTy, RhsTy>>
         requires Internal::CanMul<LhsTy, RhsTy>
@@ -597,9 +613,9 @@ namespace PashaBibko::Util
      * @brief Divides the left vector by the right vector.
      * 
      * @details Requires the two types contained in the vector to
-     *          be able to be divided from each other. The result type will
-     *          also be the same type as when they are normally
-     *          divided together.
+     *          be able to be divided from each other. The result vector 
+     *          contained type will also be the same type as when
+     *          they are normally divided from each other.
      */
     template<std::size_t len, typename LhsTy, typename RhsTy, typename ResTy = Internal::DivResultT<LhsTy, RhsTy>>
         requires Internal::CanDiv<LhsTy, RhsTy>
@@ -611,10 +627,10 @@ namespace PashaBibko::Util
     /**
      * @brief Divides each element in the vector by a single item.
      * 
-     * @details Requires the two types contained in the vector to
-     *          be able to be divided from each other. The result type will
-     *          also be the same type as when they are normally
-     *          divided together.
+     * @details Requires the type within the vector and the item
+     *          type to be dividede from each other. The result vector
+     *          contained type will also be the same type as when
+     *          they are normally divided from each other.
      */
     template<std::size_t len, typename LhsTy, typename RhsTy, typename ResTy = Internal::DivResultT<LhsTy, RhsTy>>
         requires Internal::CanDiv<LhsTy, RhsTy>
@@ -626,10 +642,10 @@ namespace PashaBibko::Util
     /**
      * @brief Divides each element in the vector by a single item.
      * 
-     * @details Requires the two types contained in the vector to,
-     *          be also able to be divided from each other. The result type will
-     *          also be the same type as when they are normally
-     *          divided together.
+     * @details Requires the type within the vector and the item
+     *          type to be dividede from each other. The result vector
+     *          contained type will also be the same type as when
+     *          they are normally divided from each other.
      */
     template<std::size_t len, typename LhsTy, typename RhsTy, typename ResTy = Internal::DivResultT<LhsTy, RhsTy>>
         requires Internal::CanDiv<LhsTy, RhsTy>
