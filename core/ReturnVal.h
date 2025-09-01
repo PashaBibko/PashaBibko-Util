@@ -101,6 +101,7 @@ namespace PashaBibko::Util
 
 	namespace Internal
 	{
+		/* Holds the reserved memory addresses for ReturnVal */
 		class ReturnValMemoryAdresses
 		{
 			protected:
@@ -108,6 +109,12 @@ namespace PashaBibko::Util
 				static void* s_SuccAddress; // 0x1
 		};
 	}
+
+	/**/
+	template<typename WarningTy>
+		requires (!std::is_same_v<WarningTy, void>)
+	class ReturnWarning
+	{};
 
 	/**
 	 * @brief Class to return a result from a function that can fail.
@@ -143,13 +150,24 @@ namespace PashaBibko::Util
 			{}
 
 			/**
-			 * @brief Moves the success value.
+			 * @brief Moves the success value, with warnings if there are any.
 			 * 
 			 * @details Recommended to use for larger types.
 			 */
-			ReturnVal(Res_Ty&& _result)
-				: m_Result(std::move(_result)), m_ResultState(s_SuccAddress)
-			{}
+			ReturnVal(Res_Ty&& _result, WarningTy* warning = nullptr)
+				: m_Result(std::move(_result)), m_ResultState(warning)
+			{
+				/* Sets it to the Succ address if there were no warnings */
+				if (m_ResultState == nullptr)
+					m_ResultState = s_SuccAddress;
+
+				/* Verifies WarningTy is not void */
+				else
+				{
+					if constexpr (std::same_as<WarningTy, void>)
+						Util::EndProcess(); // <- TODO: Put some sort of error here
+				}
+			}
 
 			/**
 			 * @brief Moves the contents of a Util::FunctionFail<Err_Ty> to a Util::ReturnVal.
@@ -166,12 +184,19 @@ namespace PashaBibko::Util
 
 			~ReturnVal()
 			{
-				/* Makes sure the types deconstructor is called to avoid memory leaks */
+				/* Makes sure the types deconstructor is called on the union to avoid memory leaks */
 				if (Failed())
 					m_Error.~Err_Ty();
 
 				else
 					m_Result.~Res_Ty();
+
+				/* Frees the memory of the warnings if any was allocated */
+				if constexpr (!std::is_same_v<WarningTy, void>)
+				{
+					if (HasWarnings())
+						delete m_ResultState;
+				}
 			}
 
 			#endif
@@ -247,18 +272,30 @@ namespace PashaBibko::Util
 			}
 
 			/**
-			 * 
+			 * @brief Returns whether the function suceeded without any warnings.
 			 */
-			inline bool SuccessNoWarnings()
+			inline bool SuccessNoWarnings() const
 			{
 				return m_ResultState == s_SuccAddress;
 			}
 
 			/**
+			 * @brief Returns whether the function returned any warnings.
+			 */
+			inline bool HasWarnings() const
+			{
+				return !(m_ResultState == s_FailAddress || m_ResultState == s_SuccAddress);
+			}
+
+			/**
+			 * @brief Returns a pointer to the warning returned by the function.
 			 * 
+			 * @note Returns nullptr if there were no warnings or the ReturnVal holds
+			 * 		 an error instead of a result.
 			 */
 			WarningTy* GetWarning()
 			{
+				/* Stops returning of memory adresses that will never have values stored in */
 				if (m_ResultState == s_FailAddress || m_ResultState == s_SuccAddress)
 					return nullptr;
 

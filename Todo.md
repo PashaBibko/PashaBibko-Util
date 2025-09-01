@@ -19,12 +19,6 @@
     ReturnVal.h/.cpp (after update)
     FileManagment.h/.cpp
 
-### Code (general)
-
-- ReturnVal.h/.cpp
-    Finish implementing returning warnings with a result
-    Maybe add a way to use a bool instead of pointer (like legacy)
-
 ### Code (linux-only)
 
 - Misc.cpp TriggerBreakpoint (Can be in later release)
@@ -45,6 +39,9 @@
 - Interpreter extension (new)
     Add support for lua interpreter
     Add support for python interpreter
+
+- ReturnVal
+    Allow multiple warnings via a linked list
 
 ### Code ideas
 
