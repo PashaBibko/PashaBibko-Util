@@ -21,31 +21,8 @@ struct LogableExample
 	}
 };
 
-PB_TEST_GROUP(ExampleTests);
-PB_TEST_GROUP(EmptyTestGroup);
-PB_TEST_GROUP(OtherExampleTests, EmptyTestGroup, ExampleTests);
-
-PB_TEST(ExampleTests, Example)
-{
-	PB_EXPECT_TRUE(true);
-	PB_EXPECT_FALSE(false);
-};
-
-PB_TEST(ExampleTests, Example1)
-{
-	PB_EXPECT_TRUE(3 == 4);
-}
-
-PB_TEST(OtherExampleTests, OtherExample)
-{
-	PB_EXPECT_EQL(1, 1);
-}
-
 int main()
 {
-	PB::Util::Testing::ExecuteAllTests();
-	PB::Util::EndProcess(false);
-
 	/**/
 	PB::Util::PrintLn<PB::Util::Colour::LightRed>(PB::Util::TempFilePath("file.txt"));
 
