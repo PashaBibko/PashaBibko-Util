@@ -190,7 +190,7 @@ namespace PashaBibko::Util
         requires (Internal::Logable<std::remove_cvref_t<Args>> && ...)
     inline void Log(Args&&... args)
     {
-        std::string message = Internal::ProcessArgs("[PB_Util::Log()]: ", std::forward<Args>(args)..., '\n');
+        std::string message = Internal::ProcessArgs("[PB_Util::Log]: ", std::forward<Args>(args)..., '\n');
         Internal::WriteToConsole(message.c_str());
         Internal::WriteToLog(message.c_str());
     }
